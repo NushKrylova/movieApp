@@ -1,0 +1,133 @@
+.App {
+  font-family:"Source Sans Pro", Arial, sans-serif;
+  display: flex;
+  /* justify-content:space-between; */
+  flex-direction: column;
+  align-items: center;
+}
+.FixedContainer{
+  width: 1220px;
+  max-width: 1220px;
+}
+.Header{
+  padding: 20px;
+  background-color: black;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+}
+.HeaderContainer{
+  display: flex;
+  flex-direction: row;
+}
+.Header img{
+  margin-right: 20px;
+}
+.Header nav a{
+  color: white;
+  margin-right: 20px;
+  text-decoration: none;
+
+}
+.Grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  padding: 10px 0;
+
+}
+.Card{
+  display: flex;
+  flex-direction: column;
+}
+.Card img{
+  width: 100%;
+}
+.Card p{
+  margin: 0px;
+}
+.SearchContainer{
+  display: flex;
+  padding: 10px 0;
+}
+.FilterContainer{
+  width: 258px;
+}
+.TopRatedGrid{
+  width: 960px;
+}
+.Banner{
+  position: relative;
+}
+.Banner img{
+  width: 100%;
+  padding-top: 10px;
+}
+.BannerText{
+  width: 80%;
+  position: absolute;
+  bottom: 0;
+  color: white;
+  left: 50%;
+  margin-left: -40%;
+  text-align: center;
+}
+.Border{
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 0 15px 15px 0;
+}
+.Border fieldset{
+  border: 0;
+}
+.ButtonContainer{
+  height: 44px;
+  margin-right: 15px;
+}
+.ButtonContainer button {
+  background-color: rgb(1, 180, 228);;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+}
+.Border hr{
+  border-top: 1px solid #bbb;
+}
+h3{
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+legend{
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+}
+fieldset{
+  padding-left: 0;
+  margin-left: 0;
+}
+.SubFilterContainer{
+  margin-top: 10px;
+}
+.SubFilterContainer select{
+  width: 100%;
+}
+.ReleaseDatesField{
+  display: flex;
+  justify-content: space-between;
+}
+.Input{
+  height: 25px;
+}
+.ReleaseDatesField label{
+  display: flex;
+  align-items: center;
+}
