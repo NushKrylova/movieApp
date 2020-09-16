@@ -2,12 +2,16 @@ import React from 'react';
 import Sort from './Sort';
 import FilterGenres from './FilterGenres';
 import FilterReleaseDates from './FilterReleaseDates';
+import FilterUserScore from './FilterUserScore';
 
 function FiltersContainer(props) {
     function handleClick(e) {
         e.preventDefault();
         let formData = new FormData(e.target);
         props.searchClicked(formData);
+        for (var key of formData.keys()) {
+            console.log(">>>", key, ",", formData.get(key));
+        }
     }
     return (
         <form className="FilterContainer" onSubmit={handleClick}>
@@ -18,6 +22,8 @@ function FiltersContainer(props) {
                 <FilterGenres />
                 <hr />
                 <FilterReleaseDates />
+                <hr />
+                <FilterUserScore />
             </div>
             <div className="ButtonContainer">
                 <button name="search" type="submit">Search</button>

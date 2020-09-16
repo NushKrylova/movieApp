@@ -8,7 +8,9 @@ function TopRated(props) {
   function splitFormData(data) {
     let result = {
       sort: "",
-      genres: []
+      genres: [],
+      releaseDatesFrom: "",
+      releaseDatesTo: "",
     }
     for (var key of data.keys()) {
       if (key === "sort") {
@@ -16,6 +18,12 @@ function TopRated(props) {
       }
       if (key.includes("genres")) {
         result.genres.push(data.get(key));
+      }
+      if (key === "from") {
+        result.releaseDatesFrom = data.get(key);
+      }
+      if (key === "to") {
+        result.releaseDatesTo = data.get(key);
       }
     }
     console.log(result);
@@ -29,6 +37,8 @@ function TopRated(props) {
       const data = splitFormData(props.formData);
       const sort = data.sort;
       const genres = data.genres;
+      const releaseDatesFrom = data.releaseDatesFrom;
+      const releaseDatesTo = data.releaseDatesTo;
 
       let additionalQuery = "";
       if (sort.length > 0) {
@@ -36,6 +46,12 @@ function TopRated(props) {
       }
       if (genres.length > 0) {
         additionalQuery = additionalQuery + "&with_genres=" + genres.toString();
+      }
+      if (releaseDatesFrom.length > 0) {
+        additionalQuery = additionalQuery + "&primary_release_date.gte=" + releaseDatesFrom;
+      } 
+      if (releaseDatesTo.length > 0) {
+        additionalQuery = additionalQuery + "&primary_release_date.lte=" + releaseDatesTo;
       }
       fetchPromise = discoverMovies(additionalQuery);
     } else {
