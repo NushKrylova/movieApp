@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SearchResultsItem(props) {
+function TopRatedResultsItem(props) {
     return (
         <div className="Card">
             <a href="/"><img src={props.itemData.poster_path}></img></a>
@@ -10,4 +10,4 @@ function SearchResultsItem(props) {
         </div>
     )
 }
-export default SearchResultsItem;
+export default TopRatedResultsItem;

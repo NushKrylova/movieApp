@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Banner from '../components/Banner'
-import SearchResults from '../components/SearchResults'
+import TopRatedResults from '../components/TopRatedResults'
 import { getPopular } from "../api/tmdb";
 
 function Home() {
@@ -24,7 +24,7 @@ function Home() {
   return (
     <div>
       <Banner />
-      <SearchResults results={results}></SearchResults>
+      <TopRatedResults results={results}></TopRatedResults>
     </div>
   )
 }

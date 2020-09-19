@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
 import Home from './pages/Home';
-import Search from './pages/Search';
+import Movies from './pages/Movies';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -17,8 +17,8 @@ function App() {
         <Header></Header>
         <div className="FixedContainer">
           <Switch>
-            <Route path="/search">
-              <Search />
+            <Route path="/movies">
+              <Movies />
             </Route>
             <Route path="/">
               <Home />

@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { sortTitleAZ } from '../constants'
-import TopRated from '../components/TopRated'
-import FiltersContainer from '../components/FiltersContainer'
+import Banner from '../components/Banner'
+import TopRatedResults from '../components/TopRatedResults'
+import { getPopular } from "../api/tmdb";
 
 function Search() {
-    const [searchState, setSearchState] = useState();
-
-    return (
-        <div className="SearchContainer">
-            <FiltersContainer searchClicked={setSearchState} />
-            <TopRated formData={searchState}/>
-        </div>
-    )
+  
+  return (
+    <div>
+      <TopRatedResults results={results}></TopRatedResults>
+    </div>
+  )
 }
 export default Search;
