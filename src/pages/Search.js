@@ -9,7 +9,7 @@ function Search() {
     return (
         <div className="SearchContainer">
             <FiltersContainer searchClicked={setSearchState} />
-            <TopRated formData={searchState} />
+            <TopRated formData={searchState}/>
         </div>
     )
 }

@@ -7,11 +7,11 @@ function FilterReleaseDates() {
             <label>Release Dates</label>
             <div className="SubFilterContainer">
                 <div className="ReleaseDatesField">
-                    <label for="from">from</label>
+                    <label htmlFor="from">from</label>
                     <input type="date" id="from" name="from" className="Input"></input>
                 </div>
                 <div className="ReleaseDatesField">
-                    <label for="to">to</label>
+                    <label htmlFor="to">to</label>
                     <input type="date" id="to" name="to" className="Input"></input>
                 </div>
             </div>

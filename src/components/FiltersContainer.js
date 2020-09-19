@@ -25,8 +25,8 @@ function FiltersContainer(props) {
                 <hr />
                 <FilterUserScore />
             </div>
-            <div className="ButtonContainer">
-                <button name="search" type="submit">Search</button>
+            <div>
+                <button name="search" type="submit" className="Button">Search</button>
             </div>
         </form>
     )
