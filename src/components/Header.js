@@ -1,7 +1,15 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-function Header() {
+
+function Header(props) {
+    const history = useHistory();
+    function handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            history.push("/search");
+            props.searchRequested(e.target.value);
+        }
+    }
     return (
         <div className="Header">
             <div className="HeaderContainer FixedContainer">
@@ -14,7 +22,7 @@ function Header() {
                     </nav>
                 </div>
                 <div className="HeaderContainer">
-                    <input type="text" id="search" name="search" placeholder="Search" className="Input"></input>
+                    <input type="text" id="search" name="search" placeholder="Search" className="Input" onKeyPress={handleKeyPress}></input>
                 </div>
             </div>
         </div>

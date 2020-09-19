@@ -20,5 +20,26 @@ export function getTopRated() {
 export function discoverMovies(additioanlQuery) {
     return fetch('https://api.themoviedb.org/3/discover/movie?api_key=f5d93c41702a89380fdb44fcdc97f9f4&certification_country=US&include_adult=false&include_video=false&with_original_language=en' + additioanlQuery)
         .then(response => response.json());
-
 }
+
+export function searchMovies(searchQuery) {
+    return fetch('https://api.themoviedb.org/3/search/movie?api_key=f5d93c41702a89380fdb44fcdc97f9f4&language=en-US&page=1&include_adult=false&query=' + searchQuery)
+        .then(response => response.json());
+}
+
+export function parseTmdbResponse(data) {
+    let moviePreviewResults = [];
+    data.results.map(item => {
+      let moviePreview = {
+        id: item.id,
+        poster_path: 'https://image.tmdb.org/t/p/w500/' + item.poster_path,
+        vote_average: item.vote_average,
+        title: item.title,
+        release_date: item.release_date,
+        overview: item.overview,
+      };
+      moviePreviewResults.push(moviePreview);
+    })
+    return moviePreviewResults;
+  }
+  

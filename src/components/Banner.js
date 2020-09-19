@@ -13,7 +13,8 @@ function Banner() {
                 let movie = {
                     backdrop_path: 'https://image.tmdb.org/t/p/w1280/' + item.backdrop_path,
                     title: item.title,
-                    overview: item.overview
+                    overview: item.overview,
+                    id: item.id
                 };
                 results.push(movie);
             })
@@ -21,7 +22,7 @@ function Banner() {
         })
     }, []);
     const bannerItems = results.map(el =>
-        <div className="Banner">
+        <div className="Banner" key={el.id}>
             <img src={el.backdrop_path} />
             <div className="BannerText">
                 <h2>{el.title}</h2>

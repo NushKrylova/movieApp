@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TopRatedResultsItem from './TopRatedResultsItem';
-import { getTopRated, discoverMovies } from "../api/tmdb";
+import { getTopRated, discoverMovies, parseTmdbResponse } from "../api/tmdb";
 
 function TopRated(props) {
   const [results, setResults] = useState([]);
@@ -97,20 +97,6 @@ function splitFormData(data) {
       result.minUserScore = data.get(key);
     }
   }
-  console.log(result);
   return result;
 }
 
-function parseTmdbResponse(data) {
-  let moviePreviewResults = [];
-  data.results.map(item => {
-    let moviePreview = {
-      poster_path: 'https://image.tmdb.org/t/p/w500/' + item.poster_path,
-      vote_average: item.vote_average,
-      title: item.title,
-      release_date: item.release_date
-    };
-    moviePreviewResults.push(moviePreview);
-  })
-  return moviePreviewResults;
-}

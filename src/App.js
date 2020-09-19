@@ -1,24 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import Header from './components/Header';
 import Home from './pages/Home';
-import Movies from './pages/Movies';
+import Popular from './pages/Popular';
+import Search from './pages/Search';
 import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 function App() {
+  const [searchState, setSearchState] = useState();
+
   return (
     <div className="App">
       <Router>
-        <Header></Header>
+        <Header searchRequested={setSearchState}></Header>
         <div className="FixedContainer">
           <Switch>
+            <Route path="/search">
+              <Search searchQuery={searchState}/>
+            </Route>
             <Route path="/movies">
-              <Movies />
+              <Popular />
             </Route>
             <Route path="/">
               <Home />

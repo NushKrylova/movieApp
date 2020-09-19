@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TopRated from '../components/TopRated'
 import FiltersContainer from '../components/FiltersContainer'
 
-function Movies() {
+function Popular() {
     const [searchState, setSearchState] = useState();
 
     return (
@@ -12,4 +12,4 @@ function Movies() {
         </div>
     )
 }
-export default Movies;
+export default Popular;
