@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Banner from '../components/Banner'
-import TopPopularItem from '../components/TopPopularItem'
+import DiscoverItem from '../components/DiscoverItem'
 import { getPopular, parseTmdbResponse } from "../api/tmdb";
 
 function Home() {
@@ -13,7 +13,7 @@ function Home() {
     })
   }, []);
 
-  const cards = results.map(el => <div key={el.id}><TopPopularItem itemData={el} /></div>)
+  const cards = results.map(el => <div key={el.id}><DiscoverItem itemData={el} /></div>)
 
   return (
     <div>

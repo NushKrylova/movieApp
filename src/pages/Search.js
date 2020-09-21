@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SearchResultItem from '../components/SearchResultItem'
+import SearchItem from '../components/SearchItem'
 import { searchMovies, parseTmdbResponse } from "../api/tmdb";
 
 
@@ -15,7 +15,7 @@ function Search(props) {
 
   }, [props.searchQuery]);
 
-  const movieList = results.map(el => <SearchResultItem itemData={el} key={el.id} />)
+  const movieList = results.map(el => <SearchItem itemData={el} key={el.id} />)
   return (
     <div>
       {movieList}

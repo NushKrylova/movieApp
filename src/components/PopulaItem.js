@@ -1,7 +1,7 @@
 import React from 'react';
 import {formatDate} from '../api/tmdb'
 
-function TopRatedResultsItem(props) {
+function TopRatedItem(props) {
     return (
         <div className="Card">
             <a className="Medium" href="/"><img src={props.itemData.poster_path}></img></a>
@@ -11,4 +11,4 @@ function TopRatedResultsItem(props) {
         </div>
     )
 }
-export default TopRatedResultsItem;
+export default TopRatedItem;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TopPopularItem from './TopPopularItem';
+import DiscoverItem from './DiscoverItem';
 import { getNowPlaying } from "../api/tmdb";
 
 function Banner() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import{formatDate} from '../api/tmdb'
-function SearchResultItem(props) {
+function SearchItem(props) {
     return (
         <div className="ListItem">
             <a href="/"><img src={props.itemData.poster_path}></img></a>
@@ -14,4 +14,4 @@ function SearchResultItem(props) {
         </div>
     )
 }
-export default SearchResultItem;
+export default SearchItem;
