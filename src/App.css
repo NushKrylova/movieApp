@@ -43,12 +43,23 @@
 .Card{
   display: flex;
   flex-direction: column;
+  border-radius: 16px;
 }
 .Card img{
   width: 100%;
+  height: 100%;
+  background-color: lightgray;
 }
 .Card p{
   margin: 0px;
+}
+.Medium{
+  display: flex;
+  height: 400px;
+}
+.Small{
+  display: flex;
+  height: 446px;
 }
 .SearchContainer{
   display: flex;
@@ -144,5 +155,42 @@ option{
   padding-left: 6px;
 }
 .ListItem{
-  
+  display: flex;
+  height: 141px;
+  margin: 15px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+.ListItem a{
+  display: flex;
+  width: 94px;
+  height: 141px;
+}
+.ListItem img{
+  height: 100%;
+  width: 94px;
+  background-color: lightgray;
+  border-radius: 10px 0px 0px 10px;  
+}
+.ListItemText{
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-basis: 100%;
+}
+.ListItemText p{
+  margin: 0;
+}
+.ListItemText .Overview{
+  text-overflow: ellipsis;
+  height: 35px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.ReleaseDate{
+  padding-top: 5px;
+  color: gray;
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Banner from '../components/Banner'
-import TopRatedResults from '../components/TopRatedResults'
+import TopPopularItem from '../components/TopPopularItem'
 import { getPopular, parseTmdbResponse } from "../api/tmdb";
 
 function Home() {
@@ -12,10 +12,16 @@ function Home() {
       setResults(results);
     })
   }, []);
+
+  const cards = results.map(el => <div key={el.id}><TopPopularItem itemData={el} /></div>)
+
   return (
     <div>
       <Banner />
-      <TopRatedResults results={results}></TopRatedResults>
+      <div className="Grid">
+            {cards}
+        </div>
+
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TopRatedResultsItem from './TopRatedResultsItem';
+import TopPopularItem from './TopPopularItem';
 import { getTopRated, discoverMovies, parseTmdbResponse } from "../api/tmdb";
 
 function TopRated(props) {
@@ -56,7 +56,7 @@ function TopRated(props) {
     }
   }, [page]);
 
-  const topRatedResults = results.map(el => <TopRatedResultsItem itemData={el} key={el.id} />)
+  const topRatedResults = results.map(el => <TopPopularItem itemData={el} key={el.id} />)
 
   return (
     <div>

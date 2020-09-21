@@ -30,9 +30,15 @@ export function searchMovies(searchQuery) {
 export function parseTmdbResponse(data) {
     let moviePreviewResults = [];
     data.results.map(item => {
+        let poster;
+        if(!item.poster_path){
+            poster = "/noPoster.svg"
+        }else{
+            poster = 'https://image.tmdb.org/t/p/w500/' + item.poster_path;
+        }
       let moviePreview = {
         id: item.id,
-        poster_path: 'https://image.tmdb.org/t/p/w500/' + item.poster_path,
+        poster_path: poster,
         vote_average: item.vote_average,
         title: item.title,
         release_date: item.release_date,
@@ -43,3 +49,6 @@ export function parseTmdbResponse(data) {
     return moviePreviewResults;
   }
   
+  export function formatDate(data, monthFormat){
+   return new Date(data).toLocaleDateString('en-US', { year: 'numeric', month: monthFormat, day: 'numeric'} )
+  }

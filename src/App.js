@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from './components/Header';
 import Home from './pages/Home';
-import Popular from './pages/Popular';
+import TopRated2 from './pages/TopRated2';
 import Search from './pages/Search';
 import './App.css';
 import {
@@ -23,7 +23,7 @@ function App() {
               <Search searchQuery={searchState}/>
             </Route>
             <Route path="/movies">
-              <Popular />
+              <TopRated2 />
             </Route>
             <Route path="/">
               <Home />

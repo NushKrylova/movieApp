@@ -1,12 +1,16 @@
 import React from 'react';
-
+import{formatDate} from '../api/tmdb'
 function SearchResultItem(props) {
     return (
         <div className="ListItem">
             <a href="/"><img src={props.itemData.poster_path}></img></a>
-            <p id="raiting">{props.itemData.vote_average}</p>
-            <p id="title">{props.itemData.title}</p>
-            <p id="released">{props.itemData.release_date}</p>
+            <div className="ListItemText">
+                <div>
+                    <h3>{props.itemData.title}</h3>
+                    <p className="ReleaseDate">{formatDate(props.itemData.release_date, 'long')}</p>
+                </div>
+                <p className="Overview">{props.itemData.overview}</p>
+            </div>
         </div>
     )
 }
