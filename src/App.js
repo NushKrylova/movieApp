@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from './components/Header';
 import Home from './pages/Home';
 import Discover from './pages/Discover';
+import Details from './pages/Details';
 import Search from './pages/Search';
 import './App.css';
 import {
@@ -20,10 +21,12 @@ function App() {
         <div className="FixedContainer">
           <Switch>
             <Route path="/search">
-              <Search searchQuery={searchState}/>
+              <Search searchQuery={searchState} />
             </Route>
             <Route path="/movies">
               <Discover />
+            </Route>
+            <Route path="/:id" children={<Details />}>
             </Route>
             <Route path="/">
               <Home />

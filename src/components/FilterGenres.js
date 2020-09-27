@@ -18,8 +18,6 @@ function FilterGenres(props) {
         })
     }, []);
 
-
-
     const genres = results.map(el =>
         <div key={el.id}>
             <input type="checkbox" value={el.id} name={"genres" + el.name} id={el.id} />

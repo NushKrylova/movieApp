@@ -1,9 +1,13 @@
 import React from 'react';
-import{formatDate} from '../api/tmdb'
+import { formatDate } from '../api/tmdb'
+import { Link } from "react-router-dom";
+
 function SearchItem(props) {
     return (
-        <div className="ListItem">
-            <a href="/"><img src={props.itemData.poster_path}></img></a>
+        <div className="ListItem BorderCard">
+            <Link className="Medium" to={"/" + props.itemData.id}>
+                <img src={props.itemData.poster_path}></img>
+            </Link>
             <div className="ListItemText">
                 <div>
                     <h3>{props.itemData.title}</h3>

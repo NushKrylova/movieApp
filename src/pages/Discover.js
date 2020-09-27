@@ -43,7 +43,7 @@ function Discover() {
         }
 
         fetchPromise.then(data => {
-            let moviePreviewResults = parseTmdbResponse(data);
+            let moviePreviewResults = parseTmdbResponse(data.results);
             setResults(moviePreviewResults);
         })
     }, [searchState]);
@@ -51,7 +51,7 @@ function Discover() {
     useEffect(() => {
         if (page > 1) {
             discoverMovies(additionalQuery + "&page=" + page).then(data => {
-                let moviePreviewResults = parseTmdbResponse(data);
+                let moviePreviewResults = parseTmdbResponse(data.results);
                 console.log(">>>", results, moviePreviewResults, page);
                 setResults([...results, ...moviePreviewResults]);
             })

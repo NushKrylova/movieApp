@@ -8,8 +8,7 @@ function Search(props) {
 
   useEffect(() => {
     searchMovies(props.searchQuery).then(data => {
-      console.log("ddd", data)
-      let moviePreviewResults = parseTmdbResponse(data);
+      let moviePreviewResults = parseTmdbResponse(data.results);
       setResults(moviePreviewResults);
     })
 
