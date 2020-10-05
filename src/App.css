@@ -27,7 +27,7 @@
 .Header img{
   margin-right: 20px;
 }
-.Header nav a{
+.Header .Link{
   color: white;
   margin-right: 20px;
   text-decoration: none;
@@ -171,7 +171,7 @@ option{
 .ListItem{
   display: flex;
   height: 141px;
-  margin: 15px;
+  margin: 15px 0 15px 0;
 }
 .BorderCard{
   border: 1px solid lightgray;
@@ -212,6 +212,7 @@ option{
 .ReleaseDate{
   padding-top: 5px;
   color: gray;
+  margin: 0;
 }
 .Details{
   display: flex;
@@ -274,12 +275,13 @@ option{
   font-size: 18px;
   border-radius: 50%;
   font-weight: 700;
-  height: 20px;
-  width: 20px;
+  height: 15px;
+  width: 15px;
+  text-align: center;
+  margin: 10px 0 10px 0;
 }
 
-.Actions .Icon{
-  background-color: black;
+.Icon{
   color: white;
   padding: 12px;
   text-align: center;
@@ -288,10 +290,102 @@ option{
   font-size: 12px;
   border-radius: 40px;
   border: none;
-  margin: 13px; 
+  margin-left: 13px;
+}
+.IconFav{
+  background-color: black;
+}
+.IconPlay{
+  background-color: transparent;
+  display: flex;
+  align-items: center;
 }
 .Actions .VotesText{
   width: 41px;
   margin: 8px;
   font-weight: 700;
+}
+.Fav{
+  color: white;
+  display: flex;
+  align-items: center;
+}
+.ListFav{
+  height: 200px;
+  margin: 15px;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+.FavCard{
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0 15px 0;
+  height: 200px;
+}
+.FavCard a {
+  display: flex;
+  height: 100%;
+}
+.FavCard img {
+  height: 100%;
+  background-color: lightgray;
+  border-radius: 10px 0px 0px 10px;
+  margin-right: 15px;
+}
+.FavDetails{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.TopDetails{
+  display: flex;
+  flex-direction: row;
+}
+.TextTopDetails{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  justify-content: center;
+}
+.FavDetails .Overview{
+  margin: 0;
+}
+.FavDetails .Icon{
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  background-color: magenta;
+  margin: 10px 0 10px 0;
+}
+.IconPlay #PlayText{
+  margin: 0 0 0 8px;
+  font-size: initial;
+}
+.Popup{
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+}
+.Hide{
+  display: none;
+}
+.Show{
+  display: flex;
+}
+.Close{
+  right: -700px;
+  position: relative;
+  top: -380px;
+  padding: 0;
+  border: none;
+  background: none;
+}
+.fa-times{
+  color: white;
 }

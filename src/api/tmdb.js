@@ -30,7 +30,12 @@ export function searchMovies(searchQuery) {
         .then(response => response.json());
 }
 
-export function parseTmdbResponse(data) {
+export function getVideo(id) {
+    return fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=f5d93c41702a89380fdb44fcdc97f9f4&language=en-US`)
+        .then(response => response.json());
+}
+
+export function parseListOfMovies(data) {
     let moviePreviewResults = [];
     data.map(item => {
         let poster;
@@ -52,6 +57,20 @@ export function parseTmdbResponse(data) {
     })
     return moviePreviewResults;
 }
+export function parseMovie(data) {
+    return {
+        id: data.id,
+        title: data.title,
+        poster: 'https://image.tmdb.org/t/p/w500/' + data.poster_path,
+        vote_average: data.vote_average,
+        title: data.title,
+        release_date: data.release_date,
+        overview: data.overview,
+        backdrop_path: 'https://image.tmdb.org/t/p/original/' + data.backdrop_path,
+        genres: data.genres.map(g => g.name).join(', '),
+        runtime: data.runtime
+    }
+}
 
 export function formatDate(data, monthFormat) {
     let options = {}
@@ -66,6 +85,5 @@ export function formatTime(data) {
     return hours + 'h ' + min + 'm'
 }
 
- // video: https://api.themoviedb.org/3/movie/${id}/videos?api_key=f5d93c41702a89380fdb44fcdc97f9f4&language=en-US
 //confi: https://api.themoviedb.org/3/configuration?api_key=f5d93c41702a89380fdb44fcdc97f9f4
 //https://api.themoviedb.org/3/movie/694919/credits?api_key=f5d93c41702a89380fdb44fcdc97f9f4

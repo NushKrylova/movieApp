@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SearchItem from '../components/SearchItem'
-import { searchMovies, parseTmdbResponse } from "../api/tmdb";
+import { searchMovies, parseListOfMovies } from "../api/tmdb";
 
 
 function Search(props) {
@@ -8,7 +8,7 @@ function Search(props) {
 
   useEffect(() => {
     searchMovies(props.searchQuery).then(data => {
-      let moviePreviewResults = parseTmdbResponse(data.results);
+      let moviePreviewResults = parseListOfMovies(data.results);
       setResults(moviePreviewResults);
     })
 

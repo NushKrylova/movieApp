@@ -1,48 +1,55 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getMovieDetails, formatDate, formatTime } from "../api/tmdb";
-
+import { getMovieDetails, formatDate, formatTime, parseMovie, getVideo } from "../api/tmdb";
+import { FAV_MOVIES } from "../constants"
 
 function Details() {
   let { id } = useParams();
   const [results, setResults] = useState([]);
   const [fav, setFav] = useState(() => getInitialValue(id));
+  const [trailer, setTrailer] = useState();
+  const [play, setPlay] = useState(false);
 
   function getInitialValue(movieId) {
-    let value = localStorage.getItem(movieId);
-    if (value) {
-      return value === "true"
-    } else {
-      return false
+    let ls = localStorage.getItem(FAV_MOVIES);
+    if (ls) {
+      let faved = ls.split(",").find(el => el === movieId);
+      if (faved) {
+        return true
+      }
     }
   }
 
   useEffect(() => {
-    getMovieDetails(id).then(data => {
-      setResults({
-        id: data.id,
-        title: data.title,
-        poster: 'https://image.tmdb.org/t/p/w500/' + data.poster_path,
-        vote_average: data.vote_average,
-        title: data.title,
-        release_date: data.release_date,
-        overview: data.overview,
-        backdrop_path: 'https://image.tmdb.org/t/p/original/' + data.backdrop_path,
-        genres: data.genres.map(g => g.name).join(', '),
-        runtime: data.runtime
-      });
-    });
+    getMovieDetails(id).then(data =>
+      setResults(parseMovie(data))
+    );
+
+    getVideo(id).then(data =>
+      setTrailer(data.results.find(el => el.site === 'YouTube').key)
+    );
   }, []);
 
   function handleClick(movieId) {
-    let newValue = true;
-    let currentValue = localStorage.getItem(movieId);
-    if (currentValue) {
-      let boolCurrentValue = currentValue === "true";
-      newValue = !boolCurrentValue;
+    let lsCurrent = localStorage.getItem(FAV_MOVIES);
+    let lsNew;
+    if (lsCurrent) {
+      if (fav) {
+        lsNew = lsCurrent.split(",").filter(el => el != movieId).join(",");
+        console.log("lsNew", lsCurrent)
+        localStorage.setItem(FAV_MOVIES, lsNew)
+      } else {
+        lsNew = lsCurrent + "," + movieId;
+      }
+    } else {
+      lsNew = movieId;
     }
-    localStorage.setItem(movieId, newValue)
-    setFav(newValue);
+    localStorage.setItem(FAV_MOVIES, lsNew)
+    setFav(!fav);
+  }
+
+  function handlePlay() {
+    setPlay(!play)
   }
 
   const divStyle = {
@@ -50,7 +57,8 @@ function Details() {
   };
 
   let iconColor = fav ? "magenta" : "white";
-  
+  let player = play ? "Show" : "Hide";
+
   return (
     <div style={divStyle} className="Background">
       <div className="Gradient">
@@ -68,8 +76,12 @@ function Details() {
               <div className="Actions">
                 <p className="Votes">{results.vote_average}</p>
                 <p className="VotesText">User Score</p>
-                <button className="Icon" onClick={() => handleClick(results.id)}>
+                <button className="Icon IconFav" onClick={() => handleClick(results.id)}>
                   <i style={{ color: iconColor }} className="fas fa-star"></i>
+                </button>
+                <button className="Icon IconPlay" onClick={handlePlay}>
+                  <i className="fas fa-play fa-lg"></i>
+                  <p id="PlayText">Play Trailer</p>
                 </button>
               </div>
               <div className="Info">
@@ -80,8 +92,16 @@ function Details() {
           </div>
         </div>
       </div>
+      <div className={"Popup " + player}>
+        {trailer && <div>
+          <button className="Close" onClick={handlePlay}><i class="fas fa-times fa-2x "></i></button>
+          <iframe id="ytplayer" type="text/html" width="640" height="360"
+            src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
+            frameborder="0">
+          </iframe>
+        </div>}
+      </div>
     </div>
   );
 }
 export default Details;
-

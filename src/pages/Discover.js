@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FiltersContainer from '../components/FiltersContainer'
 import TopRatedResultsItem from '../components/DiscoverItem';
-import { getTopRated, discoverMovies, parseTmdbResponse } from "../api/tmdb";
+import { getTopRated, discoverMovies, parseListOfMovies } from "../api/tmdb";
 
 function Discover() {
     const [searchState, setSearchState] = useState();
@@ -43,7 +43,7 @@ function Discover() {
         }
 
         fetchPromise.then(data => {
-            let moviePreviewResults = parseTmdbResponse(data.results);
+            let moviePreviewResults = parseListOfMovies(data.results);
             setResults(moviePreviewResults);
         })
     }, [searchState]);
@@ -51,7 +51,7 @@ function Discover() {
     useEffect(() => {
         if (page > 1) {
             discoverMovies(additionalQuery + "&page=" + page).then(data => {
-                let moviePreviewResults = parseTmdbResponse(data.results);
+                let moviePreviewResults = parseListOfMovies(data.results);
                 console.log(">>>", results, moviePreviewResults, page);
                 setResults([...results, ...moviePreviewResults]);
             })

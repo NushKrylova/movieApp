@@ -4,7 +4,9 @@ import Home from './pages/Home';
 import Discover from './pages/Discover';
 import Details from './pages/Details';
 import Search from './pages/Search';
+import Favorite from './pages/Favorite';
 import './App.css';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,6 +22,9 @@ function App() {
         <Header searchRequested={setSearchState}></Header>
         <div className="FixedContainer">
           <Switch>
+            <Route path="/favorite">
+              <Favorite/>
+            </Route>
             <Route path="/search">
               <Search searchQuery={searchState} />
             </Route>

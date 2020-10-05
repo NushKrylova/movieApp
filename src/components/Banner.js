@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getNowPlaying, parseTmdbResponse } from "../api/tmdb";
+import { getNowPlaying, parseListOfMovies } from "../api/tmdb";
 import { Link } from "react-router-dom";
 
 function Banner() {
@@ -8,7 +8,7 @@ function Banner() {
     useEffect(() => {
         getNowPlaying().then(data => {
             let topFive = data.results.slice(0, 1);
-            let results = parseTmdbResponse(topFive)
+            let results = parseListOfMovies(topFive)
             setResults(results);
         })
     }, []);

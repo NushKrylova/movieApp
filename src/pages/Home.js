@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Banner from '../components/Banner'
 import PopularItem from '../components/PopularItem'
-import { getPopular, parseTmdbResponse } from "../api/tmdb";
+import { getPopular, parseListOfMovies } from "../api/tmdb";
 
 function Home() {
   const [results, setResults] = useState([]);
 
   useEffect(() => {
     getPopular().then(data => {
-      let results = parseTmdbResponse(data.results)
+      let results = parseListOfMovies(data.results)
       setResults(results);
     })
   }, []);
