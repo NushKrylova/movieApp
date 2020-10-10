@@ -14,7 +14,7 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const [searchState, setSearchState] = useState();
+  const [searchState, setSearchState] = useState<string>("");
 
   return (
     <div className="App">

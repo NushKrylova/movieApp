@@ -64,7 +64,7 @@ export function parseMovie(data: MovieDetails) {
         release_date: data.release_date,
         overview: data.overview,
         backdrop_path: 'https://image.tmdb.org/t/p/original/' + data.backdrop_path,
-        genres: data.genres.map(g => g.name).join(', '),
+        genres: data.genres,
         runtime: data.runtime
     }
 }
@@ -76,10 +76,9 @@ export function formatDate(date: string, monthFormat?: string) {
     }
     return new Date(parseInt(date)).toLocaleDateString('en-US', options)
 }
-export function formatTime(date: string) {
-    const value = parseInt(date);
-    let hours = Math.round(value / 60);
-    let min = value - hours * 60;
+export function formatTime(data: number) {
+    let hours = Math.round(data / 60);
+    let min = data - hours * 60;
     return hours + 'h ' + min + 'm'
 }
 
@@ -104,7 +103,13 @@ export type MovieDetails = {
     genres: Genre[];
     runtime: number;
 }
-type Genre = {
+
+export type Genre = {
     id: number;
     name: string;
+}
+
+export type Video = {
+    site: string;
+    key: string;
 }

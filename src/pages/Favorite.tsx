@@ -7,8 +7,9 @@ function Favorite() {
   const [results, setResults] = useState<Movie[]>(getInitResults())
 
   function getInitResults() {
-    let ids = localStorage.getItem(FAV_MOVIES).split(',');
-    let res: Movie[];
+    const value = localStorage.getItem(FAV_MOVIES)?.toString() || '';
+    let ids = value.split(',');
+    let res: Movie[] = [];
     ids.forEach(el => {
       let movieDetails = {
         id: parseInt(el),
@@ -18,10 +19,10 @@ function Favorite() {
         release_date: "",
         overview: "",
         backdrop_path: ""
-      }
-      res.push(movieDetails)
+      };
+      res.push(movieDetails);
     })
-    return res
+    return res;
   }
   useEffect(() => {
     let favMovieData = results.map(el => getMovieDetails(el.id).then(data => parseMovie(data)));

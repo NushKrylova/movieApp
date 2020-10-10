@@ -5,9 +5,9 @@ import FilterReleaseDates from './FilterReleaseDates';
 import FilterUserScore from './FilterUserScore';
 
 function FiltersContainer(props: { searchClicked: (formData: FormData) => void }) {
-    function handleClick(e: { preventDefault: () => void; target: HTMLFormElement; }) {
+    function handleClick(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        let formData = new FormData(e.target);
+        let formData = new FormData(e.currentTarget);
         props.searchClicked(formData);
         // for (var key of formData.keys()) {
         //     console.log(">>>", key, ",", formData.get(key));

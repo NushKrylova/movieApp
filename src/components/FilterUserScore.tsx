@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 function FilterUserScore() {
     const [value, setValue] = useState(10);
 
-    function handleChange(e) {
-        setValue(e.target.value)
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+        setValue(parseInt(e.target.value))
     }
     return (
         <div>

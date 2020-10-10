@@ -1,5 +1,4 @@
 import React from 'react';
-import { sortTitleAZ, sortTitleZA } from '../constants'
 
 function Sort() {
     return (

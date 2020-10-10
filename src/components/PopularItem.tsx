@@ -1,8 +1,8 @@
 import React from 'react';
-import { formatDate } from '../api/tmdb'
+import { formatDate, Movie } from '../api/tmdb'
 import { Link } from "react-router-dom";
 
-function PopularItem(props) {
+function PopularItem(props:{itemData: Movie}) {
     return (
         <div className="Card BorderCard">
             <Link className="Medium" to={"/" + props.itemData.id}>

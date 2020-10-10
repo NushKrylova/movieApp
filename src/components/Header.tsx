@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link, useHistory } from "react-router-dom";
 
-function Header(props) {
+function Header(props:{searchRequested: (value: string)=>void}) {
     const history = useHistory();
-    function handleKeyPress(e) {
+    function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
         if (e.key === 'Enter') {
             history.push("/search");
-            props.searchRequested(e.target.value);
+            props.searchRequested(e.currentTarget.value);
         }
     }
     return (

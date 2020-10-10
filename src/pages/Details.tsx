@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getMovieDetails, formatDate, formatTime, parseMovie, getVideo } from "../api/tmdb";
+import { getMovieDetails, formatDate, formatTime, parseMovie, getVideo, Video, MovieDetails } from "../api/tmdb";
 import { FAV_MOVIES } from "../constants"
 
 function Details() {
   let { id } = useParams<{ id?: string }>();
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState<MovieDetails>();
   const [fav, setFav] = useState(() => getInitialValue(id));
   const [trailer, setTrailer] = useState();
   const [play, setPlay] = useState(false);
 
-  function getInitialValue(movieId: string) {
+  function getInitialValue(movieId?: string) {
     let ls = localStorage.getItem(FAV_MOVIES);
     if (ls) {
       let faved = ls.split(",").find(el => el === movieId);
@@ -21,28 +21,29 @@ function Details() {
   }
 
   useEffect(() => {
-    getMovieDetails(parseInt(id)).then(data =>
+    const movieId = id?.toString() || '';
+    getMovieDetails(parseInt(movieId)).then(data =>
       setResults(parseMovie(data))
     );
 
-    getVideo(parseInt(id)).then(data =>
-      setTrailer(data.results.find(el => el.site === 'YouTube').key)
+    getVideo(parseInt(movieId)).then(data =>
+      setTrailer(data.results.find((el:Video) => el.site === 'YouTube').key)
     );
   }, []);
 
-  function handleClick(movieId) {
+  function handleClick(movieId: number) {
     let lsCurrent = localStorage.getItem(FAV_MOVIES);
-    let lsNew;
+    let lsNew: string;
     if (lsCurrent) {
       if (fav) {
-        lsNew = lsCurrent.split(",").filter(el => el != movieId).join(",");
+        lsNew = lsCurrent.split(",").filter(el => el != movieId.toString()).join(",");
         console.log("lsNew", lsCurrent)
         localStorage.setItem(FAV_MOVIES, lsNew)
       } else {
         lsNew = lsCurrent + "," + movieId;
       }
     } else {
-      lsNew = movieId;
+      lsNew = movieId.toString();
     }
     localStorage.setItem(FAV_MOVIES, lsNew)
     setFav(!fav);
@@ -72,7 +73,7 @@ function Details() {
               <div className="Facts">
                 <span>{formatDate(results.release_date)}</span>
                 <p>{results.vote_average}</p>
-                <p>{results.genres}</p>
+                <p>{results.genres.map(g => g.name).join(', ')}</p>
                 <p>{formatTime(results.runtime)}</p>
               </div>
               <div className="Actions">

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Banner from '../components/Banner'
 import PopularItem from '../components/PopularItem'
-import { getPopular, parseListOfMovies } from "../api/tmdb";
+import { getPopular, Movie, parseListOfMovies } from "../api/tmdb";
 
 function Home() {
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<Movie[]>([]);
 
   useEffect(() => {
     getPopular().then(data => {
@@ -21,7 +21,6 @@ function Home() {
       <div className="Grid">
             {cards}
         </div>
-
     </div>
   )
 }
