@@ -1,8 +1,8 @@
 import React from 'react';
-import { formatDate } from '../api/tmdb'
+import { formatDate, Movie } from '../api/tmdb'
 import { Link } from 'react-router-dom';
 
-function DiscoverItem(props) {
+function DiscoverItem(props: { itemData: Movie}) {
     return (
         <div className="Card BorderCard">
             <Link className="Small" to={"/" + props.itemData.id}>

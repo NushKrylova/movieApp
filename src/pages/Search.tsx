@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchItem from '../components/SearchItem'
 import { searchMovies, parseListOfMovies } from "../api/tmdb";
 
-
-function Search(props) {
+function Search(props: { searchQuery: string; }) {
   const [results, setResults] = useState([]);
 
   useEffect(() => {

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { getNowPlaying, parseListOfMovies } from "../api/tmdb";
+import { getNowPlaying, Movie, parseListOfMovies } from "../api/tmdb";
 import { Link } from "react-router-dom";
 
 function Banner() {
-    const [results, setResults] = useState([]);
+    const [results, setResults] = useState<Movie[]>([]);
 
     useEffect(() => {
         getNowPlaying().then(data => {

@@ -4,13 +4,13 @@ import { getMovieDetails, formatDate, formatTime, parseMovie, getVideo } from ".
 import { FAV_MOVIES } from "../constants"
 
 function Details() {
-  let { id } = useParams();
-  const [results, setResults] = useState([]);
+  let { id } = useParams<{ id?: string }>();
+  const [results, setResults] = useState(null);
   const [fav, setFav] = useState(() => getInitialValue(id));
   const [trailer, setTrailer] = useState();
   const [play, setPlay] = useState(false);
 
-  function getInitialValue(movieId) {
+  function getInitialValue(movieId: string) {
     let ls = localStorage.getItem(FAV_MOVIES);
     if (ls) {
       let faved = ls.split(",").find(el => el === movieId);
@@ -21,11 +21,11 @@ function Details() {
   }
 
   useEffect(() => {
-    getMovieDetails(id).then(data =>
+    getMovieDetails(parseInt(id)).then(data =>
       setResults(parseMovie(data))
     );
 
-    getVideo(id).then(data =>
+    getVideo(parseInt(id)).then(data =>
       setTrailer(data.results.find(el => el.site === 'YouTube').key)
     );
   }, []);
@@ -52,19 +52,21 @@ function Details() {
     setPlay(!play)
   }
 
+  let iconColor = fav ? "magenta" : "white";
+  let player = play ? "Show" : "Hide";
+
+  if (!results) { return null }
+
   const divStyle = {
     backgroundImage: 'url(' + results.backdrop_path + ')'
   };
-
-  let iconColor = fav ? "magenta" : "white";
-  let player = play ? "Show" : "Hide";
 
   return (
     <div style={divStyle} className="Background">
       <div className="Gradient">
         <div className="Details FixedContainer" >
           <div className="Big">
-            <img src={results.poster}></img>
+            <img src={results.poster_path}></img>
             <div className="DetailsText">
               <h3>{results.title}</h3>
               <div className="Facts">
@@ -94,10 +96,10 @@ function Details() {
       </div>
       <div className={"Popup " + player}>
         {trailer && <div>
-          <button className="Close" onClick={handlePlay}><i class="fas fa-times fa-2x "></i></button>
-          <iframe id="ytplayer" type="text/html" width="640" height="360"
+          <button className="Close" onClick={handlePlay}><i className="fas fa-times fa-2x "></i></button>
+          <iframe id="ytplayer" width="640" height="360"
             src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
-            frameborder="0">
+            frameBorder="0">
           </iframe>
         </div>}
       </div>

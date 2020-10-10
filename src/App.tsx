@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from './components/Header';
 import Home from './pages/Home';
 import Discover from './pages/Discover';
@@ -31,8 +31,7 @@ function App() {
             <Route path="/movies">
               <Discover />
             </Route>
-            <Route path="/:id" children={<Details />}>
-            </Route>
+            <Route path="/:id" children={<Details />}/>
             <Route path="/">
               <Home />
             </Route>

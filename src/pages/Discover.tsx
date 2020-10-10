@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import FiltersContainer from '../components/FiltersContainer'
 import TopRatedResultsItem from '../components/DiscoverItem';
-import { getTopRated, discoverMovies, parseListOfMovies } from "../api/tmdb";
+import { getTopRated, discoverMovies, parseListOfMovies, Movie } from "../api/tmdb";
 
 function Discover() {
-    const [searchState, setSearchState] = useState();
-    const [results, setResults] = useState([]);
+    const [searchState, setSearchState] = useState<FormData>();
+    const [results, setResults] = useState<Movie[]>([]);
     const [page, setPage] = useState(1);
 
     function handleClick() {
-        document.activeElement.blur();
+        (document.activeElement as HTMLElement).blur();
         setPage(page + 1);
     }
 
@@ -52,7 +52,6 @@ function Discover() {
         if (page > 1) {
             discoverMovies(additionalQuery + "&page=" + page).then(data => {
                 let moviePreviewResults = parseListOfMovies(data.results);
-                console.log(">>>", results, moviePreviewResults, page);
                 setResults([...results, ...moviePreviewResults]);
             })
         }
@@ -76,8 +75,8 @@ function Discover() {
 }
 export default Discover;
 
-function splitFormData(data) {
-    let result = {
+function splitFormData(data: FormData) {
+    let result: FormFields = {
         sort: "",
         genres: [],
         releaseDatesFrom: "",
@@ -85,21 +84,30 @@ function splitFormData(data) {
         minUserScore: 10,
     }
     for (var key of data.keys()) {
+        const value = data.get(key)?.toString() || '';
         if (key === "sort") {
-            result.sort = data.get(key);
+            result.sort = value;
         }
         if (key.includes("genres")) {
-            result.genres.push(data.get(key));
+            result.genres.push(parseInt(value, 10));
         }
         if (key === "from") {
-            result.releaseDatesFrom = data.get(key);
+            result.releaseDatesFrom = value;
         }
         if (key === "to") {
-            result.releaseDatesTo = data.get(key);
+            result.releaseDatesTo = value;
         }
         if (key === "slider") {
-            result.minUserScore = data.get(key);
+            result.minUserScore = parseInt(value, 10);
         }
     }
     return result;
+}
+
+type FormFields = {
+    sort: string,
+    genres: number[],
+    releaseDatesFrom: string,
+    releaseDatesTo: string,
+    minUserScore: number,
 }

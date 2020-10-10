@@ -1,17 +1,17 @@
 import React from "react";
-import { formatDate } from '../api/tmdb'
+import { formatDate, Movie } from '../api/tmdb'
 import { Link } from "react-router-dom";
 
-function FavoriteItem(props) {
+function FavoriteItem(props: { itemData: Movie, unFaved: (movieId: number) => void }) {
 
-    function handleClick(movieId) {
+    function handleClick(movieId: number) {
         props.unFaved(movieId);
     }
 
     return (
         <div className="BorderCard FavCard">
             <Link className="Small" to={"/" + props.itemData.id}>
-                <img src={props.itemData.poster}></img>
+                <img src={props.itemData.poster_path}></img>
             </Link>
             <div className="FavDetails">
                 <div className="TopDetails">
