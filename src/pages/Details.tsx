@@ -18,11 +18,22 @@ function Details() {
       let faved = ls.split(",").find(el => el === movieId);
       if (faved) {
         setFav(true);
-      } else { 
-        setFav(false); 
+      } else {
+        setFav(false);
       }
     }
   }, [])
+
+  useEffect(() => {
+    const movieId = id?.toString() || '';
+    const storage = new KeyListStorage(FAV_MOVIES);
+
+    if (fav) {
+      storage.add(movieId);
+    } else {
+      storage.remove(movieId);
+    }
+  }, [fav])
 
   useEffect(() => {
     const movieId = id?.toString() || '';
@@ -42,20 +53,6 @@ function Details() {
 
   //TODO: move localstorage to
   function handleClick(movieId: number) {
-    let lsCurrent = localStorage.getItem(FAV_MOVIES);
-    let lsNew: string;
-    if (lsCurrent) {
-      if (fav) {
-        lsNew = lsCurrent.split(",").filter(el => el !== movieId.toString()).join(",");
-        console.log("lsNew", lsCurrent)
-        localStorage.setItem(FAV_MOVIES, lsNew)
-      } else {
-        lsNew = lsCurrent + "," + movieId;
-      }
-    } else {
-      lsNew = movieId.toString();
-    }
-    localStorage.setItem(FAV_MOVIES, lsNew)
     setFav(!fav);
   }
 
@@ -118,3 +115,34 @@ function Details() {
   );
 }
 export default Details;
+
+class KeyListStorage {
+  key: string;
+
+  constructor(key: string) {
+    this.key = key;
+  }
+
+  add(value: string) {
+    let currentValue = localStorage.getItem(this.key);
+
+    let lsNew;
+    if (currentValue) {
+      let values = currentValue.split(",");
+      values.push(value);
+      lsNew = values.join(",")
+    } else {
+      lsNew = value;
+    }
+    localStorage.setItem(this.key, lsNew);
+
+  }
+
+  remove(value: string) {
+    let currentValue = localStorage.getItem(this.key) || '';
+    let values = currentValue.split(",");
+
+    let newValue = values.filter((el: string) => el !== value.toString()).join(",");
+    localStorage.setItem(this.key, newValue);
+  }
+}
