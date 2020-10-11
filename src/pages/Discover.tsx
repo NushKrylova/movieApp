@@ -5,7 +5,7 @@ import { getTopRated, discoverMovies, parseListOfMovies, Movie } from "../api/tm
 
 function Discover() {
     const [searchState, setSearchState] = useState<FormData>();
-    const [results, setResults] = useState<Movie[]>([]);
+    const [movies, setMovies] = useState<Movie[]>([]);
     const [page, setPage] = useState(1);
 
     function handleClick() {
@@ -44,7 +44,7 @@ function Discover() {
 
         fetchPromise.then(data => {
             let moviePreviewResults = parseListOfMovies(data.results);
-            setResults(moviePreviewResults);
+            setMovies(moviePreviewResults);
         })
     }, [searchState]);
 
@@ -52,12 +52,12 @@ function Discover() {
         if (page > 1) {
             discoverMovies(additionalQuery + "&page=" + page).then(data => {
                 let moviePreviewResults = parseListOfMovies(data.results);
-                setResults([...results, ...moviePreviewResults]);
+                setMovies([...movies, ...moviePreviewResults]);
             })
         }
     }, [page]);
 
-    const topRatedResults = results.map(el => <TopRatedResultsItem itemData={el} key={el.id} />)
+    const topRatedResults = movies.map(el => <TopRatedResultsItem movie={el} key={el.id} />)
 
     return (
         <div className="SearchContainer">

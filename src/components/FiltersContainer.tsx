@@ -3,8 +3,11 @@ import Sort from './Sort';
 import FilterGenres from './FilterGenres';
 import FilterReleaseDates from './FilterReleaseDates';
 import FilterUserScore from './FilterUserScore';
+type FiltersContainerProps = {
+    searchClicked: (formData: FormData) => void
+}
 
-function FiltersContainer(props: { searchClicked: (formData: FormData) => void }) {
+function FiltersContainer(props: FiltersContainerProps) {
     function handleClick(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         let formData = new FormData(e.currentTarget);

@@ -5,38 +5,48 @@ import { FAV_MOVIES } from "../constants"
 
 function Details() {
   let { id } = useParams<{ id?: string }>();
-  const [results, setResults] = useState<MovieDetails>();
-  const [fav, setFav] = useState(() => getInitialValue(id));
+  const [movie, setMovie] = useState<MovieDetails>();
+  const [fav, setFav] = useState(false);
   const [trailer, setTrailer] = useState();
   const [play, setPlay] = useState(false);
 
-  function getInitialValue(movieId?: string) {
+  useEffect(() => {
+    const movieId = id?.toString() || '';
+
     let ls = localStorage.getItem(FAV_MOVIES);
     if (ls) {
       let faved = ls.split(",").find(el => el === movieId);
       if (faved) {
-        return true
+        setFav(true);
+      } else { 
+        setFav(false); 
       }
     }
-  }
+  }, [])
 
   useEffect(() => {
     const movieId = id?.toString() || '';
+
     getMovieDetails(parseInt(movieId)).then(data =>
-      setResults(parseMovie(data))
-    );
+      setMovie(parseMovie(data))
+    )
+  }, [id]);
+
+  useEffect(() => {
+    const movieId = id?.toString() || '';
 
     getVideo(parseInt(movieId)).then(data =>
-      setTrailer(data.results.find((el:Video) => el.site === 'YouTube').key)
+      setTrailer(data.results.find((el: Video) => el.site === 'YouTube').key)
     );
-  }, []);
+  }, [id]);
 
+  //TODO: move localstorage to
   function handleClick(movieId: number) {
     let lsCurrent = localStorage.getItem(FAV_MOVIES);
     let lsNew: string;
     if (lsCurrent) {
       if (fav) {
-        lsNew = lsCurrent.split(",").filter(el => el != movieId.toString()).join(",");
+        lsNew = lsCurrent.split(",").filter(el => el !== movieId.toString()).join(",");
         console.log("lsNew", lsCurrent)
         localStorage.setItem(FAV_MOVIES, lsNew)
       } else {
@@ -56,10 +66,10 @@ function Details() {
   let iconColor = fav ? "magenta" : "white";
   let player = play ? "Show" : "Hide";
 
-  if (!results) { return null }
+  if (!movie) { return null }
 
   const divStyle = {
-    backgroundImage: 'url(' + results.backdrop_path + ')'
+    backgroundImage: 'url(' + movie.backdrop_path + ')'
   };
 
   return (
@@ -67,19 +77,19 @@ function Details() {
       <div className="Gradient">
         <div className="Details FixedContainer" >
           <div className="Big">
-            <img src={results.poster_path}></img>
+            <img src={movie.poster_path}></img>
             <div className="DetailsText">
-              <h3>{results.title}</h3>
+              <h3>{movie.title}</h3>
               <div className="Facts">
-                <span>{formatDate(results.release_date)}</span>
-                <p>{results.vote_average}</p>
-                <p>{results.genres.map(g => g.name).join(', ')}</p>
-                <p>{formatTime(results.runtime)}</p>
+                <span>{formatDate(movie.release_date)}</span>
+                <p>{movie.vote_average}</p>
+                <p>{movie.genres.map(g => g.name).join(', ')}</p>
+                <p>{formatTime(movie.runtime)}</p>
               </div>
               <div className="Actions">
-                <p className="Votes">{results.vote_average}</p>
+                <p className="Votes">{movie.vote_average}</p>
                 <p className="VotesText">User Score</p>
-                <button className="Icon IconFav" onClick={() => handleClick(results.id)}>
+                <button className="Icon IconFav" onClick={() => handleClick(movie.id)}>
                   <i style={{ color: iconColor }} className="fas fa-star"></i>
                 </button>
                 <button className="Icon IconPlay" onClick={handlePlay}>
@@ -89,7 +99,7 @@ function Details() {
               </div>
               <div className="Info">
                 <h2>Overview</h2>
-                <p>{results.overview}</p>
+                <p>{movie.overview}</p>
               </div>
             </div>
           </div>

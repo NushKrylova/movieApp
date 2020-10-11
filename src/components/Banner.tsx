@@ -3,16 +3,17 @@ import { getNowPlaying, Movie, parseListOfMovies } from "../api/tmdb";
 import { Link } from "react-router-dom";
 
 function Banner() {
-    const [results, setResults] = useState<Movie[]>([]);
+    const [movies, setMovies] = useState<Movie[]>([]);
 
     useEffect(() => {
         getNowPlaying().then(data => {
             let topFive = data.results.slice(0, 1);
             let results = parseListOfMovies(topFive)
-            setResults(results);
+            setMovies(results);
         })
     }, []);
-    const bannerItems = results.map(el =>
+    
+    const bannerItems = movies.map(el =>
         <div className="Banner" key={el.id}>
             <Link to={"/" + el.id}>
                 <img src={el.backdrop_path} />

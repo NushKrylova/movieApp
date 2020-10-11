@@ -2,18 +2,22 @@ import React from 'react';
 import { formatDate, Movie } from '../api/tmdb'
 import { Link } from "react-router-dom";
 
-function SearchItem(props: { itemData: Movie }) {
+type SearchItemProps = {
+    movie: Movie;
+};
+
+function SearchItem(props: SearchItemProps) {
     return (
         <div className="ListItem BorderCard">
-            <Link className="Medium" to={"/" + props.itemData.id}>
-                <img src={props.itemData.poster_path}></img>
+            <Link className="Medium" to={"/" + props.movie.id}>
+                <img src={props.movie.poster_path}></img>
             </Link>
             <div className="ListItemText">
                 <div>
-                    <h3>{props.itemData.title}</h3>
-                    <p className="ReleaseDate">{formatDate(props.itemData.release_date, 'long')}</p>
+                    <h3>{props.movie.title}</h3>
+                    <p className="ReleaseDate">{formatDate(props.movie.release_date, 'long')}</p>
                 </div>
-                <p className="Overview">{props.itemData.overview}</p>
+                <p className="Overview">{props.movie.overview}</p>
             </div>
         </div>
     )

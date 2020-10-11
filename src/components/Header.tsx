@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link, useHistory } from "react-router-dom";
 
-function Header(props:{searchRequested: (value: string)=>void}) {
+type HeaderProps = {
+    searchRequested: (value: string) => void;
+};
+
+function Header(props: HeaderProps) {
     const history = useHistory();
     function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
         if (e.key === 'Enter') {
@@ -25,7 +29,6 @@ function Header(props:{searchRequested: (value: string)=>void}) {
                 </div>
                 <Link to="/favorite" className="Fav Link">
                     <i className="fas fa-star fa-lg" title={"Favorites movies"}>
-                        {/* <span className="TooltipText">Favorites movies</span> */}
                     </i>
                 </Link>
             </div>

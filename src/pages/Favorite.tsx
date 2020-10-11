@@ -4,40 +4,24 @@ import FavoriteItem from '../components/FavoriteItem'
 import { getMovieDetails, Movie, parseMovie } from '../api/tmdb'
 
 function Favorite() {
-  const [results, setResults] = useState<Movie[]>(getInitResults())
+  const [favMovies, setFavMovies] = useState<Movie[]>([])
 
-  function getInitResults() {
+  useEffect(() => {
     const value = localStorage.getItem(FAV_MOVIES)?.toString() || '';
     let ids = value.split(',');
-    let res: Movie[] = [];
-    ids.forEach(el => {
-      let movieDetails = {
-        id: parseInt(el),
-        poster_path: "",
-        vote_average: 0,
-        title: "",
-        release_date: "",
-        overview: "",
-        backdrop_path: ""
-      };
-      res.push(movieDetails);
-    })
-    return res;
-  }
-  useEffect(() => {
-    let favMovieData = results.map(el => getMovieDetails(el.id).then(data => parseMovie(data)));
-    Promise.all(favMovieData).then(results => setResults(results))
+    const favMovieData = ids.map(id => getMovieDetails(parseInt(id)).then(data => parseMovie(data)));
+    Promise.all(favMovieData).then(results => setFavMovies(results))
   }, []);
 
   function handleUnFav(movieId: number) {
     let currentLocalStorage = localStorage.getItem(FAV_MOVIES)?.toString() || '';
-    let newLocalStorage = currentLocalStorage.split(',').filter(el => el != movieId.toString()).join(',');
+    let newLocalStorage = currentLocalStorage.split(',').filter(el => el !== movieId.toString()).join(',');
     localStorage.setItem(FAV_MOVIES, newLocalStorage);
 
-    setResults(results.filter(el => el.id != movieId))
+    setFavMovies(favMovies.filter(el => el.id !== movieId))
   }
 
-  const faved = results.map(el => <FavoriteItem unFaved={handleUnFav} itemData={el} key={el.id} />)
+  const faved = favMovies.map(el => <FavoriteItem unFaved={handleUnFav} movie={el} key={el.id} />)
 
   return (
     <div className="ListFav">

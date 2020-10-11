@@ -2,22 +2,27 @@ export async function getPopular() {
     return fetch('https://api.themoviedb.org/3/movie/popular?api_key=f5d93c41702a89380fdb44fcdc97f9f4')
         .then(response => response.json());
 }
+
 export async function getNowPlaying() {
     return fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=f5d93c41702a89380fdb44fcdc97f9f4')
         .then(response => response.json());
 }
+
 export async function getGenres() {
     return fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=f5d93c41702a89380fdb44fcdc97f9f4')
         .then(response => response.json());
 }
+
 export async function getTopRated() {
     return fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=f5d93c41702a89380fdb44fcdc97f9f4')
         .then(response => response.json());
 }
+
 export async function getMovieDetails(id: number) {
     return fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=f5d93c41702a89380fdb44fcdc97f9f4&language=en-US`)
         .then(response => response.json());
 }
+
 export async function discoverMovies(additioanlQuery: string) {
     return fetch('https://api.themoviedb.org/3/discover/movie?api_key=f5d93c41702a89380fdb44fcdc97f9f4&certification_country=US&include_adult=false&include_video=false&with_original_language=en' + additioanlQuery)
         .then(response => response.json());
@@ -55,6 +60,7 @@ export function parseListOfMovies(data: Movie[]) {
     })
     return moviePreviewResults;
 }
+
 export function parseMovie(data: MovieDetails) {
     return {
         id: data.id,
@@ -76,6 +82,7 @@ export function formatDate(date: string, monthFormat?: string) {
     }
     return new Date(parseInt(date)).toLocaleDateString('en-US', options)
 }
+
 export function formatTime(data: number) {
     let hours = Math.round(data / 60);
     let min = data - hours * 60;
