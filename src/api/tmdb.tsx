@@ -83,9 +83,9 @@ export function formatDate(date: string, monthFormat?: string) {
     return new Date(parseInt(date)).toLocaleDateString('en-US', options)
 }
 
-export function formatTime(data: number) {
-    let hours = Math.round(data / 60);
-    let min = data - hours * 60;
+export function formatTime(value: number) {
+    let hours = Math.round(value / 60);
+    let min = value - hours * 60;
     return hours + 'h ' + min + 'm'
 }
 
