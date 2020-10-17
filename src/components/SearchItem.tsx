@@ -15,7 +15,7 @@ function SearchItem(props: SearchItemProps) {
             </Link>
             <div className={styles.ListItemText}>
                 <div>
-                    <h3>{props.movie.title}</h3>
+                    <h3 className={styles.Title}>{props.movie.title}</h3>
                     <p className={styles.ReleaseDate}>{formatDate(props.movie.release_date, 'long')}</p>
                 </div>
                 <p className={styles.Overview}>{props.movie.overview}</p>

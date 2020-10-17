@@ -25,7 +25,7 @@ function FavoriteItem(props: FavoriteItemProps) {
                         <p className={styles.ButtonVotes}>{props.movie.vote_average}</p>
                     </div>
                     <div className={styles.TextTopDetails}>
-                        <h3>{props.movie.title}</h3>
+                        <h3 className={styles.Title}>{props.movie.title}</h3>
                         <p className={styles.ReleaseDate}>{formatDate(props.movie.release_date, 'long')}</p>
                     </div>
                 </div>

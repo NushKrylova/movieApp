@@ -4,6 +4,9 @@
 .SubFilterContainer select{
   width: 100%;
 }
+.Title{
+  margin: 0;
+}
 .Border{
   border: 1px solid #ccc;
   border-radius: 16px;

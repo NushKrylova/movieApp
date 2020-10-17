@@ -22,7 +22,7 @@ function FiltersContainer(props: FiltersContainerProps) {
         <form className={styles.FilterContainer} onSubmit={handleClick}>
             <Sort />
             <div className={styles.Border}>
-                <h3>Filters</h3>
+                <h3 className={styles.Title}>Filters</h3>
                 <hr className={styles.Divider}/>
                 <FilterGenres />
                 <hr className={styles.Divider}/>

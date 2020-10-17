@@ -61,7 +61,7 @@ function Details() {
   }
 
   let iconColor = fav ? "magenta" : "white";
-  let player = play ? "Show" : "Hide";
+  let player = play ? styles.Show : styles.Hide;
 
   if (!movie) { return null }
 
@@ -77,7 +77,7 @@ function Details() {
             <img className={styles.Image} src={movie.poster_path}></img>
           </div>
           <div className={styles.DetailsText}>
-            <h3>{movie.title}</h3>
+            <h3 className={styles.Title}>{movie.title}</h3>
             <div className={styles.Facts}>
               <span>{formatDate(movie.release_date)}</span>
               <p className={styles.VotesText} >{movie.vote_average}</p>
@@ -106,7 +106,7 @@ function Details() {
       </div>
       <div className={`${styles.Popup}  ${player}`}>
         {trailer && <div>
-          <button className={styles.Close} onClick={handlePlay}><i className={`${styles.Icon} +  " fas fa-times fa-2x"`}></i></button>
+          <button className={styles.Close} onClick={handlePlay}><i className="fas fa-times fa-2x"></i></button>
           <iframe id="ytplayer" width="640" height="360"
             src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
             frameBorder="0">

@@ -4,7 +4,7 @@ import styles from './Sort.module.css';
 function Sort() {
     return (
         <div className={styles.Border}>
-            <h3>Sort</h3>
+            <h3 className={styles.Title}>Sort</h3>
             <hr className={styles.Divider}/>
             <label htmlFor="sort">Sort Results By</label>
             <div className={styles.SubFilterContainer}>

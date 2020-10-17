@@ -5,7 +5,6 @@ import Discover from './pages/Discover';
 import Details from './pages/Details';
 import Search from './pages/Search';
 import Favorite from './pages/Favorite';
-import './App.css';
 import styles from './App.module.css';
 
 import {
