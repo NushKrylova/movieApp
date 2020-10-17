@@ -10,7 +10,7 @@ function Header(props: HeaderProps) {
     const history = useHistory();
     function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
         if (e.key === 'Enter') {
-            history.push("/search");
+            history.push("/search?q=" + encodeURIComponent(e.currentTarget.value));
             props.searchRequested(e.currentTarget.value);
         }
     }

@@ -10,7 +10,10 @@ function Search(props: SearchProps) {
   const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
-    searchMovies(props.searchQuery).then(data => {
+     const queryParamValue = new URLSearchParams(window.location.search).get('q') || '';
+
+    const searchQuery = props.searchQuery || decodeURIComponent(queryParamValue);
+    searchMovies(searchQuery).then(data => {
       let moviePreviewResults = parseListOfMovies(data.results);
       setMovies(moviePreviewResults);
     })
@@ -18,6 +21,9 @@ function Search(props: SearchProps) {
   }, [props.searchQuery]);
 
   const movieList = movies.map(el => <SearchItem movie={el} key={el.id} />)
+
+if (movies.length === 0) { return <p>{`There are no movies that matched your query: ${new URLSearchParams(window.location.search).get('q')}`}</p> }
+
   return (
     <div>
       {movieList}
