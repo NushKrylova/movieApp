@@ -6,6 +6,7 @@ import Details from './pages/Details';
 import Search from './pages/Search';
 import Favorite from './pages/Favorite';
 import './App.css';
+import styles from './App.module.css';
 
 import {
   BrowserRouter as Router,
@@ -17,10 +18,10 @@ function App() {
   const [searchState, setSearchState] = useState<string>("");
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <Router>
         <Header searchRequested={setSearchState}></Header>
-        <div className="FixedContainer">
+        <div className={styles.FixedContainer}>
           <Switch>
             <Route path="/favorite">
               <Favorite/>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import FiltersContainer from '../components/FiltersContainer'
 import TopRatedResultsItem from '../components/DiscoverItem';
 import { getTopRated, discoverMovies, parseListOfMovies, Movie } from "../api/tmdb";
+import styles from './Discover.module.css';
 
 function Discover() {
     const [searchState, setSearchState] = useState<FormData>();
@@ -60,14 +61,14 @@ function Discover() {
     const topRatedResults = movies.map(el => <TopRatedResultsItem movie={el} key={el.id} />)
 
     return (
-        <div className="SearchContainer">
+        <div className={styles.SearchContainer}>
             <FiltersContainer searchClicked={setSearchState} />
             <div>
-                <div className="Grid TopRatedGrid">
+                <div className={styles.Grid}>
                     {topRatedResults}
                 </div>
                 <div>
-                    <button name="loadMore" className="Button" onClick={handleClick}>Load More</button>
+                    <button name="loadMore" className={styles.Button} onClick={handleClick}>Load More</button>
                 </div>
             </div>
         </div>

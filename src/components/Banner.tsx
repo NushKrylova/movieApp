@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getNowPlaying, Movie, parseListOfMovies } from "../api/tmdb";
 import { Link } from "react-router-dom";
+import styles from './Banner.module.css';
 
 function Banner() {
     const [movies, setMovies] = useState<Movie[]>([]);
@@ -14,10 +15,10 @@ function Banner() {
     }, []);
     
     const bannerItems = movies.map(el =>
-        <div className="Banner" key={el.id}>
+        <div className={styles.Banner} key={el.id}>
             <Link to={"/" + el.id}>
                 <img src={el.backdrop_path} />
-                <div className="BannerText">
+                <div className={styles.BannerText}>
                     <h2>{el.title}</h2>
                     <h3>{el.overview}</h3>
                 </div>
@@ -25,7 +26,7 @@ function Banner() {
         </div >
     )
     return (
-        <div className="FixedContainer">
+        <div className={styles.FixedContainer}>
             {bannerItems}
         </div>
     )

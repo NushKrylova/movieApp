@@ -1,0 +1,34 @@
+.Card{
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  height: 100%;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+.ImageContainer{
+  display: flex;
+  height: 348px;
+}
+.Image{
+  width: 100%;
+  height: 100%;
+  background-color: lightgray;
+  border-radius: 10px 10px 0 0;
+}
+.TextCard{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+.Vote{
+  margin: 0;
+}
+.Title{
+  margin: 5px 0 5px 0
+}
+.ReleaseDate{
+  padding-top: 5px;
+  color: gray;
+  margin: 0;
+}

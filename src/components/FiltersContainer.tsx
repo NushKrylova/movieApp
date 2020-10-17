@@ -3,6 +3,8 @@ import Sort from './Sort';
 import FilterGenres from './FilterGenres';
 import FilterReleaseDates from './FilterReleaseDates';
 import FilterUserScore from './FilterUserScore';
+import styles from './FiltersContainer.module.css';
+
 type FiltersContainerProps = {
     searchClicked: (formData: FormData) => void
 }
@@ -17,19 +19,19 @@ function FiltersContainer(props: FiltersContainerProps) {
         // }
     }
     return (
-        <form className="FilterContainer" onSubmit={handleClick}>
+        <form className={styles.FilterContainer} onSubmit={handleClick}>
             <Sort />
-            <div className="Border">
+            <div className={styles.Border}>
                 <h3>Filters</h3>
-                <hr />
+                <hr className={styles.Divider}/>
                 <FilterGenres />
-                <hr />
+                <hr className={styles.Divider}/>
                 <FilterReleaseDates />
-                <hr />
+                <hr className={styles.Divider}/>
                 <FilterUserScore />
             </div>
             <div>
-                <button name="search" type="submit" className="Button">Search</button>
+                <button name="search" type="submit" className={styles.Button}>Search</button>
             </div>
         </form>
     )

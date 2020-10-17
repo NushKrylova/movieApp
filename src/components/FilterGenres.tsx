@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Genre, getGenres } from "../api/tmdb";
+import styles from './FilterGenres.module.css';
 
 function FilterGenres() {
     const [genres, setGenres] = useState<Genre[]>([]);
@@ -16,7 +17,7 @@ function FilterGenres() {
     )
     return (
         <div>
-            <fieldset className="Genres">
+            <fieldset className={styles.Genres}>
                 <legend>Genres</legend>
                 {genreFields}
             </fieldset>

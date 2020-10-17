@@ -84,7 +84,7 @@ export function formatDate(date: string, monthFormat?: string) {
 }
 
 export function formatTime(value: number) {
-    let hours = Math.round(value / 60);
+    let hours = Math.floor(value / 60);
     let min = value - hours * 60;
     return hours + 'h ' + min + 'm'
 }

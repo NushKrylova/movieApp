@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieDetails, formatDate, formatTime, parseMovie, getVideo, Video, MovieDetails } from "../api/tmdb";
 import { FAV_MOVIES } from "../constants"
+import styles from './Details.module.css';
 
 function Details() {
   let { id } = useParams<{ id?: string }>();
@@ -51,7 +52,6 @@ function Details() {
     );
   }, [id]);
 
-  //TODO: move localstorage to
   function handleClick(movieId: number) {
     setFav(!fav);
   }
@@ -70,41 +70,43 @@ function Details() {
   };
 
   return (
-    <div style={divStyle} className="Background">
-      <div className="Gradient">
-        <div className="Details FixedContainer" >
-          <div className="Big">
-            <img src={movie.poster_path}></img>
-            <div className="DetailsText">
-              <h3>{movie.title}</h3>
-              <div className="Facts">
-                <span>{formatDate(movie.release_date)}</span>
-                <p>{movie.vote_average}</p>
-                <p>{movie.genres.map(g => g.name).join(', ')}</p>
-                <p>{formatTime(movie.runtime)}</p>
-              </div>
-              <div className="Actions">
-                <p className="Votes">{movie.vote_average}</p>
-                <p className="VotesText">User Score</p>
-                <button className="Icon IconFav" onClick={() => handleClick(movie.id)}>
-                  <i style={{ color: iconColor }} className="fas fa-star"></i>
-                </button>
-                <button className="Icon IconPlay" onClick={handlePlay}>
-                  <i className="fas fa-play fa-lg"></i>
-                  <p id="PlayText">Play Trailer</p>
-                </button>
-              </div>
-              <div className="Info">
-                <h2>Overview</h2>
-                <p>{movie.overview}</p>
-              </div>
+    <div style={divStyle} className={styles.Background}>
+      <div className={styles.Gradient}>
+        <div className={styles.Details}>
+          <div className={styles.ImageContainer}>
+            <img className={styles.Image} src={movie.poster_path}></img>
+          </div>
+          <div className={styles.DetailsText}>
+            <h3>{movie.title}</h3>
+            <div className={styles.Facts}>
+              <span>{formatDate(movie.release_date)}</span>
+              <p className={styles.VotesText} >{movie.vote_average}</p>
+              <p className={styles.Genres}>{movie.genres.map(g => g.name).join(', ')}</p>
+              <p className={styles.Runtime}>{formatTime(movie.runtime)}</p>
+            </div>
+            <div className={styles.Facts}>
+              <p className={styles.ButtonVotes}>{movie.vote_average}</p>
+              <p className={styles.UserScoreText}>User Score</p>
+              <button className={styles.Button} onClick={() => handleClick(movie.id)}>
+                <i style={{ color: iconColor }} className="fas fa-star fa-lg"></i>
+                <p className={styles.Label}>Favorite</p>
+              </button>
+              <button className={styles.Button} onClick={handlePlay}>
+                <i className="fas fa-play fa-lg"></i>
+                <p className={styles.Label}>Play Trailer</p>
+              </button>
+            </div>
+            <div>
+              <h2>Overview</h2>
+              <p>{movie.overview}</p>
             </div>
           </div>
         </div>
+
       </div>
-      <div className={"Popup " + player}>
+      <div className={`${styles.Popup}  ${player}`}>
         {trailer && <div>
-          <button className="Close" onClick={handlePlay}><i className="fas fa-times fa-2x "></i></button>
+          <button className={styles.Close} onClick={handlePlay}><i className={`${styles.Icon} +  " fas fa-times fa-2x"`}></i></button>
           <iframe id="ytplayer" width="640" height="360"
             src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
             frameBorder="0">

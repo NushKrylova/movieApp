@@ -1,0 +1,17 @@
+.SubFilterContainer{
+  margin-top: 10px;
+}
+.SubFilterContainer select{
+  width: 100%;
+}
+.ReleaseDatesField{
+  display: flex;
+  justify-content: space-between;
+}
+.Input{
+   height: 25px;
+}
+.ReleaseDatesField label{
+  display: flex;
+  align-items: center;
+}

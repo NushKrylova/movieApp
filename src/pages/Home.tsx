@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Banner from '../components/Banner'
 import PopularItem from '../components/PopularItem'
 import { getPopular, Movie, parseListOfMovies } from "../api/tmdb";
+import styles from './Home.module.css';
 
 function Home() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -18,7 +19,7 @@ function Home() {
   return (
     <div>
       <Banner />
-      <div className="Grid">
+      <div className={styles.Grid}>
             {cards}
         </div>
     </div>

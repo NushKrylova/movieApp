@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from './FilterUserScore.module.css';
 
 function FilterUserScore() {
     const [value, setValue] = useState(10);
@@ -10,7 +11,7 @@ function FilterUserScore() {
         <div>
             <label>User Score</label>
             <div>
-                <input list="ticks" type="range" min="0" max="10" value={value} className="Slider" id="myRange" name="slider" onChange={handleChange} />
+                <input list="ticks" type="range" min="0" max="10" value={value} className={styles.Slider} id="myRange" name="slider" onChange={handleChange} />
                 <datalist id="ticks">
                     <option>0</option>
                     <option>1</option>
