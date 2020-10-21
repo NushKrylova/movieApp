@@ -8,9 +8,9 @@ import Favorite from './pages/Favorite';
 import styles from './App.module.css';
 
 import {
-  BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  HashRouter
 } from "react-router-dom";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className={styles.App}>
-      <Router basename="/movieApp/">
+      <HashRouter basename="/movieApp/">
         <Header searchRequested={setSearchState}></Header>
         <div className={styles.FixedContainer}>
           <Switch>
@@ -37,7 +37,7 @@ function App() {
             </Route>
           </Switch>
         </div>
-      </Router>
+      </HashRouter>
     </div>
   );
 }
