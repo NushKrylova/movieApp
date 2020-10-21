@@ -17,6 +17,8 @@ function Favorite() {
         setFavMovies(results);
         setLoader(true);
       })
+    }else{
+      setLoader(true);
     }
   }, []);
 
