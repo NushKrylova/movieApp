@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className={styles.App}>
-      <Router>
+      <Router basename="/movieApp/">
         <Header searchRequested={setSearchState}></Header>
         <div className={styles.FixedContainer}>
           <Switch>
