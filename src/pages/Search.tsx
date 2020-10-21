@@ -17,7 +17,7 @@ function Search(props: SearchProps) {
     searchMovies(searchQuery).then(data => {
       let moviePreviewResults = parseListOfMovies(data.results);
       setMovies(moviePreviewResults);
-      setLoader(false);
+      setLoader(true);
     })
 
   }, [props.searchQuery]);

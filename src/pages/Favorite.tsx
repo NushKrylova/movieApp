@@ -15,7 +15,7 @@ function Favorite() {
       const favMovieData = ids.map(id => getMovieDetails(parseInt(id)).then(data => parseMovie(data)));
       Promise.all(favMovieData).then(results => {
         setFavMovies(results);
-        setLoader(false);
+        setLoader(true);
       })
     }
   }, []);
@@ -30,7 +30,7 @@ function Favorite() {
 
   const faved = favMovies.map(el => <FavoriteItem unFaved={handleUnFav} movie={el} key={el.id} />)
 
-  if (favMovies.length === 0 && loader) { return <p>You don't have favorites </p> }
+  if (favMovies.length === 0 && loader) { return <p>You don't have favorites</p> }
   return (
     <div className={styles.ListFav}>
       {faved}
