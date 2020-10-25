@@ -1,20 +1,5 @@
 .FixedContainer{
     width: 1220px;
     max-width: 1220px;
-  }
-   .Banner{
-    position: relative;
-  }
-  .Banner img{
-    width: 100%;
-    padding-top: 10px;
-  }
-  .BannerText{
-    width: 80%;
-    position: absolute;
-    bottom: 10px;
-    color: white;
-    left: 50%;
-    margin-left: -40%;
-    text-align: center;
+    margin-top: 10px;
   }

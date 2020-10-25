@@ -4,6 +4,8 @@ import FilterGenres from './FilterGenres';
 import FilterReleaseDates from './FilterReleaseDates';
 import FilterUserScore from './FilterUserScore';
 import styles from './FiltersContainer.module.css';
+import Button from 'react-bootstrap/Button';
+import { Form } from 'react-bootstrap';
 
 type FiltersContainerProps = {
     searchClicked: (formData: FormData) => void
@@ -14,26 +16,28 @@ function FiltersContainer(props: FiltersContainerProps) {
         e.preventDefault();
         let formData = new FormData(e.currentTarget);
         props.searchClicked(formData);
-        // for (var key of formData.keys()) {
-        //     console.log(">>>", key, ",", formData.get(key));
-        // }
+        for (var key of formData.keys()) {
+            console.log(">>>", key, ",", formData.get(key));
+        }
     }
     return (
-        <form className={styles.FilterContainer} onSubmit={handleClick}>
+        <Form className={styles.FilterContainer} onSubmit={handleClick}>
             <Sort />
-            <div className={styles.Border}>
-                <h3 className={styles.Title}>Filters</h3>
-                <hr className={styles.Divider}/>
+            <Form.Group controlId="Filters">
+                <div className={styles.Border}>
+                <h2>Filters</h2>
+                <hr className={styles.Divider} />
                 <FilterGenres />
-                <hr className={styles.Divider}/>
+                <hr className={styles.Divider} />
                 <FilterReleaseDates />
-                <hr className={styles.Divider}/>
+                <hr className={styles.Divider} />
                 <FilterUserScore />
-            </div>
+                </div>
+            </Form.Group>
             <div>
-                <button name="search" type="submit" className={styles.Button}>Search</button>
+                <Button variant="primary" name="search" type="submit" block >Search</Button>
             </div>
-        </form>
+        </Form>
     )
 }
 export default FiltersContainer;

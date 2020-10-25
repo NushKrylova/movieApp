@@ -1,4 +1,6 @@
 import React from 'react';
+import { Nav, Form, FormControl } from 'react-bootstrap';
+import Navbar from 'react-bootstrap/Navbar';
 import { Link, useHistory } from "react-router-dom";
 import styles from './Header.module.css';
 
@@ -16,23 +18,23 @@ function Header(props: HeaderProps) {
     }
     return (
         <div className={styles.Header}>
-            <div className={styles.ContentContainer} >
-                <div className={styles.HeaderHalf}>
-                    <Link to="/" className={styles.Link}>
-                        <img className={styles.Image} src='https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg' width="154" height="20" />
-                    </Link>
-                    <nav>
-                        <Link to="/movies" className={styles.Link}>Discover movies</Link>
-                    </nav>
-                </div>
-                <div className={styles.HeaderHalf}>
-                    <input className={styles.Search} type="text" id="search" name="search" placeholder="Search" onKeyPress={handleKeyPress}></input>
-                </div>
-                <Link to="/favorite" className={styles.Link}>
-                    <i className="fas fa-star fa-lg" title={"Favorites movies"}>
-                    </i>
-                </Link>
-            </div>
+            < Navbar variant="dark" expand="lg" className={styles.ContentContainer}>
+                <Navbar.Brand as={Link} to="/">
+                    <img className={styles.Image} src='https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg' width="154" height="20" />
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                        <Nav.Link as={Link} to="/movies">Discover movies</Nav.Link>
+                    </Nav>
+                    <Form inline>
+                        <FormControl type="text" placeholder="Search" className="mr-sm-2" onKeyPress={handleKeyPress} />
+                    </Form>
+                    <Nav.Link as={Link} to="/favorite" className={styles.Link}>
+                        <i className="fas fa-star fa-lg" title={"Favorites movies"}></i>
+                    </Nav.Link>
+                </Navbar.Collapse>
+            </Navbar >
         </div>
     )
 }

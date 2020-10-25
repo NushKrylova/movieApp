@@ -12,6 +12,7 @@ import {
   Route,
   HashRouter
 } from "react-router-dom";
+import Home2 from "./pages/Home2";
 
 function App() {
   const [searchState, setSearchState] = useState<string>("");
@@ -31,7 +32,7 @@ function App() {
             <Route path="/movies">
               <Discover />
             </Route>
-            <Route path="/:id" children={<Details />}/>
+            <Route path="/:id" children={<Details />}/>          
             <Route path="/">
               <Home />
             </Route>

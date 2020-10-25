@@ -1,22 +1,24 @@
 import React from "react";
-import styles from './FilterReleaseDates.module.css';
+import { Form, FormControl, Row, Col } from "react-bootstrap";
 
 function FilterReleaseDates() {
 
     return (
-        <div>
-            <label>Release Dates</label>
-            <div className={styles.SubFilterContainer}>
-                <div className={styles.ReleaseDatesField}>
-                    <label htmlFor="from">from</label>
-                    <input type="date" id="from" name="from" className={styles.Input}></input>
-                </div>
-                <div className={styles.ReleaseDatesField}>
-                    <label htmlFor="to">to</label>
-                    <input type="date" id="to" name="to" className={styles.Input}></input>
-                </div>
-            </div>
-        </div>
+        <Form.Group controlId="ReleaseDates">
+            <Form.Label>Release Dates</Form.Label>
+            <Form.Group as={Row} controlId="from">
+                <Form.Label column sm="2">from</Form.Label>
+                <Col sm="10">
+                    <FormControl type="date" name="from"></FormControl>
+                </Col>
+            </Form.Group>
+            <Form.Group as={Row} controlId="to">
+                <Form.Label column sm="2">to</Form.Label>
+                <Col sm="10">
+                    <FormControl type="date" name="to"></FormControl>
+                </Col>
+            </Form.Group>
+        </Form.Group>
     )
 }
 export default FilterReleaseDates;

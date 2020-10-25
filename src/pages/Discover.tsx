@@ -3,6 +3,7 @@ import FiltersContainer from '../components/FiltersContainer'
 import TopRatedResultsItem from '../components/DiscoverItem';
 import { getTopRated, discoverMovies, parseListOfMovies, Movie } from "../api/tmdb";
 import styles from './Discover.module.css';
+import Button from 'react-bootstrap/Button';
 
 function Discover() {
     const [searchState, setSearchState] = useState<FormData>();
@@ -68,7 +69,7 @@ function Discover() {
                     {topRatedResults}
                 </div>
                 <div>
-                    <button name="loadMore" className={styles.Button} onClick={handleClick}>Load More</button>
+                    <Button name="loadMore" variant="primary" onClick={handleClick} block >Load More</Button>
                 </div>
             </div>
         </div>
