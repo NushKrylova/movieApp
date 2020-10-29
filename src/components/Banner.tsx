@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getNowPlaying, Movie, parseListOfMovies } from "../api/tmdb";
 import { Link } from "react-router-dom";
-import styles from './Banner.module.css';
 import Carousel from 'react-bootstrap/Carousel'
 
 function Banner() {
@@ -31,9 +30,7 @@ function Banner() {
         </Carousel.Item>
     )
     return (
-        <div className={styles.FixedContainer}>
-            <Carousel>{bannerItems}</Carousel>
-        </div>
+        <Carousel>{bannerItems}</Carousel>
     )
 }
 export default Banner;

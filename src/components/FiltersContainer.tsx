@@ -3,7 +3,6 @@ import Sort from './Sort';
 import FilterGenres from './FilterGenres';
 import FilterReleaseDates from './FilterReleaseDates';
 import FilterUserScore from './FilterUserScore';
-import styles from './FiltersContainer.module.css';
 import Button from 'react-bootstrap/Button';
 import { Form } from 'react-bootstrap';
 
@@ -21,22 +20,18 @@ function FiltersContainer(props: FiltersContainerProps) {
         }
     }
     return (
-        <Form className={styles.FilterContainer} onSubmit={handleClick}>
+        <Form onSubmit={handleClick} className='p-1'>
             <Sort />
-            <Form.Group controlId="Filters">
-                <div className={styles.Border}>
-                <h2>Filters</h2>
-                <hr className={styles.Divider} />
-                <FilterGenres />
-                <hr className={styles.Divider} />
-                <FilterReleaseDates />
-                <hr className={styles.Divider} />
-                <FilterUserScore />
-                </div>
+            <Form.Group controlId="Filters" className='p-3 border rounded'>
+                    <p className="h4">Filters</p>
+                    <hr />
+                    <FilterGenres />
+                    <hr />
+                    <FilterReleaseDates />
+                    <hr />
+                    <FilterUserScore />
             </Form.Group>
-            <div>
                 <Button variant="primary" name="search" type="submit" block >Search</Button>
-            </div>
         </Form>
     )
 }

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import FiltersContainer from '../components/FiltersContainer'
 import TopRatedResultsItem from '../components/DiscoverItem';
 import { getTopRated, discoverMovies, parseListOfMovies, Movie } from "../api/tmdb";
-import styles from './Discover.module.css';
 import Button from 'react-bootstrap/Button';
+import { Container, Row, Col } from "react-bootstrap";
 
 function Discover() {
     const [searchState, setSearchState] = useState<FormData>();
@@ -59,20 +59,22 @@ function Discover() {
         }
     }, [page]);
 
-    const topRatedResults = movies.map(el => <TopRatedResultsItem movie={el} key={el.id} />)
+    const topRatedResults = movies.map(el => <Col sm={6} md={3} className='p-1'><TopRatedResultsItem movie={el} key={el.id} /></Col >)
 
     return (
-        <div className={styles.SearchContainer}>
-            <FiltersContainer searchClicked={setSearchState} />
-            <div>
-                <div className={styles.Grid}>
-                    {topRatedResults}
-                </div>
-                <div>
-                    <Button name="loadMore" variant="primary" onClick={handleClick} block >Load More</Button>
-                </div>
-            </div>
-        </div>
+        <Container>
+            <Row>
+                <Col sm={3} className='px-4'>
+                    <FiltersContainer searchClicked={setSearchState} />
+                </Col>
+                <Col sm={9} className='px-0'>
+                    <Row >
+                        {topRatedResults}
+                        <Button name="loadMore" variant="primary" onClick={handleClick} className='m-1' block >Load More</Button>
+                    </Row>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 export default Discover;

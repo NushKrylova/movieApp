@@ -11,7 +11,7 @@ function Search(props: SearchProps) {
   const [loader, setLoader] = useState<boolean>(false);
 
   useEffect(() => {
-     const queryParamValue = new URLSearchParams(window.location.search).get('q') || '';
+     const queryParamValue = new URLSearchParams(window.location.hash.split("?")[1]).get('q') || '';
 
     const searchQuery = props.searchQuery || decodeURIComponent(queryParamValue);
     searchMovies(searchQuery).then(data => {

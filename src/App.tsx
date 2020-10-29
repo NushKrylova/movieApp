@@ -5,23 +5,19 @@ import Discover from './pages/Discover';
 import Details from './pages/Details';
 import Search from './pages/Search';
 import Favorite from './pages/Favorite';
-import styles from './App.module.css';
 
 import {
   Switch,
   Route,
   HashRouter
 } from "react-router-dom";
-import Home2 from "./pages/Home2";
 
 function App() {
   const [searchState, setSearchState] = useState<string>("");
 
   return (
-    <div className={styles.App}>
-      <HashRouter basename="/movieApp/">
+      <HashRouter>
         <Header searchRequested={setSearchState}></Header>
-        <div className={styles.FixedContainer}>
           <Switch>
             <Route path="/favorite">
               <Favorite/>
@@ -37,9 +33,7 @@ function App() {
               <Home />
             </Route>
           </Switch>
-        </div>
       </HashRouter>
-    </div>
   );
 }
 

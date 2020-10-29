@@ -1,8 +1,7 @@
 import React from 'react';
 import { formatDate, Movie } from '../api/tmdb'
 import { Link } from "react-router-dom";
-import styles from './PopularItem.module.css';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 type PopularItemProps = {
     movie: Movie;
@@ -10,7 +9,7 @@ type PopularItemProps = {
 
 function PopularItem(props: PopularItemProps) {
     return (
-        <Card className={styles.Card}>
+        <Card className='h-100'>
             <Link to={"/" + props.movie.id}>
                 <Card.Img variant="top" src={props.movie.poster_path} />
             </Link>
