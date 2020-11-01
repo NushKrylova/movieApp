@@ -1,3 +1,5 @@
+import noPoster from '../assets/noPoster.svg'
+
 export async function getPopular() {
     return fetch('https://api.themoviedb.org/3/movie/popular?api_key=f5d93c41702a89380fdb44fcdc97f9f4')
         .then(response => response.json());
@@ -43,7 +45,7 @@ export function parseListOfMovies(data: Movie[]) {
     data.map(item => {
         let poster;
         if (!item.poster_path) {
-            poster = "/noPoster.svg"
+            poster = noPoster;
         } else {
             poster = 'https://image.tmdb.org/t/p/w500/' + item.poster_path;
         }
