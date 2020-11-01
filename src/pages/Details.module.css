@@ -1,16 +1,35 @@
-.Background{
-  width: 100vw;
-  position: absolute;
-  left: 0;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
 .Gradient{
   background-image: linear-gradient(to right, rgba(14.51%, 18.43%, 18.43%, 1.00), rgba(23.14%, 23.92%, 23.92%, 0.84));
   width: 100vw;
   display: flex;
   justify-content: center;
 }
+
+.iconButton{
+  background-color: transparent !important;
+  border: none !important;
+  color: white !important;
+}
+.selected{
+  background-color: transparent !important;
+  border: none !important;
+  color: magenta !important;
+}
+.iconButton:hover{
+  color: #CC00CC !important;
+}
+.iconButton:active{
+  color:lightgray !important;
+}
+.Trancate {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
 .Details{
   display: flex;
   width: 1220px;

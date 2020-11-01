@@ -30,7 +30,7 @@ function FavoriteItem(props: FavoriteItemProps) {
                             <Card.Title>{props.movie.title}</Card.Title>
                             <p className='text-muted'>{formatDate(props.movie.release_date, 'short')}</p>
                             <Card.Subtitle className={styles.Trancate}>{props.movie.overview}</Card.Subtitle>
-                            <label className='d-inline'>
+                            <label className='d-inline-block'>
                                 <Button variant="primary" onClick={() => handleClick(props.movie.id)} className={`d-inline ${styles.iconButton} ${styles.selected}`}>
                                     <i className='fas fa-star fa-lg'></i>
                                 </Button>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getMovieDetails, formatDate, formatTime, parseMovie, getVideo, Video, MovieDetails } from "../api/tmdb";
 import { FAV_MOVIES } from "../constants"
@@ -70,50 +71,49 @@ function Details() {
   };
 
   return (
-    <div style={divStyle} className={styles.Background}>
+    <div style={divStyle}>
       <div className={styles.Gradient}>
-        <div className={styles.Details}>
-          <div className={styles.ImageContainer}>
-            <img className={styles.Image} src={movie.poster_path}></img>
-          </div>
-          <div className={styles.DetailsText}>
-            <h3 className={styles.Title}>{movie.title}</h3>
-            <div className={styles.Facts}>
-              <span>{formatDate(movie.release_date)}</span>
-              <p className={styles.VotesText} >{movie.vote_average}</p>
-              <p className={styles.Genres}>{movie.genres.map(g => g.name).join(', ')}</p>
-              <p className={styles.Runtime}>{formatTime(movie.runtime)}</p>
-            </div>
-            <div className={styles.Facts}>
-              <p className={styles.ButtonVotes}>{movie.vote_average}</p>
-              <p className={styles.UserScoreText}>User Score</p>
-              <button className={styles.Button} onClick={() => handleClick(movie.id)}>
-                <i style={{ color: iconColor }} className="fas fa-star fa-lg"></i>
-                <p className={styles.Label}>Favorite</p>
-              </button>
-              <button className={styles.Button} onClick={handlePlay}>
-                <i className="fas fa-play fa-lg"></i>
-                <p className={styles.Label}>Play Trailer</p>
-              </button>
-            </div>
-            <div>
+        <Container >
+          <Row style={{ height: '450px', color: 'white' }}>
+            <Col sm={3}>
+              <img className='w-100 rounded' src={movie.poster_path}></img>
+            </Col>
+            <Col>
+              <h3 >{movie.title}</h3>
+              <div className='d-inline-flex'>
+                <span >{formatDate(movie.release_date)}</span>
+                <p className='ml-2'>{movie.vote_average}</p>
+                <p className='ml-2'>{movie.genres.map(g => g.name).join(', ')}</p>
+                <p className='ml-2'>{formatTime(movie.runtime)}</p>
+              </div>
+              <div>
+                <div className='d-inline-flex'>
+                  <p className={styles.ButtonVotes}>{movie.vote_average}</p>
+                  <p className={styles.UserScoreText}>User Score</p>
+                  <Button variant="primary" onClick={() => handleClick(movie.id)} className={`${styles.iconButton} ${styles.selected}`}>
+                    <i className='fas fa-star fa-lg'></i>
+                  </Button>
+                  <Button variant="primary" onClick={handlePlay} className={`${styles.iconButton} ${styles.selected}`}>
+                    <i className='fas  fa-play  fa-lg'></i>
+                  </Button>
+                </div>
+              </div>
               <h2>Overview</h2>
               <p>{movie.overview}</p>
-            </div>
-          </div>
-        </div>
-
+              <div className={`${styles.Popup}  ${player}`}>
+                {trailer && <div>
+                  <button className={styles.Close} onClick={handlePlay}><i className="fas fa-times fa-2x"></i></button>
+                  <iframe id="ytplayer" width="640" height="360"
+                    src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
+                    frameBorder="0">
+                  </iframe>
+                </div>}
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </div>
-      <div className={`${styles.Popup}  ${player}`}>
-        {trailer && <div>
-          <button className={styles.Close} onClick={handlePlay}><i className="fas fa-times fa-2x"></i></button>
-          <iframe id="ytplayer" width="640" height="360"
-            src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
-            frameBorder="0">
-          </iframe>
-        </div>}
-      </div>
-    </div>
+    </div >
   );
 }
 export default Details;
