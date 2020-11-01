@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { FAV_MOVIES } from "../constants"
 import FavoriteItem from '../components/FavoriteItem'
 import { getMovieDetails, Movie, parseMovie } from '../api/tmdb'
-import styles from './Favorite.module.css';
 
 function Favorite() {
   const [favMovies, setFavMovies] = useState<Movie[]>([])
@@ -17,7 +16,7 @@ function Favorite() {
         setFavMovies(results);
         setLoader(true);
       })
-    }else{
+    } else {
       setLoader(true);
     }
   }, []);
@@ -34,9 +33,9 @@ function Favorite() {
 
   if (favMovies.length === 0 && loader) { return <p>You don't have favorites</p> }
   return (
-    <div className={styles.ListFav}>
+    <>
       {faved}
-    </div>
+    </>
   );
 }
 export default Favorite;

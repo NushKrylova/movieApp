@@ -2,6 +2,7 @@ import React from "react";
 import { formatDate, Movie } from '../api/tmdb'
 import { Link } from "react-router-dom";
 import { Card, Button, Row, Col, Container } from "react-bootstrap";
+import styles from './FavoriteItem.module.css';
 
 type FavoriteItemProps = {
     movie: Movie;
@@ -15,50 +16,58 @@ function FavoriteItem(props: FavoriteItemProps) {
     }
 
     return (
-        // <div >
-        //     <Link to={"/" + props.movie.id}>
-        //         <img src={props.movie.poster_path}></img>
-        //     </Link>
-        //     <div >
-        //         <div >
-        //             <div >
-        //                 <p >{props.movie.vote_average}</p>
-        //             </div>
-        //             <div>
-        //                 <h3 >{props.movie.title}</h3>
-        //                 <p >{formatDate(props.movie.release_date, 'long')}</p>
-        //             </div>
-        //         </div>
-        //         <p>{props.movie.overview}</p>
-        //         <button onClick={() => handleClick(props.movie.id)}>
-        //             <i style={{ color: "magenta" }} className='fas fa-star fa-lg'></i>
-        //             <p >Favorite</p>
-        //         </button>
-        //     </div>
-        // </div>
-        <Container>
-            <Card>
-                <Row noGutters>
-                    <Col sm={2}>
-                        <Link to={"/" + props.movie.id}>
-                            <Card.Img variant="top" src={props.movie.poster_path} />
+        <Container >
+            <Card className="my-3">
+                <Row style={{ height: '200px'}} noGutters>
+                    <Col style={{ flex: '0 0 calc(200px / 1.5)'}} className='h-100'>
+                        <Link  to={"/" + props.movie.id}>
+                            <Card.Img className='h-100' src={props.movie.poster_path} />
                         </Link>
                     </Col>
-                    <Col sm={10}>
+                    <Col>
                         <Card.Body>
-                            <Card.Title className='float-left'>{props.movie.vote_average}</Card.Title>
+                            <p className='float-left'>{props.movie.vote_average}</p>
                             <Card.Title>{props.movie.title}</Card.Title>
-                            <Card.Subtitle className="text-muted">{formatDate(props.movie.release_date, 'short')}</Card.Subtitle>
-                            <Card.Title>{props.movie.overview}</Card.Title>
-                            <button onClick={() => handleClick(props.movie.id)}>
-                                <i style={{ color: "magenta" }} className='fas fa-star fa-lg'></i>
-                                <p >Favorite</p>
-                            </button>
+                            <p className='text-muted'>{formatDate(props.movie.release_date, 'short')}</p>
+                            <Card.Subtitle className={styles.Trancate}>{props.movie.overview}</Card.Subtitle>
+                            <label className='d-inline'>
+                                <Button variant="primary" onClick={() => handleClick(props.movie.id)} className={`d-inline ${styles.iconButton} ${styles.selected}`}>
+                                    <i className='fas fa-star fa-lg'></i>
+                                </Button>
+                            Favorite
+                            </label>
                         </Card.Body>
                     </Col>
                 </Row>
             </Card>
-        </Container>
+        </Container >
+        //     <Container >
+        //     <Row>
+        //         <Col>
+        //             <Link to={"/" + props.movie.id}>
+        //                 <img src={props.movie.poster_path}></img>
+        //             </Link>
+        //         </Col>
+        //         <Col>
+        //             <div >
+        //                 <div >
+        //                     <div >
+        //                         <p >{props.movie.vote_average}</p>
+        //                     </div>
+        //                     <div>
+        //                         <h3 >{props.movie.title}</h3>
+        //                         <p >{formatDate(props.movie.release_date, 'long')}</p>
+        //                     </div>
+        //                 </div>
+        //                 <p>{props.movie.overview}</p>
+        //                 <button onClick={() => handleClick(props.movie.id)}>
+        //                     <i style={{ color: "magenta" }} className='fas fa-star fa-lg'></i>
+        //                     <p >Favorite</p>
+        //                 </button>
+        //             </div>
+        //         </Col>
+        //     </Row>
+        // </Container >
     )
 }
 export default FavoriteItem;
