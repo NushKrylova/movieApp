@@ -1,0 +1,12 @@
+.ButtonVotes{
+    color: white;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+    background-color: black;
+    padding: 17px;
+    text-decoration: none;
+    border-radius: 50%;
+    border: solid lightgreen;
+    margin: 0;
+  }
