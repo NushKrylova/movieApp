@@ -61,7 +61,7 @@ function Details() {
     setPlay(!play)
   }
 
-  let iconColor = fav ? "magenta" : "white";
+  let iconColor = fav ? styles.selected : styles.iconButton;
   let player = play ? styles.Show : styles.Hide;
 
   if (!movie) { return null }
@@ -75,10 +75,10 @@ function Details() {
       <div className={styles.Gradient}>
         <Container >
           <Row style={{ height: '450px', color: 'white' }}>
-            <Col sm={3}>
+            <Col sm={3} className='m-auto'>
               <img className='w-100 rounded' src={movie.poster_path}></img>
             </Col>
-            <Col>
+            <Col className='m-auto'>
               <h3 >{movie.title}</h3>
               <div className='d-inline-flex'>
                 <span >{formatDate(movie.release_date)}</span>
@@ -87,20 +87,20 @@ function Details() {
                 <p className='ml-2'>{formatTime(movie.runtime)}</p>
               </div>
               <div>
-                <div className='d-inline-flex'>
+                <div className='d-inline-flex mt-1'>
                   <p className={styles.ButtonVotes}>{movie.vote_average}</p>
                   <p className={styles.UserScoreText}>User Score</p>
-                  <Button variant="primary" onClick={() => handleClick(movie.id)} className={`${styles.iconButton} ${styles.selected}`}>
+                  <Button variant="primary" onClick={() => handleClick(movie.id)} className={iconColor}>
                     <i className='fas fa-star fa-lg'></i>
                   </Button>
-                  <Button variant="primary" onClick={handlePlay} className={`${styles.iconButton} ${styles.selected}`}>
-                    <i className='fas  fa-play  fa-lg'></i>
+                  <Button variant="primary" onClick={handlePlay} className={styles.iconButton}>
+                    <i className='fas fa-play fa-lg'></i>
                   </Button>
                 </div>
               </div>
-              <h2>Overview</h2>
+              <h2 className='mt-3'>Overview</h2>
               <p>{movie.overview}</p>
-              <div className={`${styles.Popup}  ${player}`}>
+              <div className={`${styles.Popup} ${player}`}>
                 {trailer && <div>
                   <button className={styles.Close} onClick={handlePlay}><i className="fas fa-times fa-2x"></i></button>
                   <iframe id="ytplayer" width="640" height="360"

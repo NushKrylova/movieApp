@@ -1,7 +1,6 @@
 import React from 'react';
 import { formatDate, Movie } from '../api/tmdb'
 import { Link } from "react-router-dom";
-import styles from './SearchItem.module.css';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 
 type SearchItemProps = {

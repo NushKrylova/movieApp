@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import styles from './FilterUserScore.module.css';
 
 function FilterUserScore() {
     const [value, setValue] = useState(10);

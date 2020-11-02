@@ -6,13 +6,7 @@
 .selected{
   background-color: transparent !important;
   border: none !important;
-  color: magenta !important;
-}
-.iconButton:hover{
-  color: #CC00CC !important;
-}
-.iconButton:active{
-  color:lightgray !important;
+  color: #007bff !important;
 }
 .Trancate {
     display: -webkit-box;

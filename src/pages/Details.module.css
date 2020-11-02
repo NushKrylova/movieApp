@@ -4,7 +4,6 @@
   display: flex;
   justify-content: center;
 }
-
 .iconButton{
   background-color: transparent !important;
   border: none !important;
@@ -13,49 +12,11 @@
 .selected{
   background-color: transparent !important;
   border: none !important;
-  color: magenta !important;
+  color: #007bff  !important;
 }
-.iconButton:hover{
-  color: #CC00CC !important;
-}
-.iconButton:active{
-  color:lightgray !important;
-}
-.Trancate {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-
-.Details{
-  display: flex;
-  width: 1220px;
-  max-width: 1220px;
-}
-.ImageContainer{
-  display: flex;
-  height: 450px;
-  width: 430px;
-  margin: 30px;
-}
-.Image{
-  height: 100%;
-  width: 100%;
-}
-.DetailsText{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 40px;
-  box-sizing: border-box;
-  color: white;
-}
-.Facts{
-  display: flex;
-  align-items: center;
+.UserScoreText{
+  margin: auto 5px;
+  width: 42px;
 }
 .ButtonVotes{
   color: white;
@@ -67,27 +28,7 @@
   text-decoration: none;
   border-radius: 50%;
   border: solid lightgreen;
-}
-.UserScoreText{
-  margin-left: 5px;
-  width: 42px;
-}
-.Label{
-  margin-left: 5px;
-  font-family: "Source Sans Pro", Arial, sans-serif;
-}
-.Button{
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  border-radius: 40px;
-  border: none;
-  margin-left: 13px;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+  margin: auto;
 }
 .Popup{
   position: fixed;
@@ -113,16 +54,4 @@
   border: none;
   background: none;
   color: white;
-}
-.VotesText{
-  margin-left: 15px;
-}
-.Genres{
-  margin-left: 15px;
-}
-.Runtime{
-  margin-left: 15px;
-}
-.Title{
-  margin: 0;
 }
