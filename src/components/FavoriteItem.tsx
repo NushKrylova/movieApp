@@ -3,6 +3,7 @@ import { formatDate, Movie } from '../api/tmdb'
 import { Link } from "react-router-dom";
 import { Card, Button, Row, Col, Container } from "react-bootstrap";
 import styles from './FavoriteItem.module.css';
+import UserScore from "./UserScore";
 
 type FavoriteItemProps = {
     movie: Movie;
@@ -26,7 +27,7 @@ function FavoriteItem(props: FavoriteItemProps) {
                     <Col>
                         <Card.Body>
                             <div className='d-flex'>
-                                <p className={styles.ButtonVotes}>{props.movie.vote_average}</p>
+                                <UserScore vote={props.movie.vote_average} size="md"/>
                                 <div className='mx-2 my-auto'>
                                     <Card.Title className='mb-0'>{props.movie.title}</Card.Title>
                                     <p className='text-muted'>{formatDate(props.movie.release_date, 'short')}</p>

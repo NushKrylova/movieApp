@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getMovieDetails, formatDate, formatTime, parseMovie, getVideo, Video, MovieDetails } from "../api/tmdb";
+import UserScore from "../components/UserScore";
 import { FAV_MOVIES } from "../constants"
 import styles from './Details.module.css';
 
@@ -92,7 +93,7 @@ function Details() {
                 </div>
                 <div>
                   <div className='d-inline-flex mt-1'>
-                    <p className={styles.ButtonVotes}>{movie.vote_average}</p>
+                    <UserScore vote={movie.vote_average} size="md"/>
                     <p className={styles.UserScoreText}>User Score</p>
                     <Button variant="primary" onClick={() => handleClick(movie.id)} className={iconColor}>
                       <i className='fas fa-star fa-lg'></i>
