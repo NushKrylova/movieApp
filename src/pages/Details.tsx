@@ -71,49 +71,55 @@ function Details() {
   };
 
   return (
-    <div style={divStyle}>
-      <div className={styles.Gradient}>
-        <Container >
-          <Row style={{ height: '450px', color: 'white' }}>
-            <Col sm={3} className='m-auto'>
-              <img className='w-100 rounded' src={movie.poster_path}></img>
-            </Col>
-            <Col className='m-auto'>
-              <h3 >{movie.title}</h3>
-              <div className='d-inline-flex'>
-                <span >{formatDate(movie.release_date)}</span>
-                <p className='ml-2'>{movie.vote_average}</p>
-                <p className='ml-2'>{movie.genres.map(g => g.name).join(', ')}</p>
-                <p className='ml-2'>{formatTime(movie.runtime)}</p>
-              </div>
-              <div>
-                <div className='d-inline-flex mt-1'>
-                  <p className={styles.ButtonVotes}>{movie.vote_average}</p>
-                  <p className={styles.UserScoreText}>User Score</p>
-                  <Button variant="primary" onClick={() => handleClick(movie.id)} className={iconColor}>
-                    <i className='fas fa-star fa-lg'></i>
-                  </Button>
-                  <Button variant="primary" onClick={handlePlay} className={styles.iconButton}>
-                    <i className='fas fa-play fa-lg'></i>
-                  </Button>
+    <Container fluid>
+      <Container >
+        <h5>Movie Details</h5>
+      </Container >
+      <div style={divStyle}>
+        <div className={styles.Gradient}>
+          <Container >
+            <Row style={{ height: '450px', color: 'white' }}>
+              <Col sm={3} className='m-auto'>
+                <img className='w-100 rounded' src={movie.poster_path}></img>
+              </Col>
+              <Col className='m-auto'>
+                <h3 >{movie.title}</h3>
+                <div className='d-inline-flex'>
+                  <span >{formatDate(movie.release_date)}</span>
+                  <p className='ml-2'>{movie.vote_average}</p>
+                  <p className='ml-2'>{movie.genres.map(g => g.name).join(', ')}</p>
+                  <p className='ml-2'>{formatTime(movie.runtime)}</p>
                 </div>
-              </div>
-              <h2 className='mt-3'>Overview</h2>
-              <p>{movie.overview}</p>
-              <div className={`${styles.Popup} ${player}`}>
-                {trailer && <div>
-                  <button className={styles.Close} onClick={handlePlay}><i className="fas fa-times fa-2x"></i></button>
-                  <iframe id="ytplayer" width="640" height="360"
-                    src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
-                    frameBorder="0">
-                  </iframe>
-                </div>}
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    </div >
+                <div>
+                  <div className='d-inline-flex mt-1'>
+                    <p className={styles.ButtonVotes}>{movie.vote_average}</p>
+                    <p className={styles.UserScoreText}>User Score</p>
+                    <Button variant="primary" onClick={() => handleClick(movie.id)} className={iconColor}>
+                      <i className='fas fa-star fa-lg'></i>
+                    </Button>
+                    <Button variant="primary" onClick={handlePlay} className={styles.iconButton}>
+                      <i className='fas fa-play fa-lg'></i>
+                    </Button>
+                  </div>
+                </div>
+                <h2 className='mt-3'>Overview</h2>
+                <p>{movie.overview}</p>
+                <div className={`${styles.Popup} ${player}`}>
+                  {trailer && <div>
+                    <button className={styles.Close} onClick={handlePlay}><i className="fas fa-times fa-2x"></i></button>
+                    <iframe id="ytplayer" width="640" height="360"
+                      src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
+                      frameBorder="0">
+                    </iframe>
+                  </div>}
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      </div >
+    </Container >
+
   );
 }
 export default Details;

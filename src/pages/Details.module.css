@@ -1,6 +1,5 @@
 .Gradient{
   background-image: linear-gradient(to right, rgba(14.51%, 18.43%, 18.43%, 1.00), rgba(23.14%, 23.92%, 23.92%, 0.84));
-  width: 100vw;
   display: flex;
   justify-content: center;
 }

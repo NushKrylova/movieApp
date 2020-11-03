@@ -30,7 +30,7 @@ function Header(props: HeaderProps) {
                         <Nav.Link as={Link} to="/movies">Browse</Nav.Link>
                     </Nav>
                     <Nav className="mr-auto">
-                        <Nav.Link as={Link} to="/favorite">Favorite</Nav.Link>
+                        <Nav.Link as={Link} to="/favorite">Favorites</Nav.Link>
                     </Nav>
                     <Form onSubmit={preventSubmit} inline>
                         <FormControl type="text" placeholder="Search" onKeyPress={handleKeyPress} />

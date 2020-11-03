@@ -63,6 +63,7 @@ function Discover() {
 
     return (
         <Container>
+            <h5>Top Rated</h5>
             <Row>
                 <Col sm={3} className='px-4'>
                     <FiltersContainer searchClicked={setSearchState} />

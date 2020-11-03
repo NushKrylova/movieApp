@@ -17,6 +17,7 @@ function FavoriteItem(props: FavoriteItemProps) {
 
     return (
         <Container >
+            <h5>My Favorites</h5>
             <Card className="my-3">
                 <Row style={{ height: '200px' }} noGutters>
                     <Col style={{ flex: '0 0 calc(200px / 1.5)' }} className='h-100'>

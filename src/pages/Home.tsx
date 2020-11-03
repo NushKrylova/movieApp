@@ -18,6 +18,7 @@ function Home() {
 
   return (
     <Container>
+      <h5>What's Popular</h5>
       <Row>
         <Col className='mb-1'>
           <Banner />
