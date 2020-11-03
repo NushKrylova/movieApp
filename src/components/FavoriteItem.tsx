@@ -16,8 +16,6 @@ function FavoriteItem(props: FavoriteItemProps) {
     }
 
     return (
-        <Container >
-            <h5>My Favorites</h5>
             <Card className="my-3">
                 <Row style={{ height: '200px' }} noGutters>
                     <Col style={{ flex: '0 0 calc(200px / 1.5)' }} className='h-100'>
@@ -45,34 +43,7 @@ function FavoriteItem(props: FavoriteItemProps) {
                     </Col>
                 </Row>
             </Card>
-        </Container >
-        //     <Container >
-        //     <Row>
-        //         <Col>
-        //             <Link to={"/" + props.movie.id}>
-        //                 <img src={props.movie.poster_path}></img>
-        //             </Link>
-        //         </Col>
-        //         <Col>
-        //             <div >
-        //                 <div >
-        //                     <div >
-        //                         <p >{props.movie.vote_average}</p>
-        //                     </div>
-        //                     <div>
-        //                         <h3 >{props.movie.title}</h3>
-        //                         <p >{formatDate(props.movie.release_date, 'long')}</p>
-        //                     </div>
-        //                 </div>
-        //                 <p>{props.movie.overview}</p>
-        //                 <button onClick={() => handleClick(props.movie.id)}>
-        //                     <i style={{ color: "magenta" }} className='fas fa-star fa-lg'></i>
-        //                     <p >Favorite</p>
-        //                 </button>
-        //             </div>
-        //         </Col>
-        //     </Row>
-        // </Container >
+        
     )
 }
 export default FavoriteItem;
