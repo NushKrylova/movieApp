@@ -71,6 +71,8 @@ function Details() {
     backgroundImage: 'url(' + movie.backdrop_path + ')'
   };
 
+  const favAction = fav ? 'Add to' : 'Remove from'
+
   return (
     <Container fluid className='p-0'>
       <Container >
@@ -93,13 +95,15 @@ function Details() {
                 </div>
                 <div>
                   <div className='d-inline-flex my-1'>
-                    <UserScore vote={movie.vote_average} size="md" />
-                    <p className={styles.Label2Lines}>User Score</p>
                     <label className='d-inline-block m-auto'>
+                      <UserScore vote={movie.vote_average} size="md" className='mr-2' />
+                            User Score
+                      </label>
+                    <label className='d-inline-block m-auto m-0'>
                       <Button variant="primary" onClick={() => handleClick(movie.id)} className={`ml-4 ${iconColor}`}>
                         <i className='fas fa-star fa-lg'></i>
                       </Button>
-                            Favorites
+                      {favAction} Favorites
                       </label>
                   </div>
                 </div>
@@ -114,7 +118,7 @@ function Details() {
         <h5 className='my-2'>Trailer</h5>
       </Container>
       <Container>
-        <iframe id="ytplayer" className='w-100 rounded' height="360"
+        <iframe id="ytplayer" className='rounded' width='1100px' height='600px'
           src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
           frameBorder="0">
         </iframe>
