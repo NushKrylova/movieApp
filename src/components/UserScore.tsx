@@ -3,7 +3,8 @@ import { Button } from 'react-bootstrap';
 import styles from './UserScore.module.css';
 type UserScoreProps = {
     vote: number;
-    size: string
+    size: string;
+    className?: string;
 };
 
 function UserScore(props: UserScoreProps) {
@@ -12,8 +13,7 @@ function UserScore(props: UserScoreProps) {
         sizeStyle = `btn-sm ${styles.small}`;
     }
     return (
-        // <p className={styles.ButtonVotes}>{props.vote}</p>
-        <Button variant="primary" className={`rounded-circle ${sizeStyle}`}>{props.vote}</Button>
+        <Button variant="primary" className={`rounded-circle ${sizeStyle} ${props.className}`}>{props.vote}</Button>
     )
 }
 export default UserScore;

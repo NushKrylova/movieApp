@@ -1,0 +1,8 @@
+.UserScoreContainer{
+    position: relative;
+    margin-bottom: 11px;
+}
+.UserScore{
+    position: absolute;
+    top: -42px;
+  }

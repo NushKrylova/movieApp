@@ -35,7 +35,7 @@ function Favorite() {
   if (favMovies.length === 0 && loader) { return <p>You don't have favorites</p> }
   return (
     <Container >
-      <h5>My Favorites</h5>
+      <h5 className='my-2'> My Favorites</h5>
       {faved}
     </Container>
   );

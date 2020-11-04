@@ -72,9 +72,9 @@ function Details() {
   };
 
   return (
-    <Container fluid>
+    <Container fluid className='p-0'>
       <Container >
-        <h5>Movie Details</h5>
+        <h5 className='my-2'>Movie Details</h5>
       </Container >
       <div style={divStyle}>
         <div className={styles.Gradient}>

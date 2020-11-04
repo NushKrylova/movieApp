@@ -10,7 +10,7 @@ function FilterUserScore() {
     return (
         <Form.Group controlId="UserScore">
             <Form.Label>User Score</Form.Label>
-            <Form.Control name="slider" type="range" min="0" max="10" value={value} onChange={handleChange} />
+            <Form.Control as={'input'} name="slider" list="ticks" type="range" min="0" max="10" value={value} onChange={handleChange} />
             <datalist id="ticks">
                 <option>0</option>
                 <option>1</option>
