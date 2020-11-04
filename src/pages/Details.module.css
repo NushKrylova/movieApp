@@ -1,5 +1,5 @@
 .Gradient{
-  background-image: linear-gradient(to right, rgba(14.51%, 18.43%, 18.43%, 1.00), rgba(23.14%, 23.92%, 23.92%, 0.84));
+  background-image: linear-gradient(to right, rgba(14.51%, 18.43%, 18.43%, 1.00), rgba(23.14%, 23.92%, 23.92%, 0.65));
   display: flex;
   justify-content: center;
 }
@@ -13,8 +13,8 @@
   border: none !important;
   color: #007bff  !important;
 }
-.UserScoreText{
-  margin: auto 5px;
+.Label2Lines{
+  margin: 0 5px;
   width: 42px;
 }
 .Popup{
@@ -41,4 +41,9 @@
   border: none;
   background: none;
   color: white;
+}
+.Dot:before {
+  font-weight: 700;
+  content: "•";
+  margin-right: 5px;
 }

@@ -39,7 +39,7 @@ function FavoriteItem(props: FavoriteItemProps) {
                                 <i className='fas fa-star fa-lg'></i>
                             </Button>
                             Favorite
-                            </label>
+                        </label>
                     </Card.Body>
                 </Col>
             </Row>

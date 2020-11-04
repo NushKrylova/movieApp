@@ -85,40 +85,40 @@ function Details() {
               </Col>
               <Col className='m-auto'>
                 <h3 >{movie.title}</h3>
-                <div className='d-inline-flex'>
+                <div className={`d-inline-flex ${styles.Dot}`}>
                   <span >{formatDate(movie.release_date)}</span>
-                  <p className='ml-2'>{movie.vote_average}</p>
-                  <p className='ml-2'>{movie.genres.map(g => g.name).join(', ')}</p>
-                  <p className='ml-2'>{formatTime(movie.runtime)}</p>
+                  <p className={`ml-3 ${styles.Dot}`}>{movie.vote_average}</p>
+                  <p className={`ml-3 ${styles.Dot}`}>{movie.genres.map(g => g.name).join(', ')}</p>
+                  <p className={`ml-3 ${styles.Dot}`}>{formatTime(movie.runtime)}</p>
                 </div>
                 <div>
-                  <div className='d-inline-flex mt-1'>
-                    <UserScore vote={movie.vote_average} size="md"/>
-                    <p className={styles.UserScoreText}>User Score</p>
-                    <Button variant="primary" onClick={() => handleClick(movie.id)} className={iconColor}>
-                      <i className='fas fa-star fa-lg'></i>
-                    </Button>
-                    <Button variant="primary" onClick={handlePlay} className={styles.iconButton}>
-                      <i className='fas fa-play fa-lg'></i>
-                    </Button>
+                  <div className='d-inline-flex my-1'>
+                    <UserScore vote={movie.vote_average} size="md" />
+                    <p className={styles.Label2Lines}>User Score</p>
+                    <label className='d-inline-block m-auto'>
+                      <Button variant="primary" onClick={() => handleClick(movie.id)} className={`ml-4 ${iconColor}`}>
+                        <i className='fas fa-star fa-lg'></i>
+                      </Button>
+                            Favorites
+                      </label>
                   </div>
                 </div>
-                <h2 className='mt-3'>Overview</h2>
+                <h2 className='my-3'>Overview</h2>
                 <p>{movie.overview}</p>
-                <div className={`${styles.Popup} ${player}`}>
-                  {trailer && <div>
-                    <button className={styles.Close} onClick={handlePlay}><i className="fas fa-times fa-2x"></i></button>
-                    <iframe id="ytplayer" width="640" height="360"
-                      src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
-                      frameBorder="0">
-                    </iframe>
-                  </div>}
-                </div>
               </Col>
             </Row>
           </Container>
         </div>
       </div >
+      <Container>
+        <h5 className='my-2'>Trailer</h5>
+      </Container>
+      <Container>
+        <iframe id="ytplayer" className='w-100 rounded' height="360"
+          src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
+          frameBorder="0">
+        </iframe>
+      </Container>
     </Container >
 
   );
