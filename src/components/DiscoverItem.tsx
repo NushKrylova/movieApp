@@ -26,5 +26,3 @@ function DiscoverItem(props: DiscoverItemProps) {
     )
 }
 export default DiscoverItem;
-{/* <Row style={{ height: '210px' }} noGutters>
-                <Col style={{ flex: '0 0 calc(210px / 1.5)' }} className='h-100'> */}
