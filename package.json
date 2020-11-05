@@ -6,15 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
-    "deploy": "npm run build && npm run createDeployBranch && npm run stageDist && npm run autoCommit && npm run createBranchWithDist && npm run pushNewBranch && npm run deleteBranch && npm run checkoutMaster && npm run deleteDeployBranch",
-    "createDeployBranch": "git checkout -b temp-deploy",
-    "stageDist": "git add -f dist",
-    "autoCommit": "git commit -m \"Auto deploy\"",
-    "createBranchWithDist": "git subtree split --prefix dist -b gh-pages",
-    "pushToGhPages": "git push -f origin gh-pages:gh-pages",
-    "deleteBranch": "git branch -D gh-pages",
-    "checkoutMaster": "git checkout master",
-    "deleteDeployBranch": "git branch -D temp-deploy"
+    "deploy": "./deploy"
   },
   "author": "",
   "license": "ISC",
