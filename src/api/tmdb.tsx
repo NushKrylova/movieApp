@@ -37,19 +37,19 @@ export async function getVideo(id: number) {
     return fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=f5d93c41702a89380fdb44fcdc97f9f4&language=en-US`)
         .then(response => response.json());
 }
-
+function replaceNoPoster(poster_path: string) {
+    if (!poster_path) {
+        return '/movieApp/assets/noPoster.svg';
+    } else {
+        return 'https://image.tmdb.org/t/p/w500/' + poster_path;
+    }
+}
 export function parseListOfMovies(data: Movie[]) {
     let moviePreviewResults: Movie[] = [];
     data.map(item => {
-        let poster;
-        if (!item.poster_path) {
-            poster = "/noPoster.svg"
-        } else {
-            poster = 'https://image.tmdb.org/t/p/w500/' + item.poster_path;
-        }
         let moviePreview = {
             id: item.id,
-            poster_path: poster,
+            poster_path: replaceNoPoster(item.poster_path),
             vote_average: item.vote_average,
             title: item.title,
             release_date: item.release_date,
@@ -65,7 +65,7 @@ export function parseMovie(data: MovieDetails) {
     return {
         id: data.id,
         title: data.title,
-        poster_path: 'https://image.tmdb.org/t/p/w500/' + data.poster_path,
+        poster_path: replaceNoPoster(data.poster_path),
         vote_average: data.vote_average,
         release_date: data.release_date,
         overview: data.overview,

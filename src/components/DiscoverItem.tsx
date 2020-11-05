@@ -1,6 +1,8 @@
 import React from 'react';
 import { formatDate, Movie } from '../api/tmdb'
 import { Link } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
+import UserScore from './UserScore';
 import styles from './DiscoverItem.module.css';
 
 type DiscoverItemProps = {
@@ -9,16 +11,18 @@ type DiscoverItemProps = {
 
 function DiscoverItem(props: DiscoverItemProps) {
     return (
-        <div className={styles.Card}>
-            <Link className={styles.ImageContainer} to={"/" + props.movie.id}>
-                <img className={styles.Image} src={props.movie.poster_path}></img>
+        <Card className="h-100">
+            <Link to={"/" + props.movie.id} style={{ height: '309px' }}>
+                <Card.Img className='border-bottom h-100' variant="top" src={props.movie.poster_path} />
             </Link>
-            <div className={styles.TextCard}>
-                <p className={styles.Vote}>{props.movie.vote_average}</p>
-                <h3 className={styles.Title}>{props.movie.title}</h3>
-                <p className={styles.ReleaseDate}>{formatDate(props.movie.release_date, 'short')}</p>
-            </div>
-        </div>
+            <Card.Body>
+                <div className={styles.UserScoreContainer}>
+                    <UserScore className={styles.UserScore} vote={props.movie.vote_average} size="sm" />
+                </div>
+                <h6>{props.movie.title}</h6>
+                <p className='m-0 text-muted'>{formatDate(props.movie.release_date, 'short')}</p>
+            </Card.Body>
+        </Card>
     )
 }
 export default DiscoverItem;

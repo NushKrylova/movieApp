@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Form } from "react-bootstrap";
 import { Genre, getGenres } from "../api/tmdb";
-import styles from './FilterGenres.module.css';
 
 function FilterGenres() {
     const [genres, setGenres] = useState<Genre[]>([]);
@@ -11,17 +11,16 @@ function FilterGenres() {
 
     const genreFields = genres.map(el =>
         <div key={el.id}>
-            <input type="checkbox" value={el.id} name={"genres" + el.name} id={el.id.toString()} />
-            <label htmlFor={el.id.toString()}>{el.name}</label>
+            <Form.Check type="checkbox" value={el.id} name={"genres" + el.name} id={el.id.toString()} label={el.name} />
         </div>
     )
     return (
-        <div>
-            <fieldset className={styles.Genres}>
-                <legend>Genres</legend>
+        <Form.Group controlId="Genres">
+            <Form.Label>Genres</Form.Label>
+            <fieldset>
                 {genreFields}
             </fieldset>
-        </div>
+        </Form.Group >
     )
 }
 export default FilterGenres;

@@ -1,74 +1,20 @@
-.Background{
-  width: 100vw;
-  position: absolute;
-  left: 0;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
 .Gradient{
-  background-image: linear-gradient(to right, rgba(14.51%, 18.43%, 18.43%, 1.00), rgba(23.14%, 23.92%, 23.92%, 0.84));
-  width: 100vw;
+  background-image: linear-gradient(to right, rgba(14.51%, 18.43%, 18.43%, 1.00), rgba(23.14%, 23.92%, 23.92%, 0.65));
   display: flex;
   justify-content: center;
 }
-.Details{
-  display: flex;
-  width: 1220px;
-  max-width: 1220px;
+.IconButton{
+  background-color: transparent !important;
+  border: none !important;
 }
-.ImageContainer{
-  display: flex;
-  height: 450px;
-  width: 430px;
-  margin: 30px;
+.selected{
+  background-color: transparent !important;
+  border: none !important;
+  color: #007bff  !important;
 }
-.Image{
-  height: 100%;
-  width: 100%;
-}
-.DetailsText{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 40px;
-  box-sizing: border-box;
-  color: white;
-}
-.Facts{
-  display: flex;
-  align-items: center;
-}
-.ButtonVotes{
-  color: white;
-  text-align: center;
-  display: inline-block;
-  font-size: 15px;
-  background-color: black;
-  padding: 17px;
-  text-decoration: none;
-  border-radius: 50%;
-  border: solid lightgreen;
-}
-.UserScoreText{
-  margin-left: 5px;
+.Label2Lines{
+  margin: 0 5px;
   width: 42px;
-}
-.Label{
-  margin-left: 5px;
-  font-family: "Source Sans Pro", Arial, sans-serif;
-}
-.Button{
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  border-radius: 40px;
-  border: none;
-  margin-left: 13px;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
 }
 .Popup{
   position: fixed;
@@ -80,12 +26,6 @@
   justify-content: center;
   align-items: center;
 }
-.Hide{
-  display: none;
-}
-.Show{
-  display: flex;
-}
 .Close{
   right: -700px;
   position: relative;
@@ -95,15 +35,8 @@
   background: none;
   color: white;
 }
-.VotesText{
-  margin-left: 15px;
-}
-.Genres{
-  margin-left: 15px;
-}
-.Runtime{
-  margin-left: 15px;
-}
-.Title{
-  margin: 0;
+.Dot:before {
+  font-weight: 700;
+  content: "•";
+  margin-right: 5px;
 }

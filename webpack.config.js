@@ -1,3 +1,5 @@
+const express = require('express');
+
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
@@ -18,6 +20,10 @@ module.exports = {
     devServer: {
         openPage: 'movieApp/',
         open: true,
+        contentBase: path.join(__dirname, 'dist'),
+        setup(app) {
+            app.use('/movieApp/assets', express.static('./dist/assets'))
+        }
     },
     module: {
         rules: [

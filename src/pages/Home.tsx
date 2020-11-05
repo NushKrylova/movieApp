@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Banner from '../components/Banner'
 import PopularItem from '../components/PopularItem'
 import { getPopular, Movie, parseListOfMovies } from "../api/tmdb";
-import styles from './Home.module.css';
+import { Col, Container, Row } from "react-bootstrap";
 
 function Home() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -14,15 +14,20 @@ function Home() {
     })
   }, []);
 
-  const cards = movies.map(el => <div key={el.id}><PopularItem movie={el} /></div>)
+  const cards = movies.map(el => <Col className='p-1' key={el.id} sm={6} md={3}><PopularItem movie={el} /></Col>)
 
   return (
-    <div>
-      <Banner />
-      <div className={styles.Grid}>
-            {cards}
-        </div>
-    </div>
+    <Container>
+      <h5 className='my-2'>What's Popular</h5>
+      <Row>
+        <Col className='mb-1'>
+          <Banner />
+        </Col>
+      </Row>
+      <Row className='mx-n1'>
+        {cards}
+      </Row>
+    </Container>
   )
 }
 export default Home;

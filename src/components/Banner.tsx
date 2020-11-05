@@ -1,34 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { getNowPlaying, Movie, parseListOfMovies } from "../api/tmdb";
 import { Link } from "react-router-dom";
-import styles from './Banner.module.css';
+import Carousel from 'react-bootstrap/Carousel'
 
 function Banner() {
     const [movies, setMovies] = useState<Movie[]>([]);
 
     useEffect(() => {
         getNowPlaying().then(data => {
-            let topFive = data.results.slice(0, 1);
+            let topFive = data.results.slice(0, 3);
             let results = parseListOfMovies(topFive)
             setMovies(results);
         })
     }, []);
-    
+
     const bannerItems = movies.map(el =>
-        <div className={styles.Banner} key={el.id}>
+        <Carousel.Item key={el.id}>
             <Link to={"/" + el.id}>
-                <img src={el.backdrop_path} />
-                <div className={styles.BannerText}>
-                    <h2>{el.title}</h2>
-                    <h3>{el.overview}</h3>
-                </div>
+                <img
+                    className="d-block w-100 rounded"
+                    src={el.backdrop_path}
+                    alt="First slide"
+                />
+                <Carousel.Caption>
+                    <h3>{el.title}</h3>
+                    <p>{el.overview}</p>
+                </Carousel.Caption>
             </Link>
-        </div >
+        </Carousel.Item>
     )
     return (
-        <div className={styles.FixedContainer}>
-            {bannerItems}
-        </div>
+        <Carousel>{bannerItems}</Carousel>
     )
 }
 export default Banner;
