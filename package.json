@@ -11,7 +11,7 @@
     "stageDist": "git add -f dist",
     "autoCommit": "git commit -m \"Auto deploy\"",
     "createBranchWithDist": "git subtree split --prefix dist -b gh-pages",
-    "pushNewBranch": "git push -f origin gh-pages:gh-pages",
+    "pushToGhPages": "git push -f origin gh-pages:gh-pages",
     "deleteBranch": "git branch -D gh-pages",
     "checkoutMaster": "git checkout master",
     "deleteDeployBranch": "git branch -D temp-deploy"
