@@ -12,8 +12,8 @@ type DiscoverItemProps = {
 function DiscoverItem(props: DiscoverItemProps) {
     return (
         <Card className="h-100">
-            <Link style={{ height: '358px' }} to={"/" + props.movie.id}>
-                <Card.Img className="h-100 border-bottom" variant="top" src={props.movie.poster_path} />
+            <Link to={"/" + props.movie.id} style={{ height: '309px' }}>
+                <Card.Img className='border-bottom h-100' variant="top" src={props.movie.poster_path} />
             </Link>
             <Card.Body>
                 <div className={styles.UserScoreContainer}>
@@ -26,3 +26,5 @@ function DiscoverItem(props: DiscoverItemProps) {
     )
 }
 export default DiscoverItem;
+{/* <Row style={{ height: '210px' }} noGutters>
+                <Col style={{ flex: '0 0 calc(210px / 1.5)' }} className='h-100'> */}

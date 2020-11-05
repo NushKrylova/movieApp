@@ -18,8 +18,8 @@ function FavoriteItem(props: FavoriteItemProps) {
 
     return (
         <Card className="my-3">
-            <Row style={{ height: '200px' }} noGutters>
-                <Col style={{ flex: '0 0 calc(200px / 1.5)' }} className='h-100'>
+            <Row style={{ height: '210px' }} noGutters>
+                <Col style={{ flex: '0 0 calc(210px / 1.5)' }} className='h-100'>
                     <Link to={"/" + props.movie.id}>
                         <Card.Img className={`h-100 border-right ${styles.NoRadius}`} src={props.movie.poster_path} />
                     </Link>
@@ -33,13 +33,10 @@ function FavoriteItem(props: FavoriteItemProps) {
                                 <p className='text-muted'>{formatDate(props.movie.release_date, 'short')}</p>
                             </div>
                         </div>
-                        <p className={`m-0 ${styles.Trancate}`}>{props.movie.overview}</p>
-                        <label className='d-inline-block mt-1'>
-                            <Button variant="primary" onClick={() => handleClick(props.movie.id)} className={`d-inline pl-0 ${styles.iconButton} ${styles.selected}`}>
-                                <i className='fas fa-star fa-lg'></i>
-                            </Button>
-                            Favorite
-                        </label>
+                        <p className={`m-0 mb-2 ${styles.Trancate}`}>{props.movie.overview}</p>
+                        <Button variant="primary" onClick={() => handleClick(props.movie.id)} className={`pl-0 ${styles.IconButton}`}>
+                            <i className={`fas fa-star fa-lg mr-2 ${styles.Selected}`}></i>Favorite
+                      </Button>
                     </Card.Body>
                 </Col>
             </Row>

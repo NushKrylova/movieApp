@@ -3,10 +3,9 @@
   display: flex;
   justify-content: center;
 }
-.iconButton{
+.IconButton{
   background-color: transparent !important;
   border: none !important;
-  color: white !important;
 }
 .selected{
   background-color: transparent !important;
@@ -26,12 +25,6 @@
   background-color: rgba(0,0,0,0.7);
   justify-content: center;
   align-items: center;
-}
-.Hide{
-  display: none;
-}
-.Show{
-  display: flex;
 }
 .Close{
   right: -700px;

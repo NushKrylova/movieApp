@@ -1,9 +1,9 @@
-.iconButton{
+.IconButton{
   background-color: transparent !important;
   border: none !important;
-  color: white !important;
+  color: inherit !important;
 }
-.selected{
+.Selected{
   background-color: transparent !important;
   border: none !important;
   color: #007bff !important;

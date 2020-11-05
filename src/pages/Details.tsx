@@ -63,15 +63,12 @@ function Details() {
   }
 
   let iconColor = fav ? styles.selected : styles.iconButton;
-  let player = play ? styles.Show : styles.Hide;
 
   if (!movie) { return null }
 
   const divStyle = {
     backgroundImage: 'url(' + movie.backdrop_path + ')'
   };
-
-  const favAction = fav ? 'Add to' : 'Remove from'
 
   return (
     <Container fluid className='p-0'>
@@ -99,12 +96,9 @@ function Details() {
                       <UserScore vote={movie.vote_average} size="md" className='mr-2' />
                             User Score
                       </label>
-                    <label className='d-inline-block m-auto m-0'>
-                      <Button variant="primary" onClick={() => handleClick(movie.id)} className={`ml-4 ${iconColor}`}>
-                        <i className='fas fa-star fa-lg'></i>
+                    <Button variant="primary" onClick={() => handleClick(movie.id)} className={`ml-4 ${styles.IconButton}`}>
+                      <i className={`fas fa-star fa-lg mr-2 ${iconColor}`}></i>Favorites
                       </Button>
-                      {favAction} Favorites
-                      </label>
                   </div>
                 </div>
                 <h2 className='my-3'>Overview</h2>
