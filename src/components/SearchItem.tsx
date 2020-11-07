@@ -2,7 +2,7 @@ import React from 'react';
 import { formatDate, Movie } from '../api/tmdb'
 import { Link } from "react-router-dom";
 import { Card, Col, Row } from 'react-bootstrap';
-import styles from './SearchItem.module.css';
+import styles from './SearchItem.module.scss';
 
 type SearchItemProps = {
     movie: Movie;

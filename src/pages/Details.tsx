@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { getMovieDetails, formatDate, formatTime, parseMovie, getVideo, Video, MovieDetails } from "../api/tmdb";
 import UserScore from "../components/UserScore";
 import { FAV_MOVIES } from "../constants"
-import styles from './Details.module.css';
+import styles from './Details.module.scss';
 
 function Details() {
   let { id } = useParams<{ id?: string }>();

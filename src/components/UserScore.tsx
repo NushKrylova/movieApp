@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import styles from './UserScore.module.css';
+import styles from './UserScore.module.scss';
 type UserScoreProps = {
     vote: number;
     size: string;

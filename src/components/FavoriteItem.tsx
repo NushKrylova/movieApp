@@ -2,7 +2,7 @@ import React from "react";
 import { formatDate, Movie } from '../api/tmdb'
 import { Link } from "react-router-dom";
 import { Card, Button, Row, Col, Container } from "react-bootstrap";
-import styles from './FavoriteItem.module.css';
+import styles from './FavoriteItem.module.scss';
 import UserScore from "./UserScore";
 
 type FavoriteItemProps = {

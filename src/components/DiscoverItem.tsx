@@ -3,7 +3,7 @@ import { formatDate, Movie } from '../api/tmdb'
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import UserScore from './UserScore';
-import styles from './DiscoverItem.module.css';
+import styles from './DiscoverItem.module.scss';
 
 type DiscoverItemProps = {
     movie: Movie;
