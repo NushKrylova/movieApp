@@ -17,7 +17,7 @@ function FavoriteItem(props: FavoriteItemProps) {
     }
 
     return (
-        <Card className="my-3">
+        <Card className="mb-3">
             <Row style={{ height: '210px' }} noGutters>
                 <Col style={{ flex: '0 0 calc(210px / 1.5)' }} className='h-100'>
                     <Link to={"/" + props.movie.id}>
