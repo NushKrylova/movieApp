@@ -27,11 +27,11 @@ function Search(props: SearchProps) {
 
   const movieList = movies.map(el => <SearchItem movie={el} key={el.id} />)
 
-  if (movies.length === 0 && loader) { return <Container><p>{`There are no movies that matched your query: '${searchQuery}'`}</p></Container> }
+  if (movies.length === 0 && loader) { return <Container><p className='my-2'>{`There are no movies that matched your query: '${searchQuery}'`}</p></Container> }
 
   return (
     <Container>
-      <h5>Search results for: '{searchQuery}'</h5>
+      <h5 className='my-2'>Search results for: '{searchQuery}'</h5>
       {movieList}
     </Container>
   )
