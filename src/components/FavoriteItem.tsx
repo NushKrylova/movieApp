@@ -1,8 +1,8 @@
 import React from "react";
 import { formatDate, Movie } from '../api/tmdb'
 import { Link } from "react-router-dom";
-import { Card, Button, Row, Col, Container } from "react-bootstrap";
-import styles from './FavoriteItem.module.css';
+import { Card, Button, Row, Col } from "react-bootstrap";
+import styles from './FavoriteItem.module.scss';
 import UserScore from "./UserScore";
 
 type FavoriteItemProps = {
@@ -17,7 +17,7 @@ function FavoriteItem(props: FavoriteItemProps) {
     }
 
     return (
-        <Card className="my-3">
+        <Card className="mb-3">
             <Row style={{ height: '210px' }} noGutters>
                 <Col style={{ flex: '0 0 calc(210px / 1.5)' }} className='h-100'>
                     <Link to={"/" + props.movie.id}>

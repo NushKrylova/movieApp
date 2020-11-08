@@ -15,12 +15,12 @@ function FiltersContainer(props: FiltersContainerProps) {
         e.preventDefault();
         let formData = new FormData(e.currentTarget);
         props.searchClicked(formData);
-        for (var key of formData.keys()) {
-            console.log(">>>", key, ",", formData.get(key));
-        }
+        // for (var key of formData.keys()) {
+        //     console.log(">>>", key, ",", formData.get(key));
+        // }
     }
     return (
-        <Form onSubmit={handleClick} className='p-1'>
+        <Form onSubmit={handleClick} className='pl-0 pt-1'>
             <Sort />
             <Form.Group controlId="Filters" className='p-3 border rounded'>
                     <p className="h4">Filters</p>

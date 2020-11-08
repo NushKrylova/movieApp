@@ -1,0 +1,35 @@
+.small {
+  width: 43px;
+  height: 43px;
+  pointer-events: none;
+  border: 3px solid #d2d531 !important;
+  position: relative;
+
+}
+.medium {
+  width: 54px;
+  height: 54px;
+  pointer-events: none;
+  border: 3px solid #d2d531 !important;
+  position: relative;
+}
+.small:before {
+  border: 2px solid #343a40;
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+}
+.medium:before {
+  border: 2px solid #343a40;
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  border-radius: 50%;
+  width: 58px;
+  height: 58px;
+}

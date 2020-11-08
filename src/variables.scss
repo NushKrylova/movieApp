@@ -1,0 +1,13 @@
+$my-primary: #01B4E4;
+
+@import "../node_modules/bootstrap/scss/functions";
+
+$theme-colors: (
+  "primary": $my-primary,
+);
+
+@import "../node_modules/bootstrap/scss/variables";
+
+$navbar-dark-color: color("white");
+
+@import "../node_modules/bootstrap/scss/mixins";

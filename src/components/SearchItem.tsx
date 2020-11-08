@@ -2,7 +2,7 @@ import React from 'react';
 import { formatDate, Movie } from '../api/tmdb'
 import { Link } from "react-router-dom";
 import { Card, Col, Row } from 'react-bootstrap';
-import styles from './SearchItem.module.css';
+import styles from './SearchItem.module.scss';
 
 type SearchItemProps = {
     movie: Movie;
@@ -10,7 +10,7 @@ type SearchItemProps = {
 
 function SearchItem(props: SearchItemProps) {
     return (
-        <Card className="my-3">
+        <Card className="mb-3">
             <Row style={{ height: '200px' }} noGutters>
                 <Col style={{ flex: '0 0 calc(200px / 1.5)' }} className='h-100'>
                     <Link to={"/" + props.movie.id}>
