@@ -59,7 +59,7 @@ function Discover() {
         }
     }, [page]);
 
-    const topRatedResults = movies.map(el => <Col sm={6} md={3} className='p-1'><TopRatedResultsItem movie={el} key={el.id} /></Col >)
+    const topRatedResults = movies.map(el => <Col sm={6} md={3} key={el.id} className='p-1'><TopRatedResultsItem movie={el} /></Col >)
     let title = searchState ? 'Search Results' : 'Top Rated';
 
     return (
@@ -70,7 +70,7 @@ function Discover() {
                     <FiltersContainer searchClicked={setSearchState} />
                 </Col>
                 <Col sm={9} className='mx-0 pl-0 pr-4'>
-                    <Row >
+                    <Row>
                         {topRatedResults}
                         <Button name="loadMore" variant="primary" onClick={handleClick} className='m-1' block >Load More</Button>
                     </Row>
