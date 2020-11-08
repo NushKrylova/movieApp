@@ -1,8 +1,10 @@
+@import "../variables.scss";
+
 .small {
   width: 43px;
   height: 43px;
   pointer-events: none;
-  border: 3px solid #d2d531 !important;
+  border: 3px solid $my-yellow !important;
   position: relative;
 
 }
@@ -10,11 +12,11 @@
   width: 54px;
   height: 54px;
   pointer-events: none;
-  border: 3px solid #d2d531 !important;
+  border: 3px solid $my-yellow !important;
   position: relative;
 }
 .small:before {
-  border: 2px solid #343a40;
+  border: 2px solid theme-color("dark");
   content: "";
   position: absolute;
   top: -4px;
@@ -24,7 +26,7 @@
   height: 45px;
 }
 .medium:before {
-  border: 2px solid #343a40;
+  border: 2px solid theme-color("dark");
   content: "";
   position: absolute;
   top: -5px;
