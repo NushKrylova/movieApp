@@ -18,8 +18,8 @@ function FavoriteItem(props: FavoriteItemProps) {
 
     return (
         <Card className="mb-3">
-            <Row style={{ height: '210px' }} noGutters>
-                <Col style={{ flex: '0 0 calc(210px / 1.5)' }} className='h-100'>
+            <Row noGutters>
+                <Col style={{ flex: '0 0 calc(210px / 1.5)' }}>
                     <Link to={"/" + props.movie.id}>
                         <Card.Img className={`h-100 border-right ${styles.NoRadius}`} src={props.movie.poster_path} />
                     </Link>
@@ -29,7 +29,7 @@ function FavoriteItem(props: FavoriteItemProps) {
                         <div className='d-flex'>
                             <UserScore vote={props.movie.vote_average} size="md" />
                             <div className='mx-2 my-auto'>
-                                <Card.Title className='mb-0'>{props.movie.title}</Card.Title>
+                                <Card.Title className='mb-0 text-truncate'>{props.movie.title}</Card.Title>
                                 <p className='text-muted'>{formatDate(props.movie.release_date, 'short')}</p>
                             </div>
                         </div>

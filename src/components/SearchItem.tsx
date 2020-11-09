@@ -11,8 +11,8 @@ type SearchItemProps = {
 function SearchItem(props: SearchItemProps) {
     return (
         <Card className="mb-3">
-            <Row style={{ height: '200px' }} noGutters>
-                <Col style={{ flex: '0 0 calc(200px / 1.5)' }} className='h-100'>
+            <Row noGutters>
+                <Col style={{ flex: '0 0 calc(200px / 1.5)' }}>
                     <Link to={"/" + props.movie.id}>
                         <Card.Img className={`h-100 border-right ${styles.NoRadius}`} src={props.movie.poster_path} />
                     </Link>
