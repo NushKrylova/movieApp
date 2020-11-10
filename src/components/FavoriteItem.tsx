@@ -18,10 +18,10 @@ function FavoriteItem(props: FavoriteItemProps) {
 
     return (
         <Card className="mb-3">
-            <Row noGutters>
-                <Col style={{ flex: '0 0 calc(210px / 1.5)' }}>
+            <Row noGutters >
+                <Col style={{ flex: '0 0 calc(220px / 1.5)' }}>
                     <Link to={"/" + props.movie.id}>
-                        <Card.Img className={`h-100 border-right ${styles.NoRadius}`} src={props.movie.poster_path} />
+                        <Card.Img className={`border-right img-fluid ${styles.NoRadius}`} src={props.movie.poster_path} />
                     </Link>
                 </Col>
                 <Col>
@@ -41,7 +41,6 @@ function FavoriteItem(props: FavoriteItemProps) {
                 </Col>
             </Row>
         </Card>
-
     )
 }
 export default FavoriteItem;

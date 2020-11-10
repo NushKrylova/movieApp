@@ -14,7 +14,7 @@ function SearchItem(props: SearchItemProps) {
             <Row noGutters>
                 <Col style={{ flex: '0 0 calc(200px / 1.5)' }}>
                     <Link to={"/" + props.movie.id}>
-                        <Card.Img className={`h-100 border-right ${styles.NoRadius}`} src={props.movie.poster_path} />
+                        <Card.Img className={`border-right img-fluid ${styles.NoRadius}`} src={props.movie.poster_path} />
                     </Link>
                 </Col>
                 <Col>
