@@ -12,9 +12,9 @@ function SearchItem(props: SearchItemProps) {
     return (
         <Card className="mb-3">
             <Row noGutters>
-                <Col style={{ flex: '0 0 calc(200px / 1.5)' }}>
-                    <Link to={"/" + props.movie.id}>
-                        <Card.Img className={`border-right img-fluid ${styles.NoRadius}`} src={props.movie.poster_path} />
+                <Col style={{ flex: '0 0 calc(200px / 1.5)', height: '200px'}}>
+                    <Link to={"/" + props.movie.id} className='d-flex h-100 border-right'>
+                        <Card.Img className={`img-fluid ${styles.NoRadius}`} style={{ objectFit: 'cover'}} src={props.movie.poster_path} />
                     </Link>
                 </Col>
                 <Col>
