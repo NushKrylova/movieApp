@@ -17,6 +17,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.Trancate1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .NoRadius {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;

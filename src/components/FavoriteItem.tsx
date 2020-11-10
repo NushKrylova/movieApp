@@ -25,11 +25,11 @@ function FavoriteItem(props: FavoriteItemProps) {
                     </Link>
                 </Col>
                 <Col>
-                    <Card.Body className='p-3'>
+                    <Card.Body className='p-3 h-100'>
                         <div className='d-flex'>
                             <UserScore vote={props.movie.vote_average} size="md" />
                             <div className='mx-2 my-auto'>
-                                <Card.Title className='mb-0 text-truncate'>{props.movie.title}</Card.Title>
+                                <Card.Title className={`mb-0 ${styles.Trancate1}`}>{props.movie.title}</Card.Title>
                                 <p className='text-muted'>{formatDate(props.movie.release_date, 'short')}</p>
                             </div>
                         </div>
