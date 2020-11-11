@@ -113,7 +113,7 @@ function Details() {
       </Container>
       <Container>
       <Row className='px-3'>
-        <iframe id="ytplayer" className='rounded' width='1100px' height='600px'
+        <iframe id="ytplayer" className='rounded' width='100%'
           src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
           frameBorder="0">
         </iframe>
