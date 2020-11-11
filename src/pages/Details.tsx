@@ -78,17 +78,17 @@ function Details() {
       <div style={divStyle}>
         <div className={styles.Gradient}>
           <Container >
-            <Row style={{ height: '450px', color: 'white' }}>
+            <Row >
               <Col sm={3} className='m-auto'>
-                <img className='w-100 rounded' src={movie.poster_path}></img>
+                <img className='w-100 rounded my-4' src={movie.poster_path}></img>
               </Col>
               <Col className='m-auto'>
-                <h3 >{movie.title}</h3>
+                <h3 className='mt-3'>{movie.title}</h3>
                 <div className={`d-inline-flex ${styles.Dot}`}>
                   <span >{formatDate(movie.release_date)}</span>
                   <p className={`ml-3 ${styles.Dot}`}>{movie.vote_average}</p>
-                  <p className={`ml-3 ${styles.Dot}`}>{movie.genres.map(g => g.name).join(', ')}</p>
-                  <p className={`ml-3 ${styles.Dot}`}>{formatTime(movie.runtime)}</p>
+                  <p className={`ml-3 ${styles.Dot} ${styles.Truncate1}`}>{movie.genres.map(g => g.name).join(', ')}</p>
+                  <p className={`ml-3 ${styles.Dot} ${styles.Truncate1}`}>{formatTime(movie.runtime)}</p>
                 </div>
                 <div>
                   <div className='d-inline-flex my-1'>
@@ -112,10 +112,12 @@ function Details() {
         <h5 className='my-2'>Trailer</h5>
       </Container>
       <Container>
+      <Row className='px-3'>
         <iframe id="ytplayer" className='rounded' width='1100px' height='600px'
           src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
           frameBorder="0">
         </iframe>
+        </Row>
       </Container>
     </Container >
 

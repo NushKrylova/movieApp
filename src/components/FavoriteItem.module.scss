@@ -10,14 +10,14 @@
   border: none !important;
   color: theme-color("primary");
 }
-.Trancate {
+.Truncate {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.Trancate1 {
+.Truncate1 {
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;

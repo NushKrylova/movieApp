@@ -29,11 +29,11 @@ function FavoriteItem(props: FavoriteItemProps) {
                         <div className='d-flex'>
                             <UserScore vote={props.movie.vote_average} size="md" />
                             <div className='mx-2 my-auto'>
-                                <Card.Title className={`mb-0 ${styles.Trancate1}`}>{props.movie.title}</Card.Title>
+                                <Card.Title className={`mb-0 ${styles.Truncate1}`}>{props.movie.title}</Card.Title>
                                 <p className='text-muted'>{formatDate(props.movie.release_date, 'short')}</p>
                             </div>
                         </div>
-                        <p className={`m-0 mb-2 ${styles.Trancate}`}>{props.movie.overview}</p>
+                        <p className={`m-0 mb-2 ${styles.Truncate}`}>{props.movie.overview}</p>
                         <Button variant="primary" onClick={() => handleClick(props.movie.id)} className={`pl-0 ${styles.IconButton}`}>
                             <i className={`fas fa-star fa-lg mr-2 ${styles.Selected}`}></i>Favorite
                       </Button>
