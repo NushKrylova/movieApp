@@ -66,10 +66,10 @@ function Discover() {
         <Container>
             <h5 className='my-2'>{title}</h5>
             <Row>
-                <Col sm={5} >
+                <Col sm={5} md={4} lg={3}>
                     <FiltersContainer searchClicked={setSearchState} />
                 </Col>
-                <Col sm={7}>
+                <Col sm={7} md={8} lg={9}>
                     <Row>
                         {topRatedResults}
                         <Button name="loadMore" variant="primary" onClick={handleClick} className='m-1' block >Load More</Button>
