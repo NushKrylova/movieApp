@@ -21,7 +21,7 @@ function FavoriteItem(props: FavoriteItemProps) {
             <Row noGutters >
                 <Col xs={5} style={{ flex: '0 0 calc(220px / 1.5)' }}>
                     <Link to={"/" + props.movie.id}>
-                        <Card.Img className={`border-right img-fluid ${styles.NoRadius}`} src={props.movie.poster_path} />
+                        <Card.Img className={`border-right img-fluid ${styles.Image}`} src={props.movie.poster_path} />
                     </Link>
                 </Col>
                 <Col xs={7} sm={8} md={9} lg={10}>
