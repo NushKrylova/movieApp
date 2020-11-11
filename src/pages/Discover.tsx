@@ -59,7 +59,7 @@ function Discover() {
         }
     }, [page]);
 
-    const topRatedResults = movies.map(el => <Col sm={6} md={3} key={el.id} className='p-1'><TopRatedResultsItem movie={el} /></Col >)
+    const topRatedResults = movies.map(el => <Col sm={6} md={4} lg={3} key={el.id} className='p-1'><TopRatedResultsItem movie={el} /></Col >)
     let title = searchState ? 'Search Results' : 'Top Rated';
 
     return (
