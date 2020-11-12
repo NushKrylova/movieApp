@@ -37,6 +37,7 @@ export async function getVideo(id: number) {
     return fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=f5d93c41702a89380fdb44fcdc97f9f4&language=en-US`)
         .then(response => response.json());
 }
+
 function replaceNoPoster(poster_path: string) {
     if (!poster_path) {
         return '/movieApp/assets/noPoster.svg';
@@ -44,6 +45,7 @@ function replaceNoPoster(poster_path: string) {
         return 'https://image.tmdb.org/t/p/w500/' + poster_path;
     }
 }
+
 export function parseListOfMovies(data: Movie[]) {
     let moviePreviewResults: Movie[] = [];
     data.map(item => {
@@ -80,7 +82,7 @@ export function formatDate(date: string, monthFormat?: string) {
     if (monthFormat) {
         options = { year: 'numeric', month: monthFormat, day: 'numeric' }
     }
-    return new Date(parseInt(date)).toLocaleDateString('en-US', options)
+    return new Date(date).toLocaleDateString('en-US', options)
 }
 
 export function formatTime(value: number) {
