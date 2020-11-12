@@ -31,3 +31,18 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.Trailer{
+  min-height: 600px;
+}
+
+@include media-breakpoint-up(xs){
+  .Trailer{
+    min-height: 162px;
+  }
+}
+
+@include media-breakpoint-up(md){
+  .Trailer{
+    min-height: 301px;
+  }
+}

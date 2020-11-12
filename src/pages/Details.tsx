@@ -112,7 +112,7 @@ function Details() {
         <h5 className='my-2'>Trailer</h5>
       </Container>
       <Container>
-      <Row className='px-3' style={{minHeight: '300px'}}>
+      <Row className={`px-3 ${styles.Trailer}`}>
         <iframe id="ytplayer" className='rounded' width='100%'
           src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
           frameBorder="0">
