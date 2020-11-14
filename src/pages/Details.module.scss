@@ -10,19 +10,10 @@
   background-color: transparent !important;
   border: none !important;
 }
-.selected{
+.Selected{
   background-color: transparent !important;
   border: none !important;
   color: theme-color("primary"); 
-}
-.Label2Lines{
-  margin: 0 5px;
-  width: 42px;
-}
-.Dot:before {
-  font-weight: 700;
-  content: "•";
-  margin-right: 5px;
 }
 .Truncate1 {
   display: -webkit-box;
@@ -31,17 +22,17 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.videoContainer {
+.VideoContainer {
   overflow: hidden;
   position: relative;
   width:100%;
 }
-.videoContainer::after {
+.VideoContainer::after {
   padding-top: 56.25%;
   display: block;
   content: '';
 }
-.videoContainer iframe {
+.VideoContainer iframe {
   position: absolute;
   top: 0;
   left: 0;

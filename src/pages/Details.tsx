@@ -62,7 +62,7 @@ function Details() {
     setPlay(!play)
   }
 
-  let iconColor = fav ? styles.selected : styles.iconButton;
+  let iconColor = fav ? styles.Selected : styles.IconButton;
 
   if (!movie) { return null }
 
@@ -112,7 +112,7 @@ function Details() {
         <h5 className='my-2'>Trailer</h5>
       </Container>
       <Container>
-       <div className={styles.videoContainer}>
+       <div className={styles.VideoContainer}>
          <iframe id="ytplayer" className='rounded'
           src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
           frameBorder="0" allowFullScreen>
