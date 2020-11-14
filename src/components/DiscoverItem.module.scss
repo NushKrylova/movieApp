@@ -5,4 +5,21 @@
 .UserScore{
     position: absolute;
     top: -42px;
-  }
+}
+.ImageContainer {
+  overflow: hidden;
+  position: relative;
+  width:100%;
+}
+.ImageContainer::after {
+  padding-top: 150.25%;
+  display: block;
+  content: '';
+}
+.Image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

@@ -13,7 +13,9 @@ function DiscoverItem(props: DiscoverItemProps) {
     return (
         <Card className="h-100">
             <Link to={"/" + props.movie.id}>
-                <Card.Img className='border-bottom' variant="top" src={props.movie.poster_path} />
+                <div className={styles.ImageContainer}>
+                <Card.Img className={`border-bottom ${styles.Image}`} variant="top" src={props.movie.poster_path} />
+                </div>
             </Link>
             <Card.Body>
                 <div className={styles.UserScoreContainer}>
