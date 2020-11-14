@@ -18,22 +18,22 @@ function FavoriteItem(props: FavoriteItemProps) {
 
     return (
         <Card className="mb-3">
-            <Row style={{ height: '210px' }} noGutters>
-                <Col style={{ flex: '0 0 calc(210px / 1.5)' }} className='h-100'>
+            <Row noGutters >
+                <Col xs={5} style={{ flex: '0 0 calc(220px / 1.5)' }}>
                     <Link to={"/" + props.movie.id}>
-                        <Card.Img className={`h-100 border-right ${styles.NoRadius}`} src={props.movie.poster_path} />
+                        <Card.Img className={`border-right img-fluid ${styles.Image}`} src={props.movie.poster_path} />
                     </Link>
                 </Col>
-                <Col>
-                    <Card.Body className='p-3'>
+                <Col xs={7} sm={8} md={9} lg={10}>
+                    <Card.Body className='p-3 h-100'>
                         <div className='d-flex'>
                             <UserScore vote={props.movie.vote_average} size="md" />
                             <div className='mx-2 my-auto'>
-                                <Card.Title className='mb-0'>{props.movie.title}</Card.Title>
-                                <p className='text-muted'>{formatDate(props.movie.release_date, 'short')}</p>
+                                <Card.Title className={`mb-0 ${styles.Truncate1}`} title={props.movie.title}>{props.movie.title}</Card.Title>
+                                <p className={`text-muted ${styles.Truncate1}`} title={formatDate(props.movie.release_date, 'short')}>{formatDate(props.movie.release_date, 'short')}</p>
                             </div>
                         </div>
-                        <p className={`m-0 mb-2 ${styles.Trancate}`}>{props.movie.overview}</p>
+                        <p className={`m-0 mb-2 ${styles.Truncate}`}title={props.movie.overview}>{props.movie.overview}</p>
                         <Button variant="primary" onClick={() => handleClick(props.movie.id)} className={`pl-0 ${styles.IconButton}`}>
                             <i className={`fas fa-star fa-lg mr-2 ${styles.Selected}`}></i>Favorite
                       </Button>
@@ -41,7 +41,6 @@ function FavoriteItem(props: FavoriteItemProps) {
                 </Col>
             </Row>
         </Card>
-
     )
 }
 export default FavoriteItem;

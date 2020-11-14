@@ -6,6 +6,7 @@
   pointer-events: none;
   border: 3px solid $my-yellow !important;
   position: relative;
+  min-width: 43px;
 }
 .medium {
   width: 54px;
@@ -13,6 +14,7 @@
   pointer-events: none;
   border: 3px solid $my-yellow !important;
   position: relative;
+  min-width: 54px;
 }
 .small:before {
   border: 2px solid theme-color("dark");

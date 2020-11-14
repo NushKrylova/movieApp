@@ -62,7 +62,7 @@ function Details() {
     setPlay(!play)
   }
 
-  let iconColor = fav ? styles.selected : styles.iconButton;
+  let iconColor = fav ? styles.Selected : styles.IconButton;
 
   if (!movie) { return null }
 
@@ -78,17 +78,17 @@ function Details() {
       <div style={divStyle}>
         <div className={styles.Gradient}>
           <Container >
-            <Row style={{ height: '450px', color: 'white' }}>
+            <Row >
               <Col sm={3} className='m-auto'>
-                <img className='w-100 rounded' src={movie.poster_path}></img>
+                <img className='w-100 rounded my-4' src={movie.poster_path}></img>
               </Col>
               <Col className='m-auto'>
-                <h3 >{movie.title}</h3>
+                <h3 className='mt-3'>{movie.title}</h3>
                 <div className={`d-inline-flex ${styles.Dot}`}>
                   <span >{formatDate(movie.release_date)}</span>
                   <p className={`ml-3 ${styles.Dot}`}>{movie.vote_average}</p>
-                  <p className={`ml-3 ${styles.Dot}`}>{movie.genres.map(g => g.name).join(', ')}</p>
-                  <p className={`ml-3 ${styles.Dot}`}>{formatTime(movie.runtime)}</p>
+                  <p className={`ml-3 ${styles.Dot} ${styles.Truncate1}`} title={movie.genres.map(g => g.name).join(', ')}>{movie.genres.map(g => g.name).join(', ')}</p>
+                  <p className={`ml-3 ${styles.Dot} ${styles.Truncate1}`} title={formatTime(movie.runtime)}>{formatTime(movie.runtime)}</p>
                 </div>
                 <div>
                   <div className='d-inline-flex my-1'>
@@ -112,13 +112,14 @@ function Details() {
         <h5 className='my-2'>Trailer</h5>
       </Container>
       <Container>
-        <iframe id="ytplayer" className='rounded' width='1100px' height='600px'
+       <div className={styles.VideoContainer}>
+         <iframe id="ytplayer" className='rounded'
           src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
-          frameBorder="0">
-        </iframe>
-      </Container>
+          frameBorder="0" allowFullScreen>
+         </iframe>
+        </div>
+        </Container >
     </Container >
-
   );
 }
 export default Details;

@@ -1,23 +1,32 @@
-@import "../variables.scss";
+@import '../variables.scss';
 
-.IconButton{
+.IconButton {
   background-color: transparent !important;
   border: none !important;
   color: inherit !important;
 }
-.Selected{
+.Selected {
   background-color: transparent !important;
   border: none !important;
-  color: theme-color("primary");
+  color: theme-color('primary');
 }
-.Trancate {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.Truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.NoRadius {
+.Truncate1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.Image {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
+  object-fit: contain;
+  height: 100%;
 }
