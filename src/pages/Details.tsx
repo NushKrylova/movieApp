@@ -87,8 +87,8 @@ function Details() {
                 <div className={`d-inline-flex ${styles.Dot}`}>
                   <span >{formatDate(movie.release_date)}</span>
                   <p className={`ml-3 ${styles.Dot}`}>{movie.vote_average}</p>
-                  <p className={`ml-3 ${styles.Dot} ${styles.Truncate1}`}>{movie.genres.map(g => g.name).join(', ')}</p>
-                  <p className={`ml-3 ${styles.Dot} ${styles.Truncate1}`}>{formatTime(movie.runtime)}</p>
+                  <p className={`ml-3 ${styles.Dot} ${styles.Truncate1}`} title={movie.genres.map(g => g.name).join(', ')}>{movie.genres.map(g => g.name).join(', ')}</p>
+                  <p className={`ml-3 ${styles.Dot} ${styles.Truncate1}`} title={formatTime(movie.runtime)}>{formatTime(movie.runtime)}</p>
                 </div>
                 <div>
                   <div className='d-inline-flex my-1'>

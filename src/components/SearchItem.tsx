@@ -21,7 +21,7 @@ function SearchItem(props: SearchItemProps) {
                     <Card.Body className="p-3">
                         <Card.Title className='m-0'>{props.movie.title}</Card.Title>
                         <p className="text-muted">{formatDate(props.movie.release_date, 'long')}</p>
-                        <p className={`m-0 ${styles.Truncate}`}>{props.movie.overview}</p>
+                        <p className={`m-0 ${styles.Truncate}`} title={props.movie.overview}>{props.movie.overview}</p>
                     </Card.Body></Col>
             </Row>
         </Card>
