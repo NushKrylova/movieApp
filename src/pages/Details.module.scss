@@ -31,18 +31,20 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.Trailer{
-  min-height: 600px;
+.videoContainer {
+  overflow: hidden;
+  position: relative;
+  width:100%;
 }
-
-@include media-breakpoint-up(xs){
-  .Trailer{
-    min-height: 162px;
-  }
+.videoContainer::after {
+  padding-top: 56.25%;
+  display: block;
+  content: '';
 }
-
-@include media-breakpoint-up(md){
-  .Trailer{
-    min-height: 301px;
-  }
+.videoContainer iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

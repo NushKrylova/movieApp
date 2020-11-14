@@ -112,15 +112,14 @@ function Details() {
         <h5 className='my-2'>Trailer</h5>
       </Container>
       <Container>
-      <Row className={`px-3 ${styles.Trailer}`}>
-        <iframe id="ytplayer" className='rounded' width='100%'
+       <div className={styles.videoContainer}>
+         <iframe id="ytplayer" className='rounded'
           src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
-          frameBorder="0">
-        </iframe>
-        </Row>
-      </Container>
+          frameBorder="0" allowFullScreen>
+         </iframe>
+        </div>
+        </Container >
     </Container >
-
   );
 }
 export default Details;
