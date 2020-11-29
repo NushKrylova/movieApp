@@ -1,19 +1,23 @@
 @import "../variables.scss";
 
-.Gradient{
-  background-image: linear-gradient(to right, rgba(14.51%, 18.43%, 18.43%, 1.00), rgba(23.14%, 23.92%, 23.92%, 0.65));
+.Gradient {
+  background-image: linear-gradient(
+    to right,
+    rgba(14.51%, 18.43%, 18.43%, 1),
+    rgba(23.14%, 23.92%, 23.92%, 0.65)
+  );
   display: flex;
   justify-content: center;
   color: color("white");
 }
-.IconButton{
+.IconButton {
   background-color: transparent !important;
   border: none !important;
 }
-.Selected{
+.Selected {
   background-color: transparent !important;
   border: none !important;
-  color: theme-color("primary"); 
+  color: theme-color("primary");
 }
 .Truncate1 {
   display: -webkit-box;
@@ -25,12 +29,12 @@
 .VideoContainer {
   overflow: hidden;
   position: relative;
-  width:100%;
+  width: 100%;
 }
 .VideoContainer::after {
   padding-top: 56.25%;
   display: block;
-  content: '';
+  content: "";
 }
 .VideoContainer iframe {
   position: absolute;

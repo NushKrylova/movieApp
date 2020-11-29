@@ -1,20 +1,20 @@
-.UserScoreContainer{
-    position: relative;
-    margin-bottom: 11px;
+.UserScoreContainer {
+  position: relative;
+  margin-bottom: 11px;
 }
-.UserScore{
-    position: absolute;
-    top: -42px;
+.UserScore {
+  position: absolute;
+  top: -42px;
 }
 .ImageContainer {
   overflow: hidden;
   position: relative;
-  width:100%;
+  width: 100%;
 }
 .ImageContainer::after {
   padding-top: 150.25%;
   display: block;
-  content: '';
+  content: "";
 }
 .Image {
   position: absolute;

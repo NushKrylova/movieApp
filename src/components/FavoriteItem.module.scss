@@ -1,4 +1,4 @@
-@import '../variables.scss';
+@import "../variables.scss";
 
 .IconButton {
   background-color: transparent !important;
@@ -8,7 +8,7 @@
 .Selected {
   background-color: transparent !important;
   border: none !important;
-  color: theme-color('primary');
+  color: theme-color("primary");
 }
 .Truncate {
   display: -webkit-box;

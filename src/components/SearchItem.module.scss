@@ -1,13 +1,13 @@
 .Truncate {
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .Image {
-    border-top-right-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-    object-fit: cover;
-    height: 100%;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  object-fit: cover;
+  height: 100%;
 }

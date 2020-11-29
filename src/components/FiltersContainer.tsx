@@ -1,38 +1,40 @@
-import React from 'react';
-import Sort from './Sort';
-import FilterGenres from './FilterGenres';
-import FilterReleaseDates from './FilterReleaseDates';
-import FilterUserScore from './FilterUserScore';
-import Button from 'react-bootstrap/Button';
-import { Form } from 'react-bootstrap';
+import React from "react";
+import Sort from "./Sort";
+import FilterGenres from "./FilterGenres";
+import FilterReleaseDates from "./FilterReleaseDates";
+import FilterUserScore from "./FilterUserScore";
+import Button from "react-bootstrap/Button";
+import { Form } from "react-bootstrap";
 
 type FiltersContainerProps = {
-    searchClicked: (formData: FormData) => void
-}
+  searchClicked: (formData: FormData) => void;
+};
 
 function FiltersContainer(props: FiltersContainerProps) {
-    function handleClick(e: React.FormEvent<HTMLFormElement>) {
-        e.preventDefault();
-        let formData = new FormData(e.currentTarget);
-        props.searchClicked(formData);
-        // for (var key of formData.keys()) {
-        //     console.log(">>>", key, ",", formData.get(key));
-        // }
-    }
-    return (
-        <Form onSubmit={handleClick} className='pl-0 pt-1'>
-            <Sort />
-            <Form.Group controlId="Filters" className='p-3 border rounded'>
-                    <p className="h4">Filters</p>
-                    <hr />
-                    <FilterGenres />
-                    <hr />
-                    <FilterReleaseDates />
-                    <hr />
-                    <FilterUserScore />
-            </Form.Group>
-                <Button variant="primary" name="search" type="submit" block >Search</Button>
-        </Form>
-    )
+  function handleClick(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    let formData = new FormData(e.currentTarget);
+    props.searchClicked(formData);
+    // for (var key of formData.keys()) {
+    //     console.log(">>>", key, ",", formData.get(key));
+    // }
+  }
+  return (
+    <Form onSubmit={handleClick} className="pl-0 pt-1">
+      <Sort />
+      <Form.Group controlId="Filters" className="p-3 border rounded">
+        <p className="h4">Filters</p>
+        <hr />
+        <FilterGenres />
+        <hr />
+        <FilterReleaseDates />
+        <hr />
+        <FilterUserScore />
+      </Form.Group>
+      <Button variant="primary" name="search" type="submit" block>
+        Search
+      </Button>
+    </Form>
+  );
 }
 export default FiltersContainer;
