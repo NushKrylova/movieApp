@@ -1,7 +1,7 @@
 import React from "react";
-import { formatDate, Movie } from "../api/tmdb";
 import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
+import { formatDate, Movie } from "../api/tmdb";
 
 type PopularItemProps = {
   movie: Movie;
@@ -10,7 +10,7 @@ type PopularItemProps = {
 function PopularItem(props: PopularItemProps) {
   return (
     <Card className="h-100">
-      <Link to={"/" + props.movie.id}>
+      <Link to={`/${props.movie.id}`}>
         <Card.Img variant="top" src={props.movie.poster_path} />
       </Link>
       <Card.Body>

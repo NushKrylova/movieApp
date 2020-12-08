@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
 import SearchItem from "../components/SearchItem";
 import { searchMovies, parseListOfMovies, Movie } from "../api/tmdb";
-import { Container } from "react-bootstrap";
 
 type SearchProps = {
   searchQuery: string;
@@ -19,7 +19,7 @@ function Search(props: SearchProps) {
     const searchQuery =
       props.searchQuery || decodeURIComponent(queryParamValue);
     searchMovies(searchQuery).then((data) => {
-      let moviePreviewResults = parseListOfMovies(data.results);
+      const moviePreviewResults = parseListOfMovies(data.results);
       setMovies(moviePreviewResults);
       setLoader(true);
     });

@@ -5,13 +5,13 @@ function FilterUserScore() {
   const [value, setValue] = useState(10);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setValue(parseInt(e.target.value));
+    setValue(parseInt(e.target.value, 10));
   }
   return (
     <Form.Group controlId="UserScore">
       <Form.Label>User Score</Form.Label>
       <Form.Control
-        as={"input"}
+        as="input"
         name="slider"
         list="ticks"
         type="range"

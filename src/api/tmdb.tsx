@@ -1,3 +1,35 @@
+export type Movie = {
+  id: number;
+  poster_path: string;
+  vote_average: number;
+  title: string;
+  release_date: string;
+  overview: string;
+  backdrop_path: string;
+};
+
+export type Genre = {
+  id: number;
+  name: string;
+};
+
+export type MovieDetails = {
+  id: number;
+  poster_path: string;
+  vote_average: number;
+  title: string;
+  release_date: string;
+  overview: string;
+  backdrop_path: string;
+  genres: Genre[];
+  runtime: number;
+};
+
+export type Video = {
+  site: string;
+  key: string;
+};
+
 export async function getPopular() {
   return fetch(
     "https://api.themoviedb.org/3/movie/popular?api_key=f5d93c41702a89380fdb44fcdc97f9f4"
@@ -30,17 +62,15 @@ export async function getMovieDetails(id: number) {
 
 export async function discoverMovies(additioanlQuery: string) {
   return fetch(
-    "https://api.themoviedb.org/3/discover/movie?api_key=f5d93c41702a89380fdb44fcdc97f9f4&certification_country=US&include_adult=false&include_video=false&with_original_language=en" +
-      additioanlQuery
+    `https://api.themoviedb.org/3/discover/movie?api_key=f5d93c41702a89380fdb44fcdc97f9f4&certification_country=US&include_adult=false&include_video=false&with_original_language=en${additioanlQuery}`
   ).then((response) => response.json());
 }
 
 export async function searchMovies(searchQuery: string) {
   const response = await fetch(
-    "https://api.themoviedb.org/3/search/movie?api_key=f5d93c41702a89380fdb44fcdc97f9f4&language=en-US&page=1&include_adult=false&query=" +
-      searchQuery
+    `https://api.themoviedb.org/3/search/movie?api_key=f5d93c41702a89380fdb44fcdc97f9f4&language=en-US&page=1&include_adult=false&query=${searchQuery}`
   );
-  return await response.json();
+  return response.json();
 }
 
 export async function getVideo(id: number) {
@@ -52,26 +82,20 @@ export async function getVideo(id: number) {
 function replaceNoPoster(poster_path: string) {
   if (!poster_path) {
     return "/movieApp/assets/noPoster.svg";
-  } else {
-    return "https://image.tmdb.org/t/p/w500/" + poster_path;
   }
+  return `https://image.tmdb.org/t/p/w500/${poster_path}`;
 }
 
 export function parseListOfMovies(data: Movie[]) {
-  let moviePreviewResults: Movie[] = [];
-  data.map((item) => {
-    let moviePreview = {
-      id: item.id,
-      poster_path: replaceNoPoster(item.poster_path),
-      vote_average: item.vote_average,
-      title: item.title,
-      release_date: item.release_date,
-      overview: item.overview,
-      backdrop_path: "https://image.tmdb.org/t/p/w1280/" + item.backdrop_path,
-    };
-    moviePreviewResults.push(moviePreview);
-  });
-  return moviePreviewResults;
+  return data.map((item) => ({
+    id: item.id,
+    poster_path: replaceNoPoster(item.poster_path),
+    vote_average: item.vote_average,
+    title: item.title,
+    release_date: item.release_date,
+    overview: item.overview,
+    backdrop_path: `https://image.tmdb.org/t/p/w1280/${item.backdrop_path}`,
+  }));
 }
 
 export function parseMovie(data: MovieDetails) {
@@ -82,7 +106,7 @@ export function parseMovie(data: MovieDetails) {
     vote_average: data.vote_average,
     release_date: data.release_date,
     overview: data.overview,
-    backdrop_path: "https://image.tmdb.org/t/p/original/" + data.backdrop_path,
+    backdrop_path: `https://image.tmdb.org/t/p/original/${data.backdrop_path}`,
     genres: data.genres,
     runtime: data.runtime,
   };
@@ -97,39 +121,7 @@ export function formatDate(date: string, monthFormat?: string) {
 }
 
 export function formatTime(value: number) {
-  let hours = Math.floor(value / 60);
-  let min = value - hours * 60;
-  return hours + "h " + min + "m";
+  const hours = Math.floor(value / 60);
+  const min = value - hours * 60;
+  return `${hours}h ${min}m`;
 }
-
-export type Movie = {
-  id: number;
-  poster_path: string;
-  vote_average: number;
-  title: string;
-  release_date: string;
-  overview: string;
-  backdrop_path: string;
-};
-
-export type MovieDetails = {
-  id: number;
-  poster_path: string;
-  vote_average: number;
-  title: string;
-  release_date: string;
-  overview: string;
-  backdrop_path: string;
-  genres: Genre[];
-  runtime: number;
-};
-
-export type Genre = {
-  id: number;
-  name: string;
-};
-
-export type Video = {
-  site: string;
-  key: string;
-};

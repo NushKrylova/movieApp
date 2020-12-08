@@ -14,7 +14,7 @@ function FilterGenres() {
       <Form.Check
         type="checkbox"
         value={el.id}
-        name={"genres" + el.name}
+        name={`genres${el.name}`}
         id={el.id.toString()}
         label={el.name}
       />

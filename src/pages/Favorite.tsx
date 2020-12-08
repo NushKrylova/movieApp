@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
 import { FAV_MOVIES } from "../constants";
 import FavoriteItem from "../components/FavoriteItem";
 import { getMovieDetails, Movie, parseMovie } from "../api/tmdb";
-import { Container } from "react-bootstrap";
 
 function Favorite() {
   const [favMovies, setFavMovies] = useState<Movie[]>([]);
@@ -11,7 +11,7 @@ function Favorite() {
   useEffect(() => {
     const value = localStorage.getItem(FAV_MOVIES)?.toString() || "";
     if (value !== "") {
-      let ids = value.split(",");
+      const ids = value.split(",");
       const favMovieData = ids.map((id) =>
         getMovieDetails(parseInt(id)).then((data) => parseMovie(data))
       );
@@ -25,9 +25,9 @@ function Favorite() {
   }, []);
 
   function handleUnFav(movieId: number) {
-    let currentLocalStorage =
+    const currentLocalStorage =
       localStorage.getItem(FAV_MOVIES)?.toString() || "";
-    let newLocalStorage = currentLocalStorage
+    const newLocalStorage = currentLocalStorage
       .split(",")
       .filter((el) => el !== movieId.toString())
       .join(",");
@@ -41,7 +41,7 @@ function Favorite() {
   ));
 
   if (favMovies.length === 0 && loader) {
-    return <p>You don't have favorites</p>;
+    return <p>You do not have favorites</p>;
   }
   return (
     <Container>

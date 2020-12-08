@@ -7,16 +7,16 @@ type UserScoreProps = {
   className?: string;
 };
 
-function UserScore(props: UserScoreProps) {
+function UserScore({ size, vote, className = ""}: UserScoreProps):JSX.Element {
   let sizeStyle = `${styles.medium}`;
-  if (props.size === "sm") {
+  if (size === "sm") {
     sizeStyle = `btn-sm ${styles.small}`;
   }
   return (
     <Button
-      className={`rounded-circle btn-dark ${sizeStyle} ${props.className}`}
+      className={`rounded-circle btn-dark ${sizeStyle} ${className}`}
     >
-      {props.vote}
+      {vote}
     </Button>
   );
 }

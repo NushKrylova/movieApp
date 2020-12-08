@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Button from "react-bootstrap/Button";
+import { Container, Row, Col } from "react-bootstrap";
 import FiltersContainer from "../components/FiltersContainer";
 import TopRatedResultsItem from "../components/DiscoverItem";
 import {
@@ -7,8 +9,6 @@ import {
   parseListOfMovies,
   Movie,
 } from "../api/tmdb";
-import Button from "react-bootstrap/Button";
-import { Container, Row, Col } from "react-bootstrap";
 
 function Discover() {
   const [searchState, setSearchState] = useState<FormData>();
@@ -25,26 +25,26 @@ function Discover() {
     let fetchPromise;
     if (searchState) {
       const data = splitFormData(searchState);
-      const sort = data.sort;
-      const genres = data.genres;
-      const releaseDatesFrom = data.releaseDatesFrom;
-      const releaseDatesTo = data.releaseDatesTo;
-      const minUserScore = data.minUserScore;
+      const {sort} = data;
+      const {genres} = data;
+      const {releaseDatesFrom} = data;
+      const {releaseDatesTo} = data;
+      const {minUserScore} = data;
 
-      additionalQuery = "&vote_average.lte=" + minUserScore;
+      additionalQuery = `&vote_average.lte=${minUserScore}`;
       if (sort.length > 0) {
-        additionalQuery = "&sort_by=" + sort;
+        additionalQuery = `&sort_by=${  sort}`;
       }
       if (genres.length > 0) {
-        additionalQuery = additionalQuery + "&with_genres=" + genres.toString();
+        additionalQuery = `${additionalQuery}&with_genres=${genres.toString()}`;
       }
       if (releaseDatesFrom.length > 0) {
         additionalQuery =
-          additionalQuery + "&primary_release_date.gte=" + releaseDatesFrom;
+          `${additionalQuery}&primary_release_date.gte=${releaseDatesFrom}`;
       }
       if (releaseDatesTo.length > 0) {
         additionalQuery =
-          additionalQuery + "&primary_release_date.lte=" + releaseDatesTo;
+          `${additionalQuery}&primary_release_date.lte=${releaseDatesTo}`;
       }
       fetchPromise = discoverMovies(additionalQuery);
     } else {
@@ -52,15 +52,15 @@ function Discover() {
     }
 
     fetchPromise.then((data) => {
-      let moviePreviewResults = parseListOfMovies(data.results);
+      const moviePreviewResults = parseListOfMovies(data.results);
       setMovies(moviePreviewResults);
     });
   }, [searchState]);
 
   useEffect(() => {
     if (page > 1) {
-      discoverMovies(additionalQuery + "&page=" + page).then((data) => {
-        let moviePreviewResults = parseListOfMovies(data.results);
+      discoverMovies(`${additionalQuery}&page=${page}`).then((data) => {
+        const moviePreviewResults = parseListOfMovies(data.results);
         setMovies([...movies, ...moviePreviewResults]);
       });
     }
@@ -71,7 +71,7 @@ function Discover() {
       <TopRatedResultsItem movie={el} />
     </Col>
   ));
-  let title = searchState ? "Search Results" : "Top Rated";
+  const title = searchState ? "Search Results" : "Top Rated";
 
   return (
     <Container>
@@ -101,14 +101,14 @@ function Discover() {
 export default Discover;
 
 function splitFormData(data: FormData) {
-  let result: FormFields = {
+  const result: FormFields = {
     sort: "",
     genres: [],
     releaseDatesFrom: "",
     releaseDatesTo: "",
     minUserScore: 10,
   };
-  for (var key of data.keys()) {
+  for (const key of data.keys()) {
     const value = data.get(key)?.toString() || "";
     if (key === "sort") {
       result.sort = value;

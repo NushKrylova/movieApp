@@ -15,7 +15,7 @@ import { FAV_MOVIES } from "../constants";
 import styles from "./Details.module.scss";
 
 function Details() {
-  let { id } = useParams<{ id?: string }>();
+  const { id } = useParams<{ id?: string }>();
   const [movie, setMovie] = useState<MovieDetails>();
   const [fav, setFav] = useState(false);
   const [trailer, setTrailer] = useState();
@@ -24,9 +24,9 @@ function Details() {
   useEffect(() => {
     const movieId = id?.toString() || "";
 
-    let ls = localStorage.getItem(FAV_MOVIES);
+    const ls = localStorage.getItem(FAV_MOVIES);
     if (ls) {
-      let faved = ls.split(",").find((el) => el === movieId);
+      const faved = ls.split(",").find((el) => el === movieId);
       if (faved) {
         setFav(true);
       } else {
@@ -70,14 +70,14 @@ function Details() {
     setPlay(!play);
   }
 
-  let iconColor = fav ? styles.Selected : styles.IconButton;
+  const iconColor = fav ? styles.Selected : styles.IconButton;
 
   if (!movie) {
     return null;
   }
 
   const divStyle = {
-    backgroundImage: "url(" + movie.backdrop_path + ")",
+    backgroundImage: `url(${movie.backdrop_path})`,
   };
 
   return (
@@ -91,9 +91,10 @@ function Details() {
             <Row>
               <Col sm={3} className="m-auto">
                 <img
+                  alt="poster"
                   className="w-100 rounded my-4"
                   src={movie.poster_path}
-                ></img>
+                />
               </Col>
               <Col className="m-auto">
                 <h3 className="mt-3">{movie.title}</h3>
@@ -128,7 +129,7 @@ function Details() {
                       onClick={() => handleClick(movie.id)}
                       className={`ml-4 ${styles.IconButton}`}
                     >
-                      <i className={`fas fa-star fa-lg mr-2 ${iconColor}`}></i>
+                      <i className={`fas fa-star fa-lg mr-2 ${iconColor}`} />
                       Favorites
                     </Button>
                   </div>
@@ -151,7 +152,7 @@ function Details() {
             src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
             frameBorder="0"
             allowFullScreen
-          ></iframe>
+          />
         </div>
       </Container>
     </Container>
@@ -167,11 +168,11 @@ class KeyListStorage {
   }
 
   add(value: string) {
-    let currentValue = localStorage.getItem(this.key);
+    const currentValue = localStorage.getItem(this.key);
 
     let lsNew;
     if (currentValue) {
-      let values = currentValue.split(",");
+      const values = currentValue.split(",");
       values.push(value);
       lsNew = values.join(",");
     } else {
@@ -181,10 +182,10 @@ class KeyListStorage {
   }
 
   remove(value: string) {
-    let currentValue = localStorage.getItem(this.key) || "";
-    let values = currentValue.split(",");
+    const currentValue = localStorage.getItem(this.key) || "";
+    const values = currentValue.split(",");
 
-    let newValue = values
+    const newValue = values
       .filter((el: string) => el !== value.toString())
       .join(",");
     localStorage.setItem(this.key, newValue);

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import Banner from "../components/Banner";
 import PopularItem from "../components/PopularItem";
 import { getPopular, Movie, parseListOfMovies } from "../api/tmdb";
-import { Col, Container, Row } from "react-bootstrap";
 
 function Home() {
   const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
     getPopular().then((data) => {
-      let results = parseListOfMovies(data.results);
+      const results = parseListOfMovies(data.results);
       setMovies(results);
     });
   }, []);

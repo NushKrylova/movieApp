@@ -1,10 +1,10 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
+import { Form } from "react-bootstrap";
 import Sort from "./Sort";
 import FilterGenres from "./FilterGenres";
 import FilterReleaseDates from "./FilterReleaseDates";
 import FilterUserScore from "./FilterUserScore";
-import Button from "react-bootstrap/Button";
-import { Form } from "react-bootstrap";
 
 type FiltersContainerProps = {
   searchClicked: (formData: FormData) => void;
@@ -13,7 +13,7 @@ type FiltersContainerProps = {
 function FiltersContainer(props: FiltersContainerProps) {
   function handleClick(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    let formData = new FormData(e.currentTarget);
+    const formData = new FormData(e.currentTarget);
     props.searchClicked(formData);
     // for (var key of formData.keys()) {
     //     console.log(">>>", key, ",", formData.get(key));

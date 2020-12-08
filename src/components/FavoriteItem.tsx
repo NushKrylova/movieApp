@@ -1,7 +1,7 @@
 import React from "react";
-import { formatDate, Movie } from "../api/tmdb";
 import { Link } from "react-router-dom";
 import { Card, Button, Row, Col } from "react-bootstrap";
+import { formatDate, Movie } from "../api/tmdb";
 import styles from "./FavoriteItem.module.scss";
 import UserScore from "./UserScore";
 
@@ -19,7 +19,7 @@ function FavoriteItem(props: FavoriteItemProps) {
     <Card className="mb-3">
       <Row noGutters>
         <Col xs={5} style={{ flex: "0 0 calc(220px / 1.5)" }}>
-          <Link to={"/" + props.movie.id}>
+          <Link to={`/${  props.movie.id}`}>
             <Card.Img
               className={`border-right img-fluid ${styles.Image}`}
               src={props.movie.poster_path}
@@ -56,7 +56,7 @@ function FavoriteItem(props: FavoriteItemProps) {
               onClick={() => handleClick(props.movie.id)}
               className={`pl-0 ${styles.IconButton}`}
             >
-              <i className={`fas fa-star fa-lg mr-2 ${styles.Selected}`}></i>
+              <i className={`fas fa-star fa-lg mr-2 ${styles.Selected}`} />
               Favorite
             </Button>
           </Card.Body>

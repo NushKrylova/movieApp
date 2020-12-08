@@ -1,7 +1,7 @@
 import React from "react";
-import { formatDate, Movie } from "../api/tmdb";
 import { Link } from "react-router-dom";
 import { Card, Col, Row } from "react-bootstrap";
+import { formatDate, Movie } from "../api/tmdb";
 import styles from "./SearchItem.module.scss";
 
 type SearchItemProps = {
@@ -17,7 +17,7 @@ function SearchItem(props: SearchItemProps) {
           className="my-auto"
           style={{ flex: "0 0 calc(200px / 1.5)", height: "200px" }}
         >
-          <Link to={"/" + props.movie.id} className="d-flex h-100 border-right">
+          <Link to={`/${props.movie.id}`} className="d-flex h-100 border-right">
             <Card.Img
               className={`img-fluid ${styles.Image}`}
               src={props.movie.poster_path}

@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { getNowPlaying, Movie, parseListOfMovies } from "../api/tmdb";
+import React, { ReactElement, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
+import { getNowPlaying, Movie, parseListOfMovies } from "../api/tmdb";
 
-function Banner() {
+function Banner(): ReactElement {
   const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
     getNowPlaying().then((data) => {
-      let topFive = data.results.slice(0, 3);
-      let results = parseListOfMovies(topFive);
+      const topFive = data.results.slice(0, 3);
+      const results = parseListOfMovies(topFive);
       setMovies(results);
     });
   }, []);
 
   const bannerItems = movies.map((el) => (
     <Carousel.Item key={el.id}>
-      <Link to={"/" + el.id}>
+      <Link to={`/${  el.id}`}>
         <img
           className="d-block w-100 rounded"
           src={el.backdrop_path}

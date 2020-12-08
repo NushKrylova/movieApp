@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Switch, Route, HashRouter } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Discover from "./pages/Discover";
@@ -6,14 +7,12 @@ import Details from "./pages/Details";
 import Search from "./pages/Search";
 import Favorite from "./pages/Favorite";
 
-import { Switch, Route, HashRouter } from "react-router-dom";
-
 function App() {
   const [searchState, setSearchState] = useState<string>("");
 
   return (
     <HashRouter>
-      <Header searchRequested={setSearchState}></Header>
+      <Header searchRequested={setSearchState} />
       <Switch>
         <Route path="/favorite">
           <Favorite />

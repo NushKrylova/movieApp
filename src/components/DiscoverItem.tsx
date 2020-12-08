@@ -1,7 +1,7 @@
 import React from "react";
-import { formatDate, Movie } from "../api/tmdb";
 import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
+import { formatDate, Movie } from "../api/tmdb";
 import UserScore from "./UserScore";
 import styles from "./DiscoverItem.module.scss";
 
@@ -12,7 +12,7 @@ type DiscoverItemProps = {
 function DiscoverItem(props: DiscoverItemProps) {
   return (
     <Card className="h-100">
-      <Link to={"/" + props.movie.id}>
+      <Link to={`/${props.movie.id}`}>
         <div className={styles.ImageContainer}>
           <Card.Img
             className={`border-bottom ${styles.Image}`}

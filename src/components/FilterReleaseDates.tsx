@@ -14,7 +14,7 @@ function FilterReleaseDates() {
             type="date"
             style={{ fontSize: "15px" }}
             name="from"
-          ></FormControl>
+           />
         </Col>
       </Form.Group>
       <Form.Group as={Row} controlId="to">
@@ -26,7 +26,7 @@ function FilterReleaseDates() {
             type="date"
             style={{ fontSize: "15px" }}
             name="to"
-          ></FormControl>
+           />
         </Col>
       </Form.Group>
     </Form.Group>
