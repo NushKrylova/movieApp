@@ -9,15 +9,16 @@ type DiscoverItemProps = {
   movie: Movie;
 };
 
-function DiscoverItem(props: DiscoverItemProps) {
+function DiscoverItem(props: DiscoverItemProps): JSX.Element {
+  const { movie } = props;
   return (
     <Card className="h-100">
-      <Link to={`/${props.movie.id}`}>
+      <Link to={`/${movie.id}`}>
         <div className={styles.ImageContainer}>
           <Card.Img
             className={`border-bottom ${styles.Image}`}
             variant="top"
-            src={props.movie.poster_path}
+            src={movie.poster_path}
           />
         </div>
       </Link>
@@ -25,13 +26,13 @@ function DiscoverItem(props: DiscoverItemProps) {
         <div className={styles.UserScoreContainer}>
           <UserScore
             className={styles.UserScore}
-            vote={props.movie.vote_average}
+            vote={movie.vote_average}
             size="sm"
           />
         </div>
-        <h6>{props.movie.title}</h6>
+        <h6>{movie.title}</h6>
         <p className="m-0 text-muted">
-          {formatDate(props.movie.release_date, "short")}
+          {formatDate(movie.release_date, "short")}
         </p>
       </Card.Body>
     </Card>

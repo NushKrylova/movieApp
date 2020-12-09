@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 
-function FilterUserScore() {
+function FilterUserScore(): JSX.Element {
   const [value, setValue] = useState(10);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {

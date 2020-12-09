@@ -7,16 +7,18 @@ type PopularItemProps = {
   movie: Movie;
 };
 
-function PopularItem(props: PopularItemProps) {
+function PopularItem(props: PopularItemProps): JSX.Element {
+  const { movie } = props;
+
   return (
     <Card className="h-100">
-      <Link to={`/${props.movie.id}`}>
-        <Card.Img variant="top" src={props.movie.poster_path} />
+      <Link to={`/${movie.id}`}>
+        <Card.Img variant="top" src={movie.poster_path} />
       </Link>
       <Card.Body>
-        <Card.Title>{props.movie.title}</Card.Title>
+        <Card.Title>{movie.title}</Card.Title>
         <Card.Subtitle className="text-muted">
-          {formatDate(props.movie.release_date, "short")}
+          {formatDate(movie.release_date, "short")}
         </Card.Subtitle>
       </Card.Body>
     </Card>

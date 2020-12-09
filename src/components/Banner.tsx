@@ -16,7 +16,7 @@ function Banner(): ReactElement {
 
   const bannerItems = movies.map((el) => (
     <Carousel.Item key={el.id}>
-      <Link to={`/${  el.id}`}>
+      <Link to={`/${el.id}`}>
         <img
           className="d-block w-100 rounded"
           src={el.backdrop_path}

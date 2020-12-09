@@ -7,7 +7,7 @@ type HeaderProps = {
   searchRequested: (value: string) => void;
 };
 
-function Header(props: HeaderProps) {
+function Header(props: HeaderProps): JSX.Element {
   const history = useHistory();
   function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter") {

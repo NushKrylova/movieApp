@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import { Genre, getGenres } from "../api/tmdb";
 
-function FilterGenres() {
+function FilterGenres(): JSX.Element {
   const [genres, setGenres] = useState<Genre[]>([]);
 
   useEffect(() => {

@@ -14,12 +14,43 @@ import UserScore from "../components/UserScore";
 import { FAV_MOVIES } from "../constants";
 import styles from "./Details.module.scss";
 
-function Details() {
+class KeyListStorage {
+  key: string;
+
+  constructor(key: string) {
+    this.key = key;
+  }
+
+  add(value: string) {
+    const currentValue = localStorage.getItem(this.key);
+
+    let lsNew;
+    if (currentValue) {
+      const values = currentValue.split(",");
+      values.push(value);
+      lsNew = values.join(",");
+    } else {
+      lsNew = value;
+    }
+    localStorage.setItem(this.key, lsNew);
+  }
+
+  remove(value: string) {
+    const currentValue = localStorage.getItem(this.key) || "";
+    const values = currentValue.split(",");
+
+    const newValue = values
+      .filter((el: string) => el !== value.toString())
+      .join(",");
+    localStorage.setItem(this.key, newValue);
+  }
+}
+
+function Details(): JSX.Element {
   const { id } = useParams<{ id?: string }>();
   const [movie, setMovie] = useState<MovieDetails>();
   const [fav, setFav] = useState(false);
-  const [trailer, setTrailer] = useState();
-  const [play, setPlay] = useState(false);
+  const [trailer, setTrailer] = useState<string>("");
 
   useEffect(() => {
     const movieId = id?.toString() || "";
@@ -49,7 +80,7 @@ function Details() {
   useEffect(() => {
     const movieId = id?.toString() || "";
 
-    getMovieDetails(parseInt(movieId)).then((data) =>
+    getMovieDetails(parseInt(movieId, 10)).then((data) =>
       setMovie(parseMovie(data))
     );
   }, [id]);
@@ -57,23 +88,20 @@ function Details() {
   useEffect(() => {
     const movieId = id?.toString() || "";
 
-    getVideo(parseInt(movieId)).then((data) =>
-      setTrailer(data.results.find((el: Video) => el.site === "YouTube").key)
-    );
+    getVideo(parseInt(movieId, 10)).then((data) => {
+      const video = data.results.find((el: Video) => el.site === "YouTube");
+      setTrailer(video ? video.key : ""); 
+    });
   }, [id]);
 
-  function handleClick(movieId: number) {
+  function handleClick() {
     setFav(!fav);
-  }
-
-  function handlePlay() {
-    setPlay(!play);
   }
 
   const iconColor = fav ? styles.Selected : styles.IconButton;
 
   if (!movie) {
-    return null;
+    return <div />;
   }
 
   const divStyle = {
@@ -126,7 +154,7 @@ function Details() {
                     </label>
                     <Button
                       variant="primary"
-                      onClick={() => handleClick(movie.id)}
+                      onClick={() => handleClick()}
                       className={`ml-4 ${styles.IconButton}`}
                     >
                       <i className={`fas fa-star fa-lg mr-2 ${iconColor}`} />
@@ -147,6 +175,7 @@ function Details() {
       <Container>
         <div className={styles.VideoContainer}>
           <iframe
+            title="ytplayer"
             id="ytplayer"
             className="rounded"
             src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
@@ -159,35 +188,3 @@ function Details() {
   );
 }
 export default Details;
-
-class KeyListStorage {
-  key: string;
-
-  constructor(key: string) {
-    this.key = key;
-  }
-
-  add(value: string) {
-    const currentValue = localStorage.getItem(this.key);
-
-    let lsNew;
-    if (currentValue) {
-      const values = currentValue.split(",");
-      values.push(value);
-      lsNew = values.join(",");
-    } else {
-      lsNew = value;
-    }
-    localStorage.setItem(this.key, lsNew);
-  }
-
-  remove(value: string) {
-    const currentValue = localStorage.getItem(this.key) || "";
-    const values = currentValue.split(",");
-
-    const newValue = values
-      .filter((el: string) => el !== value.toString())
-      .join(",");
-    localStorage.setItem(this.key, newValue);
-  }
-}

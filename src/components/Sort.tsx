@@ -1,7 +1,7 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 
-function Sort() {
+function Sort(): JSX.Element {
   return (
     <Form.Group controlId="sort" className="border rounded p-3">
       <p className="h4">Sort</p>

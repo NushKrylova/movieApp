@@ -18,6 +18,10 @@ module.exports = {
     "react/jsx-filename-extension": "off",
     "@typescript-eslint/no-use-before-define": "warn",
     "no-use-before-define": "off",
+    "no-restricted-syntax": "off",
+    "jsx-a11y/label-has-associated-control": [ 2, {
+      "controlComponents": ["UserScore"],
+    }],
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -25,7 +29,7 @@ module.exports = {
         "js": "never",
         "jsx": "never",
         "ts": "never",
-        "tsx": "never"
+        "tsx": "never",
       }
     ],
     "react/require-default-props": "off",
@@ -36,6 +40,6 @@ module.exports = {
         "paths": ["src"],
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
-    },
+    }
   },
 };

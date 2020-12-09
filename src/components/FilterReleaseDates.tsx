@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, FormControl, Row, Col } from "react-bootstrap";
 
-function FilterReleaseDates() {
+function FilterReleaseDates(): JSX.Element {
   return (
     <Form.Group controlId="ReleaseDates">
       <Form.Label>Release Dates</Form.Label>
@@ -10,11 +10,7 @@ function FilterReleaseDates() {
           from
         </Form.Label>
         <Col sm="10">
-          <FormControl
-            type="date"
-            style={{ fontSize: "15px" }}
-            name="from"
-           />
+          <FormControl type="date" style={{ fontSize: "15px" }} name="from" />
         </Col>
       </Form.Group>
       <Form.Group as={Row} controlId="to">
@@ -22,11 +18,7 @@ function FilterReleaseDates() {
           to
         </Form.Label>
         <Col sm="10">
-          <FormControl
-            type="date"
-            style={{ fontSize: "15px" }}
-            name="to"
-           />
+          <FormControl type="date" style={{ fontSize: "15px" }} name="to" />
         </Col>
       </Form.Group>
     </Form.Group>

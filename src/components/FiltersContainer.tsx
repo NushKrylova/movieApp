@@ -10,7 +10,7 @@ type FiltersContainerProps = {
   searchClicked: (formData: FormData) => void;
 };
 
-function FiltersContainer(props: FiltersContainerProps) {
+function FiltersContainer(props: FiltersContainerProps): JSX.Element {
   function handleClick(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);

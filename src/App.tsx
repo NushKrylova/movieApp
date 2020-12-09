@@ -7,7 +7,7 @@ import Details from "./pages/Details";
 import Search from "./pages/Search";
 import Favorite from "./pages/Favorite";
 
-function App() {
+function App(): JSX.Element {
   const [searchState, setSearchState] = useState<string>("");
 
   return (
@@ -23,7 +23,9 @@ function App() {
         <Route path="/movies">
           <Discover />
         </Route>
-        <Route path="/:id" children={<Details />} />
+        <Route path="/:id">
+          <Details />
+        </Route>
         <Route path="/">
           <Home />
         </Route>

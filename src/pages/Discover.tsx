@@ -10,7 +10,44 @@ import {
   Movie,
 } from "../api/tmdb";
 
-function Discover() {
+type FormFields = {
+  sort: string;
+  genres: number[];
+  releaseDatesFrom: string;
+  releaseDatesTo: string;
+  minUserScore: number;
+};
+
+function splitFormData(data: FormData) {
+  const result: FormFields = {
+    sort: "",
+    genres: [],
+    releaseDatesFrom: "",
+    releaseDatesTo: "",
+    minUserScore: 10,
+  };
+  for (const key of data.keys()) {
+    const value = data.get(key)?.toString() || "";
+    if (key === "sort") {
+      result.sort = value;
+    }
+    if (key.includes("genres")) {
+      result.genres.push(parseInt(value, 10));
+    }
+    if (key === "from") {
+      result.releaseDatesFrom = value;
+    }
+    if (key === "to") {
+      result.releaseDatesTo = value;
+    }
+    if (key === "slider") {
+      result.minUserScore = parseInt(value, 10);
+    }
+  }
+  return result;
+}
+
+function Discover(): JSX.Element {
   const [searchState, setSearchState] = useState<FormData>();
   const [movies, setMovies] = useState<Movie[]>([]);
   const [page, setPage] = useState(1);
@@ -25,26 +62,24 @@ function Discover() {
     let fetchPromise;
     if (searchState) {
       const data = splitFormData(searchState);
-      const {sort} = data;
-      const {genres} = data;
-      const {releaseDatesFrom} = data;
-      const {releaseDatesTo} = data;
-      const {minUserScore} = data;
+      const { sort } = data;
+      const { genres } = data;
+      const { releaseDatesFrom } = data;
+      const { releaseDatesTo } = data;
+      const { minUserScore } = data;
 
       additionalQuery = `&vote_average.lte=${minUserScore}`;
       if (sort.length > 0) {
-        additionalQuery = `&sort_by=${  sort}`;
+        additionalQuery = `&sort_by=${sort}`;
       }
       if (genres.length > 0) {
         additionalQuery = `${additionalQuery}&with_genres=${genres.toString()}`;
       }
       if (releaseDatesFrom.length > 0) {
-        additionalQuery =
-          `${additionalQuery}&primary_release_date.gte=${releaseDatesFrom}`;
+        additionalQuery = `${additionalQuery}&primary_release_date.gte=${releaseDatesFrom}`;
       }
       if (releaseDatesTo.length > 0) {
-        additionalQuery =
-          `${additionalQuery}&primary_release_date.lte=${releaseDatesTo}`;
+        additionalQuery = `${additionalQuery}&primary_release_date.lte=${releaseDatesTo}`;
       }
       fetchPromise = discoverMovies(additionalQuery);
     } else {
@@ -99,40 +134,3 @@ function Discover() {
   );
 }
 export default Discover;
-
-function splitFormData(data: FormData) {
-  const result: FormFields = {
-    sort: "",
-    genres: [],
-    releaseDatesFrom: "",
-    releaseDatesTo: "",
-    minUserScore: 10,
-  };
-  for (const key of data.keys()) {
-    const value = data.get(key)?.toString() || "";
-    if (key === "sort") {
-      result.sort = value;
-    }
-    if (key.includes("genres")) {
-      result.genres.push(parseInt(value, 10));
-    }
-    if (key === "from") {
-      result.releaseDatesFrom = value;
-    }
-    if (key === "to") {
-      result.releaseDatesTo = value;
-    }
-    if (key === "slider") {
-      result.minUserScore = parseInt(value, 10);
-    }
-  }
-  return result;
-}
-
-type FormFields = {
-  sort: string;
-  genres: number[];
-  releaseDatesFrom: string;
-  releaseDatesTo: string;
-  minUserScore: number;
-};

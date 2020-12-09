@@ -4,7 +4,7 @@ import Banner from "../components/Banner";
 import PopularItem from "../components/PopularItem";
 import { getPopular, Movie, parseListOfMovies } from "../api/tmdb";
 
-function Home() {
+function Home(): JSX.Element {
   const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function Home() {
 
   return (
     <Container>
-      <h5 className="my-2">What's Popular</h5>
+      <h5 className="my-2">What is Popular</h5>
       <Row>
         <Col className="mb-1 d-none d-md-block">
           <Banner />

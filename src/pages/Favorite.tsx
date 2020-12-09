@@ -4,7 +4,7 @@ import { FAV_MOVIES } from "../constants";
 import FavoriteItem from "../components/FavoriteItem";
 import { getMovieDetails, Movie, parseMovie } from "../api/tmdb";
 
-function Favorite() {
+function Favorite(): JSX.Element {
   const [favMovies, setFavMovies] = useState<Movie[]>([]);
   const [loader, setLoader] = useState<boolean>(false);
 
@@ -13,7 +13,7 @@ function Favorite() {
     if (value !== "") {
       const ids = value.split(",");
       const favMovieData = ids.map((id) =>
-        getMovieDetails(parseInt(id)).then((data) => parseMovie(data))
+        getMovieDetails(parseInt(id, 10)).then((data) => parseMovie(data))
       );
       Promise.all(favMovieData).then((results) => {
         setFavMovies(results);
