@@ -4,7 +4,7 @@ This project was created with:
 
 Project steps:
 
-1. Create React App from Scratch (without create-react-app)
+1. Create React App from scratch (without create-react-app)
 
 1. Add TypeScript
 
