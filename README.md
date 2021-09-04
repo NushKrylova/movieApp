@@ -12,6 +12,6 @@ Project steps:
 
 1. Add custom webpack and remove CRA
 
-1. Add Bootstrap
+1. Add Bootstrap and responsiveness
 
 1. Deployed to gh-pages: https://nushkrylova.github.io/movieApp
