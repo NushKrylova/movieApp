@@ -8,6 +8,8 @@ Project steps:
 
 1. Add TypeScript
 
+1. Configure ESlint and Prettier
+
 1. Add CSS Modules
 
 1. Add custom webpack and remove CRA
